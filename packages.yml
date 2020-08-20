@@ -1,0 +1,5 @@
+packages:
+
+  - git: "https://github.com/fivetran/dbt_bing_ads_source.git"
+    revision: master
+    warn-unpinned: false
