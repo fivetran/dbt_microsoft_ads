@@ -29,7 +29,7 @@ config-version: 2
 
 vars:
     bing_ads_schema: your_database_name
-    bing_ads_database: your_schema_name 
+    bing_ads_database: your_schema_name
 ```
 
 For additional configurations for the source models, please visit the [Bing Ads source package](https://github.com/fivetran/dbt_bing_ads_source).
