@@ -39,6 +39,7 @@ For additional configurations for the source models, visit the [Microsoft Advert
 Additional contributions to this package are very welcome! Please create issues or open PRs against `master`. Check out [this post](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) on the best workflow for contributing to a package.
 
 ## Resources:
+- Find all of Fivetran's pre-built dbt packages in our [dbt hub](https://hub.getdbt.com/fivetran/)
 - Provide [feedback](https://www.surveymonkey.com/r/DQ7K7WW) on our existing dbt packages or what you'd like to see next
 - Learn more about Fivetran [here](https://fivetran.com/docs)
 - Check out [Fivetran's blog](https://fivetran.com/blog)
