@@ -8,18 +8,18 @@ The main focus of the package is to transform the core ad object tables into ana
 
 This package contains transformation models that are designed to work simultaneously with our [Microsoft Advertising source package](https://github.com/fivetran/dbt_microsoft_ads_source). A dependency on the source package is declared in this package's `packages.yml` file, so it will automatically download when you run `dbt deps`. The primary outputs of this package are described below.
 
-| **model**                 | **description**                                                                                                  |
-| ------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| bing_ads__ad_adapter      | Each record represents the daily ad performance of each ad, including information about the used UTM parameters. |
-| bing_ads__account_report  | Each record represents the daily ad performance of each account.                                                 |
-| bing_ads__ad_group_report | Each record represents the daily ad performance of each ad group.                                                |
-| bing_ads__campaign_report | Each record represents the daily ad performance of each campaign.                                                |
+| **model**                      | **description**                                                                                                  |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| microsoft_ads__ad_adapter      | Each record represents the daily ad performance of each ad, including information about the used UTM parameters. |
+| microsoft_ads__account_report  | Each record represents the daily ad performance of each account.                                                 |
+| microsoft_ads__ad_group_report | Each record represents the daily ad performance of each ad group.                                                |
+| microsoft_ads__campaign_report | Each record represents the daily ad performance of each campaign.                                                |
 
 ## Installation Instructions
 Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 
 ## Configuration
-By default, this package looks for your Microsoft Advertising data in the `bing_ads` schema of your [target database](https://docs.getdbt.com/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile). If this is not where your Microsoft Advertising data is, add the following configuration to your `dbt_project.yml` file:
+By default, this package looks for your Microsoft Advertising data in the `microsoft_ads` schema of your [target database](https://docs.getdbt.com/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile). If this is not where your Microsoft Advertising data is, add the following configuration to your `dbt_project.yml` file:
 
 ```yml
 # dbt_project.yml
@@ -28,8 +28,8 @@ By default, this package looks for your Microsoft Advertising data in the `bing_
 config-version: 2
 
 vars:
-    bing_ads_schema: your_database_name
-    bing_ads_database: your_schema_name
+    microsoft_ads_schema: your_database_name
+    microsoft_ads_database: your_schema_name
 ```
 
 For additional configurations for the source models, visit the [Microsoft Advertising source package](https://github.com/fivetran/dbt_microsoft_ads_source).
