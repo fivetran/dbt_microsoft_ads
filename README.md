@@ -1,12 +1,12 @@
-# Bing Ads 
+# Microsoft Advertising 
 
-This package models Bing Ads data from [Fivetran's connector](https://fivetran.com/docs/applications/microsoft-advertising). It uses data in the format described by [this ERD](https://docs.google.com/presentation/d/1xNeRCtU5dNVy01kTjE-ydX_BLoRDgKZOHGci1vUKDFg/edit).
+This package models Microsoft Advertising data from [Fivetran's connector](https://fivetran.com/docs/applications/microsoft-advertising). It uses data in the format described by [this ERD](https://docs.google.com/presentation/d/1xNeRCtU5dNVy01kTjE-ydX_BLoRDgKZOHGci1vUKDFg/edit).
 
 The main focus of the package is to transform the core ad object tables into analytics-ready models, including an 'ad adapter' model that can be easily unioned in to other ad platform packages to get a single-view.
 
 ## Models
 
-This package contains transformation models, designed to work simultaneously with our [Bing Ads source package](https://github.com/fivetran/dbt_bing_ads_source). A depenedency on the source package is declared in this package's `packages.yml` file, so it will automatically download when you run `dbt deps`. The primary outputs of this package are described below.
+This package contains transformation models that are designed to work simultaneously with our [Microsoft Advertising source package](https://github.com/fivetran/dbt_microsoft_ads_source). A dependency on the source package is declared in this package's `packages.yml` file, so it will automatically download when you run `dbt deps`. The primary outputs of this package are described below.
 
 | **model**                 | **description**                                                                                                  |
 | ------------------------- | ---------------------------------------------------------------------------------------------------------------- |
@@ -19,7 +19,7 @@ This package contains transformation models, designed to work simultaneously wit
 Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions, or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 
 ## Configuration
-By default this package will look for your Bing Ads data in the `bing_ads` schema of your [target database](https://docs.getdbt.com/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile). If this is not where your Bing Ads data is, please add the following configuration to your `dbt_project.yml` file:
+By default, this package looks for your Microsoft Advertising data in the `bing_ads` schema of your [target database](https://docs.getdbt.com/docs/running-a-dbt-project/using-the-command-line-interface/configure-your-profile). If this is not where your Microsoft Advertising data is, add the following configuration to your `dbt_project.yml` file:
 
 ```yml
 # dbt_project.yml
@@ -32,13 +32,14 @@ vars:
     bing_ads_database: your_schema_name
 ```
 
-For additional configurations for the source models, please visit the [Bing Ads source package](https://github.com/fivetran/dbt_bing_ads_source).
+For additional configurations for the source models, visit the [Microsoft Advertising source package](https://github.com/fivetran/dbt_microsoft_ads_source).
 
 ## Contributions
 
 Additional contributions to this package are very welcome! Please create issues or open PRs against `master`. Check out [this post](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) on the best workflow for contributing to a package.
 
 ## Resources:
+- Find all of Fivetran's pre-built dbt packages in our [dbt hub](https://hub.getdbt.com/fivetran/)
 - Provide [feedback](https://www.surveymonkey.com/r/DQ7K7WW) on our existing dbt packages or what you'd like to see next
 - Learn more about Fivetran [here](https://fivetran.com/docs)
 - Check out [Fivetran's blog](https://fivetran.com/blog)
