@@ -1,3 +1,6 @@
 packages:
-  - package: fivetran/microsoft_ads_source
-    version: 0.1.0
+  # - package: fivetran/microsoft_ads_source
+  #   version: 0.1.0
+  # TODO: Undo this when new source package is pushed
+  - git: "https://github.com/fivetran/dbt_microsoft_ads_source"
+    revision: feature/circleci
