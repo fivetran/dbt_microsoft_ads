@@ -1,0 +1,29 @@
+name: 'microsoft_ads_integration_tests'
+version: '1.0.0'
+profile: 'integration_tests'
+config-version: 2
+
+vars: 
+  microsoft_ads_source:
+    account_history: "{{ ref('microsoft_ads_account_history_data') }}"
+    ad_group_history: "{{ ref('microsoft_ads_ad_group_history_data') }}"
+    ad_history: "{{ ref('microsoft_ads_ad_history_data') }}"
+    ad_performance_daily_report: "{{ ref('microsoft_ads_ad_performance_daily_report_data') }}"
+    campaign_history: "{{ ref('microsoft_ads_campaign_history_data') }}"
+
+seeds:
+  microsoft_ads_integration_tests:
+    microsoft_ads_ad_group_history_data:
+      +column_types:
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    microsoft_ads_ad_performance_daily_report_data:
+      +column_types:
+        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+    microsoft_ads_ad_history_data:
+      +column_types:
+        id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
