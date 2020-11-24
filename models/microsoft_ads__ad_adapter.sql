@@ -1,30 +1,30 @@
 with report as (
 
     select *
-    from {{ ref('stg_microsoft_ads__ad_performance_daily_report') }}
+    from {{ var('microsoft_ads_ad_performance_daily_report') }}
 
 ), ads as (
 
     select *
-    from {{ ref('stg_microsoft_ads__ad_history') }}
+    from {{ var('microsoft_ads_ad_history') }}
     where is_most_recent_version = True
 
 ), ad_groups as (
 
     select *
-    from {{ ref('stg_microsoft_ads__ad_group_history') }}
+    from {{ var('microsoft_ads_ad_group_history') }}
     where is_most_recent_version = True
 
 ), campaigns as (
 
     select *
-    from {{ ref('stg_microsoft_ads__campaign_history') }}
+    from {{ var('microsoft_ads_campaign_history') }}
     where is_most_recent_version = True
 
 ), accounts as (
 
     select *
-    from {{ ref('stg_microsoft_ads__account_history') }}
+    from {{ var('microsoft_ads_account_history') }}
     where is_most_recent_version = True
 
 ), joined as (
