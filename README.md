@@ -1,6 +1,6 @@
 # Microsoft Advertising 
 
-This package models Microsoft Advertising data from [Fivetran's connector](https://fivetran.com/docs/applications/microsoft-advertising). It uses data in the format described by [this ERD](https://docs.google.com/presentation/d/1xNeRCtU5dNVy01kTjE-ydX_BLoRDgKZOHGci1vUKDFg/edit).
+This package models Microsoft Advertising data from [Fivetran's connector](https://fivetran.com/docs/applications/microsoft-advertising). It uses data in the format described by [this ERD](https://fivetran.com/docs/applications/microsoft-advertising#schemainformation).
 
 The main focus of the package is to transform the core ad object tables into analytics-ready models, including an 'ad adapter' model that can be easily unioned in to other ad platform packages to get a single-view.
 
@@ -28,8 +28,8 @@ By default, this package looks for your Microsoft Advertising data in the `micro
 config-version: 2
 
 vars:
-    microsoft_ads_schema: your_database_name
-    microsoft_ads_database: your_schema_name
+    microsoft_ads_schema: your_schema_name
+    microsoft_ads_database: your_database_name
 ```
 
 For additional configurations for the source models, visit the [Microsoft Advertising source package](https://github.com/fivetran/dbt_microsoft_ads_source).
