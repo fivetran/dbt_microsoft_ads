@@ -34,6 +34,20 @@ vars:
 
 For additional configurations for the source models, visit the [Microsoft Advertising source package](https://github.com/fivetran/dbt_microsoft_ads_source).
 
+### Changing the Build Schema
+By default this package will build the Microsoft Ads staging models within a schema titled (<target_schema> + `_stg_microsoft_ads`) and the Microsoft Ads final models with a schema titled (<target_schema> + `_microsoft_ads`) in your target database. If this is not where you would like your modeled Microsoft Ads data to be written to, add the following configuration to your `dbt_project.yml` file:
+
+```yml
+# dbt_project.yml
+
+...
+models:
+  microsoft_ads:
+    +schema: my_new_schema_name # leave blank for just the target_schema
+  microsoft_ads_source:
+    +schema: my_new_schema_name # leave blank for just the target_schema
+```
+
 ## Contributions
 
 Additional contributions to this package are very welcome! Please create issues or open PRs against `master`. Check out [this post](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) on the best workflow for contributing to a package.
