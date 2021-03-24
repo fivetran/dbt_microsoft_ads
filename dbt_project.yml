@@ -8,7 +8,7 @@ require-dbt-version: [">=0.18.0", "<0.20.0"]
 models:
   microsoft_ads:
     +schema: microsoft_ads
-    materialized: table
+    +materialized: table
 
 vars:
   microsoft_ads:

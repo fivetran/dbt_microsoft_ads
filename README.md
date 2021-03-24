@@ -2,7 +2,7 @@
 
 This package models Microsoft Advertising data from [Fivetran's connector](https://fivetran.com/docs/applications/microsoft-advertising). It uses data in the format described by [this ERD](https://fivetran.com/docs/applications/microsoft-advertising#schemainformation).
 
-The main focus of the package is to transform the core ad object tables into analytics-ready models, including an 'ad adapter' model that can be easily unioned in to other ad platform packages to get a single-view.
+The main focus of the package is to transform the core ad object tables into analytics-ready models, including an 'ad adapter' model that can be easily unioned in to other ad platform packages to get a single-view. This is especially easy using our [Ad Reporting package](https://github.com/fivetran/dbt_ad_reporting).
 
 ## Models
 
