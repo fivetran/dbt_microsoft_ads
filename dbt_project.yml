@@ -17,3 +17,4 @@ vars:
     microsoft_ads_ad_group_history: "{{ ref('stg_microsoft_ads__ad_group_history') }}"
     microsoft_ads_campaign_history: "{{ ref('stg_microsoft_ads__campaign_history') }}"
     microsoft_ads_account_history: "{{ ref('stg_microsoft_ads__account_history') }}"
+  dbt_utils_dispatch_list: ['spark_utils']
