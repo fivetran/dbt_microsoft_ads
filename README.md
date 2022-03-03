@@ -43,6 +43,13 @@ vars:
 
 For additional configurations for the source models, visit the [Microsoft Advertising source package](https://github.com/fivetran/dbt_microsoft_ads_source).
 
+### UTM Auto Tagging Feature
+This package assumes you are manually adding UTM tags to the `final_url` field within the `ad_history` table. If you are leveraging the auto-tag feature within Microsoft Ads then you will want to enable the `microsoft_auto_tagging_enabled` variable to correctly populate the UTM fields within the `int_microsoft_ads__ad_history` model.
+```yml
+vars:
+  microsoft_auto_tagging_enabled: true # False by default
+```
+
 ### Changing the Build Schema
 By default this package will build the Microsoft Ads staging models within a schema titled (<target_schema> + `_stg_microsoft_ads`) and the Microsoft Ads final models with a schema titled (<target_schema> + `_microsoft_ads`) in your target database. If this is not where you would like your modeled Microsoft Ads data to be written to, add the following configuration to your `dbt_project.yml` file:
 

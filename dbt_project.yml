@@ -1,5 +1,5 @@
 name: 'microsoft_ads'
-version: '0.4.0'
+version: '0.4.1'
 config-version: 2
 require-dbt-version: [">=1.0.0", "<2.0.0"]
 models:
@@ -13,4 +13,3 @@ vars:
     microsoft_ads_ad_group_history: "{{ ref('stg_microsoft_ads__ad_group_history') }}"
     microsoft_ads_campaign_history: "{{ ref('stg_microsoft_ads__campaign_history') }}"
     microsoft_ads_account_history: "{{ ref('stg_microsoft_ads__account_history') }}"
-

@@ -1,0 +1,25 @@
+version: 2
+
+models:
+    - name: int_microsoft_ads__ad_history
+      columns:
+        - name: ad_version_id
+          tests:
+            - unique
+            - not_null
+        - name: base_url
+          description: The base URL of the ad, extracted from the `final_url`.
+        - name: url_host
+          description: The URL host of the ad, extracted from the `final_url`.
+        - name: url_path
+          description: The URL path of the ad, extracted from the `final_url`.
+        - name: utm_source
+          description: The utm_source parameter of the ad, extracted from the `final_url`.
+        - name: utm_medium
+          description: The utm_medium parameter of the ad, extracted from the `final_url`.
+        - name: utm_campaign
+          description: The utm_campaign parameter of the ad, extracted from the `final_url`.
+        - name: utm_content
+          description: The utm_content parameter of the ad, extracted from the `final_url`.
+        - name: utm_term
+          description: The utm_term parameter of the ad, extracted from the `final_url`.
