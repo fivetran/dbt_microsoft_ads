@@ -12,7 +12,7 @@ with base as (
 ), ad_groups as (
     
     select *
-    from {{ var('microsoft_ads__ad_group_history') }}
+    from {{ var('microsoft_ads_ad_group_history') }}
 
 {% endif %}
 
