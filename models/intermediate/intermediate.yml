@@ -13,9 +13,12 @@ models:
         - name: modified_timestamp
           description: The time each version record was last modified, i.e. when that version was 'created'.
         - name: ad_version_id
+          description: A unique ID for the version of an ad.
           tests:
             - unique
             - not_null
+        - name: is_most_recent_version
+          description: A boolean field for whether the version is the most up-to-date version of the ad.
         - name: base_url
           description: The base URL of the ad, extracted from the `final_url`.
         - name: url_host

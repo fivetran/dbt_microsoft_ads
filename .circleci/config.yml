@@ -84,4 +84,4 @@ jobs:
             dbt run --target bigquery --full-refresh
             dbt test --target bigquery
             dbt run --vars '{microsoft_auto_tagging_enabled: true}' --target bigquery --full-refresh
-            dnt test --target bigquery
+            dbt test --target bigquery
