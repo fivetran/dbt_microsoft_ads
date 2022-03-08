@@ -1,3 +1,10 @@
+# dbt_microsoft_ads v0.4.1
+## Updates
+- We have migrated URL and UTM logic into the "modeling" package in order to adhere to our definitions of "source" and "modeling" packages; specifically, "source" packages are meant to only do light renaming and subsetting columns from the source while "modeling" packages perform more complex transformations, including string extraction for new fields. 
+- Changes include:
+  - added `int_microsoft_ads__ad_history` model where logic was previously found in the source package's `stg_microsoft_ads__ad_history` model
+  - added `microsoft_auto_tagging_enabled` conditional statements for users who utilize Microsoft Advertising's auto tagging feature. Please check README.md for how to use this feature.
+
 # dbt_microsoft_ads v0.4.0
 🎉 dbt v1.0.0 Compatibility 🎉
 ## 🚨 Breaking Changes 🚨

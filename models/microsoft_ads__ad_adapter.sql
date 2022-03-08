@@ -6,7 +6,7 @@ with report as (
 ), ads as (
 
     select *
-    from {{ var('microsoft_ads_ad_history') }}
+    from {{ ref('int_microsoft_ads__ad_history') }}
     where is_most_recent_version = True
 
 ), ad_groups as (
