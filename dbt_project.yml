@@ -2,15 +2,27 @@ name: 'microsoft_ads'
 version: '0.4.0'
 config-version: 2
 require-dbt-version: [">=1.0.0", "<2.0.0"]
+
+vars:
+  microsoft_ads:
+    account_history: "{{ ref('stg_microsoft_ads__account_history') }}"
+    account_performance_daily_report: "{{ ref('stg_microsoft_ads__account_performance_daily_report') }}"
+    campaign_history: "{{ ref('stg_microsoft_ads__campaign_history') }}"
+    campaign_performance_daily_report: "{{ ref('stg_microsoft_ads__campaign_performance_daily_report') }}"
+    ad_group_history: "{{ ref('stg_microsoft_ads__ad_group_history') }}"
+    ad_group_performance_daily_report: "{{ ref('stg_microsoft_ads__ad_group_performance_daily_report') }}"
+    keyword_history: "{{ ref('stg_microsoft_ads__keyword_history') }}"
+    keyword_performance_daily_report: "{{ ref('stg_microsoft_ads__keyword_performance_daily_report') }}"
+    search_performance_daily_report: "{{ ref('stg_microsoft_ads__search_performance_daily_report') }}"
+
+  microsoft_ads__account_report_passthrough_metrics: []
+  microsoft_ads__campaign_report_passthrough_columns: []
+  microsoft_ads__ad_group_report_passthrough_columns: []
+  microsoft_ads__ad_report_passthrough_columns: []
+  microsoft_ads__keyword_report_passthrough_columns: []
+  microsoft_ads__search_report_passthrough_columns: []
+
 models:
   microsoft_ads:
     +schema: microsoft_ads
     +materialized: table
-vars:
-  microsoft_ads:
-    microsoft_ads_ad_performance_daily_report: "{{ ref('stg_microsoft_ads__ad_performance_daily_report') }}"
-    microsoft_ads_ad_history: "{{ ref('stg_microsoft_ads__ad_history') }}"
-    microsoft_ads_ad_group_history: "{{ ref('stg_microsoft_ads__ad_group_history') }}"
-    microsoft_ads_campaign_history: "{{ ref('stg_microsoft_ads__campaign_history') }}"
-    microsoft_ads_account_history: "{{ ref('stg_microsoft_ads__account_history') }}"
-
