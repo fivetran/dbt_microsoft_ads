@@ -5,6 +5,15 @@ models:
     description: >
       Each record in this table represents the daily clicks, impressions, spend (and if applicable other passthrough metrics) of ads 
       by account, account timezone, device os, device type, network and currency code.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - account_id
+            - device_os
+            - device_type
+            - network
+            - currency_code
     columns:
       - name: date_day
         description: '{{ doc("date_day") }}'
@@ -33,6 +42,17 @@ models:
     description: >
       Each record in this table represents the daily clicks, impressions, spend (and if applicable other passthrough metrics) of ads 
       by ad group, campaign, account, device os, device type, network and currency code.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - account_id
+            - campaign_id
+            - ad_group_id
+            - device_os
+            - device_type
+            - network
+            - currency_code
     columns:
       - name: date_day
         description: '{{ doc("date_day") }}'
@@ -67,6 +87,19 @@ models:
     description: >
       Each record in this table represents the daily clicks, impressions, spend (and if applicable other passthrough metrics) of ads 
       by ad, ad group, campaign, account, ad type, device os, device type, network and currency code.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - account_id
+            - campaign_id
+            - ad_group_id
+            - ad_id
+            - ad_type
+            - device_os
+            - device_type
+            - network
+            - currency_code
     columns:
       - name: date_day
         description: '{{ doc("date_day") }}'
@@ -107,6 +140,16 @@ models:
     description: >
       Each record in this table represents the daily clicks, impressions, spend (and if applicable other passthrough metrics) of ads 
       by campaign, account, campaign type, campaign timezone, campaign status, device os, device type, network and currency code.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - account_id
+            - campaign_id
+            - device_os
+            - device_type
+            - network
+            - currency_code
     columns:
       - name: date_day
         description: '{{ doc("date_day") }}'
@@ -144,6 +187,19 @@ models:
     description: >
       Each record in this table represents the daily clicks, impressions, spend (and if applicable other passthrough metrics) of ads 
       by keyword, ad, ad group, campaign, account, device os, device type, network and currency code.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - account_id
+            - campaign_id
+            - ad_group_id
+            - ad_id
+            - keyword_id
+            - device_os
+            - device_type
+            - network
+            - currency_code
     columns:
       - name: date_day
         description: '{{ doc("date_day") }}'
@@ -186,6 +242,19 @@ models:
     description: >
       Each record in this table represents the daily clicks, impressions, spend (and if applicable other passthrough metrics) of ads 
       by search query, keyword, ad, ad group, campaign, account, device os, device type and network.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - account_id
+            - campaign_id
+            - ad_group_id
+            - ad_id
+            - keyword_id
+            - search_query
+            - device_os
+            - device_type
+            - network
     columns:
       - name: date_day
         description: '{{ doc("date_day") }}'
@@ -228,6 +297,18 @@ models:
     description: >
       Each record in this table represents the daily clicks, impressions, spend (and if applicable other passthrough metrics) of ads 
       by ad, ad group, campaign, account, ad type, device os, device type, network, currency code, url and utm parameters.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - account_id
+            - campaign_id
+            - ad_group_id
+            - ad_id
+            - device_os
+            - device_type
+            - network
+            - currency_code
     columns:
       - name: date_day
         description: '{{ doc("date_day") }}'

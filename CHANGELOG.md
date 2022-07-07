@@ -1,3 +1,16 @@
+# dbt_microsoft_ads v0.5.0
+## 🚨 Breaking Changes 
+- `microsoft_ads__ad_adapter` report has been renamed to `microsoft_ads__url_report` to more accurately reflect contents of report.
+## 🎉 Feature Enhancements 🎉
+- Models have been updated to use level specific performance reporting for more accurate reporting.
+- New models have been added:
+  - `microsoft_ads__ad_report`
+  - `microsoft_ads__keyword_report`
+  - `microsoft_ads__search_report`
+- New fields have been added to old models.
+- `README` updates for easier navigation and use of the package.
+- Passthrough metric functionality for more flexible reporting.
+- Added testing for better data integrity.
 # dbt_microsoft_ads v0.4.0
 🎉 dbt v1.0.0 Compatibility 🎉
 ## 🚨 Breaking Changes 🚨
