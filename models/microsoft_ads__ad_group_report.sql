@@ -26,7 +26,7 @@ accounts as (
     where is_most_recent_record = True
 ),
 
-, joined as (
+joined as (
 
     select
         date_day,
@@ -38,7 +38,7 @@ accounts as (
         ad_groups.ad_group_id,
         report.device_os,
         report.device_type,
-        report.network
+        report.network,
         report.currency_code,
         sum(clicks) as clicks,
         sum(impressions) as impressions,

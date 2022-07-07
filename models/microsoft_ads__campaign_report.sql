@@ -19,7 +19,7 @@ accounts as (
     where is_most_recent_record = True
 ),
 
-, joined as (
+joined as (
 
     select
         date_day,
@@ -27,12 +27,12 @@ accounts as (
         accounts.account_id,
         campaigns.campaign_name,
         campaigns.campaign_id,
-        campaigns.campaign_type,
+        campaigns.type as campaign_type,
         campaigns.time_zone as campaign_timezone,
         campaigns.status as campaign_status,
         report.device_os,
         report.device_type,
-        report.network
+        report.network,
         report.currency_code,
         sum(clicks) as clicks,
         sum(impressions) as impressions,

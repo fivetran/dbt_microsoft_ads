@@ -59,12 +59,9 @@ joined as (
         keywords.keyword_id,
         keywords.keyword_name,
         report.search_query,
-        report.bid_match_type,
-        report.delivered_match_type,
         report.device_os,
         report.device_type,
         report.network,
-        report.currency_code,
         sum(report.clicks) as clicks,
         sum(report.impressions) as impressions,
         sum(report.spend) as spend
@@ -83,7 +80,7 @@ joined as (
         on report.account_id = accounts.account_id
     left join keywords
         on report.keyword_id = keywords.keyword_id
-    {{ dbt_utils.group_by(18) }}
+    {{ dbt_utils.group_by(15) }}
 
 )
 

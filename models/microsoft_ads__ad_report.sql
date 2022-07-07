@@ -49,6 +49,7 @@ joined as (
         ad_groups.ad_group_id,
         ads.ad_name,
         ads.ad_id,
+        ads.type as ad_type,
         report.device_os,
         report.device_type,
         report.network,
@@ -69,7 +70,7 @@ joined as (
         on report.campaign_id = campaigns.campaign_id
     left join accounts
         on report.account_id = accounts.account_id
-    {{ dbt_utils.group_by(13) }}
+    {{ dbt_utils.group_by(14) }}
 
 )
 

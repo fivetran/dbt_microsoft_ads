@@ -9,7 +9,6 @@ keywords as (
     
     select * 
     from {{ var('keyword_performance_daily_report') }}
-    where is_most_recent_record = True
 ),
 
 ads as (
@@ -56,25 +55,25 @@ joined as (
         ad_groups.ad_group_id,
         ads.ad_name,
         ads.ad_id,
-        ads.base_url,
-        ads.url_host,
-        ads.url_path,
+        {{ dbt_utils.split_part('ads.final_url', "'?'", 1) }} as base_url,
+        {{ dbt_utils.get_url_host('ads.final_url') }} as url_host,
+        '/' || {{ dbt_utils.get_url_path('ads.final_url') }} as url_path,
 
         {% if var('microsoft_ads_auto_tagging_enabled', false) %}
         
-        coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_source') }} , 'Bing')  as utm_source,
-        coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_medium') }} , 'cpc') as utm_medium,
-        coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_campaign') }} , campaigns.campaign_name) as utm_campaign,
-        coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_content') }} , ad_groups.ad_group_name) as utm_content,
-        coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_term') }} , keywords.keyword_name) as utm_term,
+        cast('Bing' as {{ dbt_utils.type_string() }})  as utm_source,
+        cast('cpc' as {{ dbt_utils.type_string() }}) as utm_medium,
+        campaigns.campaign_name as utm_campaign,
+        ad_groups.ad_group_name as utm_content,
+        keywords.keyword_name as utm_term,
         
         {% else %}
 
-        ads.utm_source,
-        ads.utm_medium,
-        ads.utm_campaign,
-        ads.utm_content,
-        ads.utm_term,
+       {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_source') }} as utm_source,
+       {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_medium') }} as utm_medium,
+       {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_campaign') }} as utm_campaign,
+       {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_content') }} as utm_content,
+       {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_term') }} as utm_term,
         {% endif %}
 
         sum(report.clicks) as clicks,
