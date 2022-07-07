@@ -17,7 +17,7 @@ models:
       - name: spend
         description: The amount of spend that occurred on the day of the record.
     
-  - name: microsoft_ads__ad_adapter
+  - name: microsoft_ads__url_report
     description: Each record in this table represents the daily performance of ads at the ad and url level.
     columns:
       - name: date_day
