@@ -64,13 +64,13 @@ joined as (
         '/' || {{ dbt_utils.get_url_path('ads.final_url') }} as url_path,
 
         {% if var('microsoft_ads_auto_tagging_enabled', false) %}
-        
-        cast('Bing' as {{ dbt_utils.type_string() }})  as utm_source,
-        cast('cpc' as {{ dbt_utils.type_string() }}) as utm_medium,
-        campaigns.campaign_name as utm_campaign,
-        ad_groups.ad_group_name as utm_content,
-        keywords.keyword_name as utm_term,
-        
+
+        coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_source') }} , 'Bing') as utm_source,
+        coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_medium') }}, 'cpc') as utm_medium,
+        coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_campaign') }}, campaigns.campaign_name) as utm_campaign,
+        coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_content') }}, ad_groups.ad_group_name) as utm_content,
+        coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_term') }}, keywords.keyword_name) as utm_term,
+
         {% else %}
 
        {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_source') }} as utm_source,
