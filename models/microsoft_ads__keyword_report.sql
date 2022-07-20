@@ -58,6 +58,7 @@ joined as (
         ads.ad_id,
         keywords.keyword_name,
         keywords.keyword_id,
+        keywords.match_type,
         report.device_os,
         report.device_type,
         report.network,

@@ -1,7 +1,9 @@
 # dbt_microsoft_ads v0.5.0
 ## 🚨 Breaking Changes 
+[PR #15](https://github.com/fivetran/dbt_microsoft_ads/pull/15) incorporates these breaking changes:
 - `microsoft_ads__ad_adapter` report has been renamed to `microsoft_ads__url_report` to more accurately reflect contents of report.
 ## 🎉 Feature Enhancements 🎉
+[PR #15](https://github.com/fivetran/dbt_microsoft_ads/pull/15) includes the below updates:
 - Models have been updated to use level specific performance reporting for more accurate reporting.
 - New models have been added:
   - `microsoft_ads__ad_report`

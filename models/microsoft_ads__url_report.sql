@@ -99,7 +99,13 @@ joined as (
     left join keywords
         on report.ad_id = keywords.ad_id
     {{ dbt_utils.group_by(21) }}
+), 
 
+filtered as (
+
+    select * 
+    from joined
+    where base_url IS NOT NULL
 )
 
 select *

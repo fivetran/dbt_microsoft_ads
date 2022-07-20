@@ -14,7 +14,7 @@
 # 📣 What does this dbt package do?
 - Produces modeled tables that leverage Microsoft Ads data from [Fivetran's connector](https://fivetran.com/docs/applications/microsoft-advertising) in the format described by [this ERD](https://fivetran.com/docs/applications/microsoft-advertising#schemainformation) and builds off the output of our [Microsoft Ads source package](https://github.com/fivetran/dbt_microsoft_ads_source).
 - Enables you to better understand the performance of your ads across varying grains:
-  - Providing an account, campaign, ad group, keyword, ad, and utm level reports.
+  - Providing an account, campaign, ad group, keyword, ad, utm and search level reports.
 - Materializes output models designed to work simultaneously with our [multi-platform Ad Reporting package](https://github.com/fivetran/dbt_ad_reporting).
 - Generates a comprehensive data dictionary of your source and modeled Microsoft Ads data through the [dbt docs site](https://fivetran.github.io/dbt_microsoft_ads/).
 
@@ -28,7 +28,7 @@ The following table provides a detailed list of all models materialized within t
 | [microsoft_ads__ad_group_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__ad_group_report)            | Each record in this table represents the daily performance at the ad group level. |
 | [microsoft_ads__ad_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__ad_report)            | Each record in this table represents the daily performance at the ad level. |
 | [microsoft_ads__keyword_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__keyword_report)            | Each record in this table represents the daily performance at the ad group level for keywords. |
-| [microsoft_ads__search_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__ad_report)            | Each record in this table represents the daily performance at the search level. |
+| [microsoft_ads__search_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__search_report)            | Each record in this table represents the daily performance at the search level. |
 | [microsoft_ads__url_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__url_report)            | Each record in this table represents the daily performance of URLs at the ad level. |
 
 # 🎯 How do I use the dbt package?
@@ -75,11 +75,12 @@ By default, this package will select `clicks`, `impressions`, and `cost` from th
 
 ...
 vars:
-    microsoft_ads__ad_group_stats_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.ad_group_stats
-    microsoft_ads__ad_stats_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.ad_stats
-    microsoft_ads__campaign_stats_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.campaign_stats
-    microsoft_ads__keyword_stats_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.keyword_stats
-    microsoft_ads__account_stats_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.account_stats
+  microsoft_ads__account_report_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.account_performance_daily_report
+  microsoft_ads__campaign_report_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.campaign_performance_daily_report
+  microsoft_ads__ad_group_report_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.ad_group_performance_daily_report
+  microsoft_ads__ad_report_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.ad_performance_daily_report
+  microsoft_ads__keyword_report_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.keyword_performance_daily_report
+  microsoft_ads__search_report_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.search_query_performance_daily_report
 ```
 
 ### Enable UTM Auto Tagging
