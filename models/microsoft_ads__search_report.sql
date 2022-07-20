@@ -58,6 +58,7 @@ joined as (
         ads.ad_id,
         keywords.keyword_id,
         keywords.keyword_name,
+        coalesce(report.delivered_match_type, report.bid_match_type) as match_type,
         report.search_query,
         report.device_os,
         report.device_type,
@@ -80,7 +81,7 @@ joined as (
         on report.account_id = accounts.account_id
     left join keywords
         on report.keyword_id = keywords.keyword_id
-    {{ dbt_utils.group_by(15) }}
+    {{ dbt_utils.group_by(16) }}
 
 )
 

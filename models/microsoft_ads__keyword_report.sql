@@ -81,7 +81,7 @@ joined as (
         on report.account_id = accounts.account_id
     left join keywords
         on report.keyword_id = keywords.keyword_id
-    {{ dbt_utils.group_by(15) }}
+    {{ dbt_utils.group_by(16) }}
 )
 
 select *

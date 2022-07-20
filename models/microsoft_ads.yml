@@ -280,6 +280,8 @@ models:
         description: '{{ doc("keyword_name") }}'
       - name: keyword_id
         description: '{{ doc("keyword_id") }}'
+      - name: match_type
+        description: '{{ doc("match_type") }}'
       - name: search_query
         description: '{{ doc("search_query") }}'
       - name: device_os
