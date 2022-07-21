@@ -109,4 +109,4 @@ filtered as (
 )
 
 select *
-from joined
+from filtered
