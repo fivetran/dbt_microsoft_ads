@@ -68,7 +68,7 @@ vars:
 
 ### Adding passthrough metrics
 By default, this package will select `clicks`, `impressions`, and `cost` from the source reporting tables to store into the staging models. If you would like to pass through additional metrics to the staging models, add the following configuration to your `dbt_project.yml` file:
-> Please ensure you use due diligence when adding metrics to these models. The metrics added by default (`clicks`, `impressions`, and `cost`) have been vetting by the Fivetran team maintaining this package for accuracy. There are metrics included within the source reports which are comprised of averages. You will want to ensure whichever metrics you pass through are indeed appropriate to aggregate.
+> Please ensure you use due diligence when adding metrics to these models. The metrics added by default (`clicks`, `impressions`, and `cost`) have been vetting by the Fivetran team maintaining this package for accuracy. There are metrics included within the source reports which are comprised of averages. You will want to ensure whichever metrics you pass through are indeed appropriate to aggregate. Additionally, the following passthrough variables are meant only for metrics as they will be aggregated downstream. 
 
 ```yml
 # dbt_project.yml
