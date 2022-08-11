@@ -75,12 +75,12 @@ By default, this package will select `clicks`, `impressions`, and `cost` from th
 
 ...
 vars:
-  microsoft_ads__account_report_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.account_performance_daily_report
-  microsoft_ads__campaign_report_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.campaign_performance_daily_report
-  microsoft_ads__ad_group_report_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.ad_group_performance_daily_report
-  microsoft_ads__ad_report_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.ad_performance_daily_report
-  microsoft_ads__keyword_report_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.keyword_performance_daily_report
-  microsoft_ads__search_report_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.search_query_performance_daily_report
+  microsoft_ads__account_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.account_performance_daily_report
+  microsoft_ads__campaign_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.campaign_performance_daily_report
+  microsoft_ads__ad_group_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.ad_group_performance_daily_report
+  microsoft_ads__ad_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.ad_performance_daily_report
+  microsoft_ads__keyword_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.keyword_performance_daily_report
+  microsoft_ads__search_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.search_query_performance_daily_report
 ```
 
 ### Enable UTM Auto Tagging
