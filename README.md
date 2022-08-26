@@ -67,20 +67,29 @@ vars:
 ## (Optional) Step 4: Additional configurations
 
 ### Adding passthrough metrics
-By default, this package will select `clicks`, `impressions`, and `cost` from the source reporting tables to store into the staging models. If you would like to pass through additional metrics to the staging models, add the following configuration to your `dbt_project.yml` file:
-> Please ensure you use due diligence when adding metrics to these models. The metrics added by default (`clicks`, `impressions`, and `cost`) have been vetting by the Fivetran team maintaining this package for accuracy. There are metrics included within the source reports which are comprised of averages. You will want to ensure whichever metrics you pass through are indeed appropriate to aggregate. Additionally, the following passthrough variables are meant only for metrics as they will be aggregated downstream. 
+By default, this package will select `clicks`, `impressions`, and `cost` from the source reporting tables to store into the staging models. If you would like to pass through additional metrics to the staging models, add the below configurations to your `dbt_project.yml` file. These variables allow for the pass-through fields to be aliased (`alias`) if desired, but not required. Use the below format for declaring the respective pass-through variables:
+
+>**Note** Please ensure you exercised due diligence when adding metrics to these models. The metrics added by default (taps, impressions, and spend) have been vetted by the Fivetran team maintaining this package for accuracy. There are metrics included within the source reports, for example metric averages, which may be inaccurately represented at the grain for reports created in this package. You will want to ensure whichever metrics you pass through are indeed appropriate to aggregate at the respective reporting levels provided in this package.
 
 ```yml
-# dbt_project.yml
-
-...
 vars:
-  microsoft_ads__account_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.account_performance_daily_report
-  microsoft_ads__campaign_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.campaign_performance_daily_report
-  microsoft_ads__ad_group_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.ad_group_performance_daily_report
-  microsoft_ads__ad_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.ad_performance_daily_report
-  microsoft_ads__keyword_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.keyword_performance_daily_report
-  microsoft_ads__search_passthrough_metrics: ['the', 'list', 'of', 'metric', 'columns', 'to', 'include'] # from microsoft_ads.search_query_performance_daily_report
+    microsoft_ads__account_passthrough_metrics: 
+      - name: "new_custom_field"
+        alias: "custom_field"
+    microsoft_ads__campaign_passthrough_metrics:
+      - name: "this_field"
+    microsoft_ads__ad_group_passthrough_metrics:
+      - name: "unique_string_field"
+        alias: "field_id"
+    microsoft_ads__ad_passthrough_metrics: 
+      - name: "new_custom_field"
+        alias: "custom_field"
+      - name: "a_second_field"
+    microsoft_ads__keyword_passthrough_metrics:
+      - name: "this_field"
+    microsoft_ads__search_passthrough_metrics:
+      - name: "unique_string_field"
+        alias: "field_id"
 ```
 
 ### Enable UTM Auto Tagging
