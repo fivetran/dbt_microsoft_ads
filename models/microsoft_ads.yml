@@ -21,6 +21,8 @@ models:
         description: '{{ doc("account_name") }}'
       - name: account_id
         description: '{{ doc("account_id") }}'
+        tests:
+          - not_null
       - name: account_timezone
         description: '{{ doc("account_timezone") }}'
       - name: device_os
@@ -68,6 +70,8 @@ models:
         description: '{{ doc("ad_group_name") }}'
       - name: ad_group_id
         description: '{{ doc("ad_group_id") }}'
+        tests:
+          - not_null
       - name: device_os
         description: '{{ doc("device_os") }}'
       - name: device_type
@@ -119,6 +123,8 @@ models:
         description: '{{ doc("ad_name") }}'
       - name: ad_id
         description: '{{ doc("ad_id") }}'
+        tests:
+          - not_null
       - name: ad_type
         description: '{{ doc("ad_type") }}'
       - name: device_os
@@ -161,6 +167,8 @@ models:
         description: '{{ doc("campaign_name") }}'
       - name: campaign_id
         description: '{{ doc("campaign_id") }}'
+        tests:
+          - not_null
       - name: campaign_type
         description: '{{ doc("campaign_type") }}'
       - name: campaign_timezone
@@ -223,6 +231,8 @@ models:
         description: '{{ doc("keyword_name") }}'
       - name: keyword_id
         description: '{{ doc("keyword_id") }}'
+        tests:
+          - not_null
       - name: match_type
         description: '{{ doc("match_type") }}'
       - name: device_os
@@ -284,6 +294,8 @@ models:
         description: '{{ doc("match_type") }}'
       - name: search_query
         description: '{{ doc("search_query") }}'
+        tests:
+          - not_null
       - name: device_os
         description: '{{ doc("device_os") }}'
       - name: device_type
@@ -342,6 +354,8 @@ models:
         description: '{{ doc("currency_code") }}'
       - name: base_url
         description: The base URL of the ad, extracted from the `final_url`.
+        tests:
+          - not_null
       - name: url_host
         description: The URL host of the ad, extracted from the `final_url`.
       - name: url_path
