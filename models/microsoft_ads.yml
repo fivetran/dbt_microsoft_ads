@@ -2,102 +2,377 @@ version: 2
 
 models:
   - name: microsoft_ads__account_report
-    description: Each record in this table represents the daily performance of ads at the campaign level.
+    description: >
+      Each record in this table represents the daily clicks, impressions, spend (and if applicable other passthrough metrics) of ads 
+      by account, account timezone, device os, device type, network and currency code.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - account_id
+            - device_os
+            - device_type
+            - network
+            - currency_code
     columns:
       - name: date_day
-        description: The performance date of the record.
-      - name: account_id
-        description: The ID of the related account.
+        description: '{{ doc("date_day") }}'
       - name: account_name
-        description: The name of the related account.
-      - name: impressions
-        description: The number of impressions that occurred on the day of the record.
+        description: '{{ doc("account_name") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+        tests:
+          - not_null
+      - name: account_timezone
+        description: '{{ doc("account_timezone") }}'
+      - name: device_os
+        description: '{{ doc("device_os") }}'
+      - name: device_type
+        description: '{{ doc("device_type") }}'
+      - name: network
+        description: '{{ doc("network") }}'
+      - name: currency_code
+        description: '{{ doc("currency_code") }}'
       - name: clicks
-        description: The number of clicks that occurred on the day of the record.
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
       - name: spend
-        description: The amount of spend that occurred on the day of the record.
-    
-  - name: microsoft_ads__ad_adapter
-    description: Each record in this table represents the daily performance of ads at the ad and url level.
+        description: '{{ doc("spend") }}'
+      
+  - name: microsoft_ads__ad_group_report
+    description: >
+      Each record in this table represents the daily clicks, impressions, spend (and if applicable other passthrough metrics) of ads 
+      by ad group, campaign, account, device os, device type, network and currency code.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - account_id
+            - campaign_id
+            - ad_group_id
+            - device_os
+            - device_type
+            - network
+            - currency_code
     columns:
       - name: date_day
-        description: The performance date of the record.
+        description: '{{ doc("date_day") }}'
+      - name: account_name
+        description: '{{ doc("account_name") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: campaign_name
+        description: '{{ doc("campaign_name") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+      - name: ad_group_name
+        description: '{{ doc("ad_group_name") }}'
+      - name: ad_group_id
+        description: '{{ doc("ad_group_id") }}'
+        tests:
+          - not_null
+      - name: device_os
+        description: '{{ doc("device_os") }}'
+      - name: device_type
+        description: '{{ doc("device_type") }}'
+      - name: network
+        description: '{{ doc("network") }}'
+      - name: currency_code
+        description: '{{ doc("currency_code") }}'
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend
+        description: '{{ doc("spend") }}'
+
+  - name: microsoft_ads__ad_report
+    description: >
+      Each record in this table represents the daily clicks, impressions, spend (and if applicable other passthrough metrics) of ads 
+      by ad, ad group, campaign, account, ad type, device os, device type, network and currency code.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - account_id
+            - campaign_id
+            - ad_group_id
+            - ad_id
+            - ad_type
+            - device_os
+            - device_type
+            - network
+            - currency_code
+    columns:
+      - name: date_day
+        description: '{{ doc("date_day") }}'
+      - name: account_name
+        description: '{{ doc("account_name") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: campaign_name
+        description: '{{ doc("campaign_name") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+      - name: ad_group_name
+        description: '{{ doc("ad_group_name") }}'
+      - name: ad_group_id
+        description: '{{ doc("ad_group_id") }}'
+      - name: ad_name
+        description: '{{ doc("ad_name") }}'
+      - name: ad_id
+        description: '{{ doc("ad_id") }}'
+        tests:
+          - not_null
+      - name: ad_type
+        description: '{{ doc("ad_type") }}'
+      - name: device_os
+        description: '{{ doc("device_os") }}'
+      - name: device_type
+        description: '{{ doc("device_type") }}'
+      - name: network
+        description: '{{ doc("network") }}'
+      - name: currency_code
+        description: '{{ doc("currency_code") }}'
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend
+        description: '{{ doc("spend") }}'
+
+  - name: microsoft_ads__campaign_report
+    description: >
+      Each record in this table represents the daily clicks, impressions, spend (and if applicable other passthrough metrics) of ads 
+      by campaign, account, campaign type, campaign timezone, campaign status, device os, device type, network and currency code.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - account_id
+            - campaign_id
+            - device_os
+            - device_type
+            - network
+            - currency_code
+    columns:
+      - name: date_day
+        description: '{{ doc("date_day") }}'
+      - name: account_name
+        description: '{{ doc("account_name") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: campaign_name
+        description: '{{ doc("campaign_name") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+        tests:
+          - not_null
+      - name: campaign_type
+        description: '{{ doc("campaign_type") }}'
+      - name: campaign_timezone
+        description: '{{ doc("campaign_timezone") }}'
+      - name: campaign_status
+        description: '{{ doc("campaign_status") }}'
+      - name: device_os
+        description: '{{ doc("device_os") }}'
+      - name: device_type
+        description: '{{ doc("device_type") }}'
+      - name: network
+        description: '{{ doc("network") }}'
+      - name: currency_code
+        description: '{{ doc("currency_code") }}'
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend
+        description: '{{ doc("spend") }}'
+
+
+  - name: microsoft_ads__keyword_report
+    description: >
+      Each record in this table represents the daily clicks, impressions, spend (and if applicable other passthrough metrics) of ads 
+      by keyword, ad, ad group, campaign, account, device os, device type, network and currency code.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - account_id
+            - campaign_id
+            - ad_group_id
+            - ad_id
+            - keyword_id
+            - device_os
+            - device_type
+            - network
+            - currency_code
+    columns:
+      - name: date_day
+        description: '{{ doc("date_day") }}'
+      - name: account_name
+        description: '{{ doc("account_name") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: campaign_name
+        description: '{{ doc("campaign_name") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+      - name: ad_group_name
+        description: '{{ doc("ad_group_name") }}'
+      - name: ad_group_id
+        description: '{{ doc("ad_group_id") }}'
+      - name: ad_name
+        description: '{{ doc("ad_name") }}'
+      - name: ad_id
+        description: '{{ doc("ad_id") }}'
+      - name: keyword_name
+        description: '{{ doc("keyword_name") }}'
+      - name: keyword_id
+        description: '{{ doc("keyword_id") }}'
+        tests:
+          - not_null
+      - name: match_type
+        description: '{{ doc("match_type") }}'
+      - name: device_os
+        description: '{{ doc("device_os") }}'
+      - name: device_type
+        description: '{{ doc("device_type") }}'
+      - name: network
+        description: '{{ doc("network") }}'
+      - name: currency_code
+        description: '{{ doc("currency_code") }}'
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend
+        description: '{{ doc("spend") }}'
+
+  - name: microsoft_ads__search_report
+    description: >
+      Each record in this table represents the daily clicks, impressions, spend (and if applicable other passthrough metrics) of ads 
+      by search query, keyword, ad, ad group, campaign, account, device os, device type and network.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - account_id
+            - campaign_id
+            - ad_group_id
+            - ad_id
+            - keyword_id
+            - search_query
+            - device_os
+            - device_type
+            - network
+    columns:
+      - name: date_day
+        description: '{{ doc("date_day") }}'
+      - name: account_name
+        description: '{{ doc("account_name") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: campaign_name
+        description: '{{ doc("campaign_name") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+      - name: ad_group_name
+        description: '{{ doc("ad_group_name") }}'
+      - name: ad_group_id
+        description: '{{ doc("ad_group_id") }}'
+      - name: ad_name
+        description: '{{ doc("ad_name") }}'
+      - name: ad_id
+        description: '{{ doc("ad_id") }}'
+      - name: keyword_name
+        description: '{{ doc("keyword_name") }}'
+      - name: keyword_id
+        description: '{{ doc("keyword_id") }}'
+      - name: match_type
+        description: '{{ doc("match_type") }}'
+      - name: search_query
+        description: '{{ doc("search_query") }}'
+        tests:
+          - not_null
+      - name: device_os
+        description: '{{ doc("device_os") }}'
+      - name: device_type
+        description: '{{ doc("device_type") }}'
+      - name: network
+        description: '{{ doc("network") }}'
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend
+        description: '{{ doc("spend") }}'
+
+  - name: microsoft_ads__url_report
+    description: >
+      Each record in this table represents the daily clicks, impressions, spend (and if applicable other passthrough metrics) of ads 
+      by ad, ad group, campaign, account, ad type, device os, device type, network, currency code, url and utm parameters.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - date_day
+            - account_id
+            - campaign_id
+            - ad_group_id
+            - ad_id
+            - device_os
+            - device_type
+            - network
+            - currency_code
+    columns:
+      - name: date_day
+        description: '{{ doc("date_day") }}'
+      - name: account_name
+        description: '{{ doc("account_name") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+      - name: campaign_name
+        description: '{{ doc("campaign_name") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+      - name: ad_group_name
+        description: '{{ doc("ad_group_name") }}'
+      - name: ad_group_id
+        description: '{{ doc("ad_group_id") }}'
+      - name: ad_name
+        description: '{{ doc("ad_name") }}'
+      - name: ad_id
+        description: '{{ doc("ad_id") }}'
+      - name: device_os
+        description: '{{ doc("device_os") }}'
+      - name: device_type
+        description: '{{ doc("device_type") }}'
+      - name: network
+        description: '{{ doc("network") }}'
+      - name: currency_code
+        description: '{{ doc("currency_code") }}'
       - name: base_url
         description: The base URL of the ad, extracted from the `final_url`.
+        tests:
+          - not_null
       - name: url_host
         description: The URL host of the ad, extracted from the `final_url`.
       - name: url_path
         description: The URL path of the ad, extracted from the `final_url`.
       - name: utm_source
-        description: The utm_source parameter of the ad, extracted from the `final_url`.
+        description: The site that sent traffic to your page. Microsoft Advertising sets this to Bing; extracted from the `final_url`.
       - name: utm_medium
-        description: The utm_medium parameter of the ad, extracted from the `final_url`.
+        description: Which channel was used. Microsoft Advertising sets this to cp; extracted from the `final_url`.
       - name: utm_campaign
-        description: The utm_campaign parameter of the ad, extracted from the `final_url`.
+        description: Which campaign the keyword came from; extracted from the `final_url`.
       - name: utm_content
-        description: The utm_content parameter of the ad, extracted from the `final_url`.
+        description: Which ad group the keyword came from; extracted from the `final_url`.
       - name: utm_term
-        description: The utm_term parameter of the ad, extracted from the `final_url`.
-      - name: campaign_id
-        description: The ID of the related campaign.
-      - name: campaign_name
-        description: The name of the related campaign.
-      - name: ad_group_id
-        description: The ID of the related ad group.
-      - name: ad_group_name
-        description: The name of the related ad group.
-      - name: account_id
-        description: The ID of the related account.
-      - name: account_name
-        description: The name of the related account.
-      - name: impressions
-        description: The number of impressions that occurred on the day of the record.
+        description: Which keyword brought people to your website; extracted from the `final_url`.
       - name: clicks
-        description: The number of clicks that occurred on the day of the record.
-      - name: spend
-        description: The amount of spend that occurred on the day of the record.
-    
-  - name: microsoft_ads__ad_group_report
-    description: Each record in this table represents the daily performance of ads at the ad group level.
-    columns:
-      - name: date_day
-        description: The performance date of the record.
-      - name: campaign_id
-        description: The ID of the related campaign.
-      - name: campaign_name
-        description: The name of the related campaign.
-      - name: ad_group_id
-        description: The ID of the related ad group.
-      - name: ad_group_name
-        description: The name of the related ad group.
-      - name: account_id
-        description: The ID of the related account.
-      - name: account_name
-        description: The name of the related account.
+        description: '{{ doc("clicks") }}'
       - name: impressions
-        description: The number of impressions that occurred on the day of the record.
-      - name: clicks
-        description: The number of clicks that occurred on the day of the record.
+        description: '{{ doc("impressions") }}'
       - name: spend
-        description: The amount of spend that occurred on the day of the record.
-    
-  - name: microsoft_ads__campaign_report
-    description: Each record in this table represents the daily performance of ads at the campaign level.
-    columns:
-      - name: date_day
-        description: The performance date of the record.
-      - name: campaign_id
-        description: The ID of the related campaign.
-      - name: campaign_name
-        description: The name of the related campaign.
-      - name: account_id
-        description: The ID of the related account.
-      - name: account_name
-        description: The name of the related account.
-      - name: impressions
-        description: The number of impressions that occurred on the day of the record.
-      - name: clicks
-        description: The number of clicks that occurred on the day of the record.
-      - name: spend
-        description: The amount of spend that occurred on the day of the record.
-    
+        description: '{{ doc("spend") }}'

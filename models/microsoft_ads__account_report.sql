@@ -1,21 +1,40 @@
-with adapter as (
+{{ config(enabled=var('ad_reporting__microsoft_ads_enabled', True)) }}
+
+with report as (
 
     select *
-    from {{ ref('microsoft_ads__ad_adapter') }}
+    from {{ var('account_performance_daily_report') }}
 
-), aggregated as (
+), 
+
+accounts as (
+
+    select *
+    from {{ var('account_history') }}
+    where is_most_recent_record = True
+)
+
+, joined as (
 
     select
         date_day,
-        account_name,
-        account_id,
+        accounts.account_name,
+        accounts.account_id,
+        accounts.time_zone as account_timezone,
+        report.device_os,
+        report.device_type,
+        report.network,
+        report.currency_code,
         sum(clicks) as clicks,
         sum(impressions) as impressions,
         sum(spend) as spend
-    from adapter
-    {{ dbt_utils.group_by(3) }}
 
+        {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='microsoft_ads__account_passthrough_metrics', transform = 'sum') }}
+    from report
+    left join accounts
+        on report.account_id = accounts.account_id
+    {{ dbt_utils.group_by(8)}}
 )
 
 select *
-from aggregated
+from joined

@@ -1,3 +1,31 @@
+# dbt_microsoft_ads v0.5.0
+## 🚨 Breaking Changes 
+[PR #15](https://github.com/fivetran/dbt_microsoft_ads/pull/15) incorporates these breaking changes:
+- `microsoft_ads__ad_adapter` report has been renamed to `microsoft_ads__url_report` to more accurately reflect contents of report.
+## 🎉 Feature Enhancements 🎉
+[PR #15](https://github.com/fivetran/dbt_microsoft_ads/pull/15) includes the below updates:
+- Models have been updated to use level specific performance reporting for more accurate reporting.
+- New models have been added:
+  - `microsoft_ads__ad_report`
+  - `microsoft_ads__keyword_report`
+  - `microsoft_ads__search_report`
+- New fields have been added to old models.
+- `README` updates for easier navigation and use of the package.
+- Inclusion of passthrough metrics:
+  - `microsoft_ads__account_passthrough_metrics`
+  - `microsoft_ads__campaign_passthrough_metrics`
+  - `microsoft_ads__ad_group_passthrough_metrics`
+  - `microsoft_ads__ad_passthrough_metrics`
+  - `microsoft_ads__keyword_passthrough_metrics`
+  - `microsoft_ads__search_passthrough_metrics`
+> This applies to all passthrough columns within the `dbt_microsoft_ads` package and not just the `microsoft_ads__ad_passthrough_metrics` example.
+```yml
+vars:
+  microsoft_ads__ad_passthrough_metrics:
+    - name: "my_field_to_include" # Required: Name of the field within the source.
+      alias: "field_alias" # Optional: If you wish to alias the field within the staging model.
+```
+- Added testing for better data integrity.
 # dbt_microsoft_ads v0.4.1
 ## Updates
 - We have migrated URL and UTM logic into the "modeling" package in order to adhere to our definitions of "source" and "modeling" packages; specifically, "source" packages are meant to only do light renaming and subsetting columns from the source while "modeling" packages perform more complex transformations, including string extraction for new fields. 
