@@ -7,12 +7,6 @@ with report as (
 
 ), 
 
-keywords as (
-    
-    select * 
-    from {{ var('keyword_performance_daily_report') }}
-),
-
 ads as (
 
     select *
@@ -71,17 +65,15 @@ joined as (
         coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_medium') }}, 'cpc') as utm_medium,
         coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_campaign') }}, campaigns.campaign_name) as utm_campaign,
         coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_content') }}, ad_groups.ad_group_name) as utm_content,
-        coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_term') }}, keywords.keyword_name) as utm_term,
-
         {% else %}
 
        {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_source') }} as utm_source,
        {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_medium') }} as utm_medium,
        {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_campaign') }} as utm_campaign,
        {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_content') }} as utm_content,
-       {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_term') }} as utm_term,
-        {% endif %}
+       {% endif %}
 
+        {{ dbt_utils.get_url_parameter('fields.final_url', 'utm_term') }} as utm_term,
         sum(report.clicks) as clicks,
         sum(report.impressions) as impressions,
         sum(report.spend) as spend
@@ -96,8 +88,6 @@ joined as (
         on report.campaign_id = campaigns.campaign_id
     left join accounts
         on report.account_id = accounts.account_id
-    left join keywords
-        on report.ad_id = keywords.ad_id
     {{ dbt_utils.group_by(21) }}
 ), 
 
