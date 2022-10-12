@@ -73,7 +73,7 @@ joined as (
         {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_content') }} as utm_content,
         {% endif %}
 
-        {{ dbt_utils.get_url_parameter('fields.final_url', 'utm_term') }} as utm_term,
+        {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_term') }} as utm_term,
         sum(report.clicks) as clicks,
         sum(report.impressions) as impressions,
         sum(report.spend) as spend
