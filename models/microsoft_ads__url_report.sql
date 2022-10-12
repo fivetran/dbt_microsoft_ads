@@ -67,11 +67,11 @@ joined as (
         coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_content') }}, ad_groups.ad_group_name) as utm_content,
         {% else %}
 
-       {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_source') }} as utm_source,
-       {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_medium') }} as utm_medium,
-       {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_campaign') }} as utm_campaign,
-       {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_content') }} as utm_content,
-       {% endif %}
+        {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_source') }} as utm_source,
+        {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_medium') }} as utm_medium,
+        {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_campaign') }} as utm_campaign,
+        {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_content') }} as utm_content,
+        {% endif %}
 
         {{ dbt_utils.get_url_parameter('fields.final_url', 'utm_term') }} as utm_term,
         sum(report.clicks) as clicks,
