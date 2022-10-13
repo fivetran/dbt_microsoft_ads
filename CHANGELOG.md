@@ -1,7 +1,7 @@
 # dbt_microsoft_ads v0.5.1
 
 ## 🪳Bugfix🪳
-[PR#]() incorporates the below bugfixes:
+[PR #17](https://github.com/fivetran/dbt_microsoft_ads/pull/17) incorporates the below bugfixes:
 - In v0.5.0, including a join on `keyword_performance_daily_report` caused an unintentional fanout in the `microsoft_ads__url_report` model. We have removed this join and rolled back to the previous logic, which is to use the following logic to extract `utm_term` (Microsoft Ads v0.4.0):
   - `{{ dbt_utils.get_url_parameter('fields.final_url', 'utm_term') }} as utm_term`
 
