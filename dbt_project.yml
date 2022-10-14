@@ -1,8 +1,7 @@
 name: 'microsoft_ads'
-version: '0.5.1'
+version: '0.6.0'
 config-version: 2
-require-dbt-version: [">=1.0.0", "<2.0.0"]
-
+require-dbt-version: [">=1.2.0", "<2.0.0"]
 vars:
   microsoft_ads:
     account_history: "{{ ref('stg_microsoft_ads__account_history') }}"
@@ -16,16 +15,13 @@ vars:
     keyword_history: "{{ ref('stg_microsoft_ads__keyword_history') }}"
     keyword_performance_daily_report: "{{ ref('stg_microsoft_ads__keyword_daily_report') }}"
     search_performance_daily_report: "{{ ref('stg_microsoft_ads__search_daily_report') }}"
-
   microsoft_ads_auto_tagging_enabled: false
-
   microsoft_ads__account_report_passthrough_metrics: []
   microsoft_ads__campaign_report_passthrough_metrics: []
   microsoft_ads__ad_group_report_passthrough_metrics: []
   microsoft_ads__ad_report_passthrough_metrics: []
   microsoft_ads__keyword_report_passthrough_metrics: []
   microsoft_ads__search_report_passthrough_metrics: []
-
 models:
   microsoft_ads:
     +schema: microsoft_ads
