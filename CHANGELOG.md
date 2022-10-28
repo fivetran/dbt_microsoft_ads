@@ -37,6 +37,11 @@
     - `dbt.current_timestamp_in_utc_backcompat`
 - `packages.yml` has been updated to reflect new default `fivetran/fivetran_utils` version, previously `[">=0.3.0", "<0.4.0"]` now `[">=0.4.0", "<0.5.0"]`.
 
+## 🪳 Bugfix 🪳
+[PR #21](https://github.com/fivetran/dbt_microsoft_ads/pull/21) includes the bug fixes:
+- In each end model, `*_id` fields are explicitly selected from the left side of the join, reports, rather than from entity (i.e. keywords) history tables. This is necessary as Microsoft **hard-deletes** records from history tables ([#63](https://github.com/fivetran/dbt_ad_reporting/issues/63)).
+- Includes the `match_type` field in the uniqueness test on the `microsoft_ads__search_report` model ([#64](https://github.com/fivetran/dbt_ad_reporting/issues/64)).
+
 # dbt_microsoft_ads v0.5.1
 
 ## 🪳Bugfix🪳
