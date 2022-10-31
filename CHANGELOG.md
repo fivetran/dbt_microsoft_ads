@@ -37,6 +37,9 @@
     - `dbt.current_timestamp_in_utc_backcompat`
 - `packages.yml` has been updated to reflect new default `fivetran/fivetran_utils` version, previously `[">=0.3.0", "<0.4.0"]` now `[">=0.4.0", "<0.5.0"]`.
 
+[PR #](link) includes the following updates:
+- Added `budget_association_status` into the `stg_microsoft_ads__campaign_daily_report` table in order account for campaign budgets that end midday. Including `budget_association_status` as another grain to test by, will reduce tests failing due to non-uniqueness of rows. This change will therefore yield an update this package's `integration_tests/seeds/microsoft_ads_campaign_performance_daily_report_data`. 
+
 # dbt_microsoft_ads v0.5.1
 
 ## 🪳Bugfix🪳
