@@ -1,4 +1,4 @@
-date_day,account_id,campaign_id,currency_code,device_os,device_type,network,ad_distribution,bid_match_type,delivered_match_type,top_vs_other,budget_association_status,clicks,impressions,spend
+date,account_id,campaign_id,currency_code,device_os,device_type,network,ad_distribution,bid_match_type,delivered_match_type,top_vs_other,budget_association_status,clicks,impressions,spend
 2019-05-22,150175881,359751135,USD,Unknown,Unknown,Bing and Yahoo! search,Search,Unknown,Unknown,Bing and Yahoo! search - Top,Current,0,0,0.0
 2019-04-30,150175881,359751135,USD,Unknown,Unknown,Bing and Yahoo! search,Search,Unknown,Unknown,Bing and Yahoo! search - Top,Current,0,0,0.0
 2019-05-23,150175881,359751135,USD,Unknown,Unknown,Bing and Yahoo! search,Search,Unknown,Unknown,Bing and Yahoo! search - Top,Current,0,0,0.0
