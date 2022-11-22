@@ -267,6 +267,7 @@ models:
             - device_os
             - device_type
             - network
+            - match_type
     columns:
       - name: date_day
         description: '{{ doc("date_day") }}'

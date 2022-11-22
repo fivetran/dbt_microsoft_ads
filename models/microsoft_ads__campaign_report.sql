@@ -26,9 +26,9 @@ joined as (
     select
         date_day,
         accounts.account_name,
-        accounts.account_id,
+        report.account_id,
         campaigns.campaign_name,
-        campaigns.campaign_id,
+        report.campaign_id,
         campaigns.type as campaign_type,
         campaigns.time_zone as campaign_timezone,
         campaigns.status as campaign_status,
