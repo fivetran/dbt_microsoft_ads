@@ -1,3 +1,12 @@
+# dbt_microsoft_ads v0.5.2
+
+## 🪳 Bugfix 🪳
+[PR #21](https://github.com/fivetran/dbt_microsoft_ads/pull/21) includes the following bug fixes:
+- In each end model, `*_id` fields are explicitly selected from the left side of the join, reports, rather than from entity (i.e. keywords) history tables. This is necessary as Microsoft **hard-deletes** records from history tables, and therefore, daily report fields may have `*_id` values that do not exist in history tables. ([#63](https://github.com/fivetran/dbt_ad_reporting/issues/63)).
+- Includes the `match_type` field in the uniqueness test on the `microsoft_ads__search_report` model ([#64](https://github.com/fivetran/dbt_ad_reporting/issues/64)).
+
+## Contributors:
+- @clay-walker - Thank you for opening and providing information on issues [#63](https://github.com/fivetran/dbt_ad_reporting/issues/63) and [#64](https://github.com/fivetran/dbt_ad_reporting/issues/64)! 🎉 
 # dbt_microsoft_ads v0.5.1
 
 ## 🪳Bugfix🪳
