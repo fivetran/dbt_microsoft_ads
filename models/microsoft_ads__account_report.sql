@@ -19,7 +19,7 @@ accounts as (
     select
         date_day,
         accounts.account_name,
-        accounts.account_id,
+        report.account_id,
         accounts.time_zone as account_timezone,
         report.device_os,
         report.device_type,

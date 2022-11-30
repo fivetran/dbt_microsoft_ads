@@ -2,3 +2,6 @@
 
 ## URL tagging 
 By default, Microsoft Ads does not enable autotagging. The `microsoft_ads__url_report` leverages logic to observe this default behavior but also allows for customers to leverage the `microsoft_ads_auto_tagging_enabled` variable for UTM parameters either through the Microsoft auto tag feature or other means of URL tagging simultaneously. For more information, please refer to Microsoft's [documentation](https://help.ads.microsoft.com/#apex/ads/en/56798/2-500).
+
+## Hard Deleted Ads
+It has come to our attention that Microsoft Ads allows for certain ads to be hard deleted directly from the application. When this occurs, the record of the respective ad within the `_history` source tables synced by Fivetran is completed removed. As such in each end model, `*_id` fields are explicitly selected from the left side of the join, reports, rather than from entity (i.e. keywords) history tables. This is necessary as Microsoft **hard-deletes** records from history tables, and therefore, daily report fields may have `*_id` values that do not exist in history tables. When this happens, there may be `null` records populated within the entity fields as the record from the history table has been removed, but the record in the report table still exists.
