@@ -95,7 +95,13 @@ filtered as (
 
     select * 
     from joined
-    where base_url IS NOT NULL
+
+    {% if (var('include_google_ads_null_urls', False)) or
+        (var('include_ad_reporting_null_urls', False))  %}
+        -- In this case, skip where clause to include all rows whether or not the url field is populated.
+    {% else %}
+        where base_url is not null
+    {% endif %}
 )
 
 select *
