@@ -1,17 +1,3 @@
-# dbt_microsoft_ads v0.6.1
-[PR #24](https://github.com/fivetran/dbt_microsoft_ads/pull/24) includes the following changes:
-## 🎉 Features 🎉
-- Added ability for a user to allow records having nulls in url fields to be included in the `microsoft_ads__url_report` model. This is done by setting one of the variables below to `True` in your `dbt_project.yml` file. 
-- Note that using the variable `allow_ad_reporting_null_urls` will allow records with null urls for ALL Fivetran ad packages included in your project.
-```yml
-vars:
-  allow_microsoft_ads_null_urls: True # Use this variable to allow null urls for dbt_microsoft_ads only. Default is False. 
-  allow_ad_reporting_null_urls: True # Use this variable to allow null urls for ALL Fivetran ad packages included in your project. Default is False. 
-```
-- Updated README with this information. 
-## 🚘 Under the Hood 🚘
-- Disabled the `not_null` test for `microsoft_ads__url_report` when null urls are allowed.
-
 # dbt_microsoft_ads v0.6.0
 
 ## 🚨 Breaking Changes 🚨:
@@ -56,8 +42,11 @@ vars:
 - In each end model, `*_id` fields are explicitly selected from the left side of the join, reports, rather than from entity (i.e. keywords) history tables. This is necessary as Microsoft **hard-deletes** records from history tables, and therefore, daily report fields may have `*_id` values that do not exist in history tables. ([#63](https://github.com/fivetran/dbt_ad_reporting/issues/63)).
 - Includes the `match_type` field in the uniqueness test on the `microsoft_ads__search_report` model ([#64](https://github.com/fivetran/dbt_ad_reporting/issues/64)).
 
-[PR #22](https://github.com/fivetran/dbt_microsoft_ads/pull/22) includes the following updates:
-- Updated this package's `integration_tests/seeds/microsoft_ads_campaign_performance_daily_report_data` in light of [PR #23](https://github.com/fivetran/dbt_microsoft_ads_source/pull/23) on `dbt_microsoft_ads_source`.
+## 🎉 Features 🎉
+- For use in the [dbt_ad_reporting package](https://github.com/fivetran/dbt_ad_reporting), users can now allow records having nulls in url fields to be included in the `ad_reporting__url_report` model. See the [dbt_ad_reporting README](https://github.com/fivetran/dbt_ad_reporting) for more details ([#24](https://github.com/fivetran/dbt_microsoft_ads/pull/24)).
+## 🚘 Under the Hood 🚘
+- Disabled the `not_null` test for `microsoft_ads__url_report` when null urls are allowed ([#24](https://github.com/fivetran/dbt_microsoft_ads/pull/24)).
+- Updated this package's `integration_tests/seeds/microsoft_ads_campaign_performance_daily_report_data` in light of [PR #23](https://github.com/fivetran/dbt_microsoft_ads_source/pull/23) on `dbt_microsoft_ads_source` ([#22](https://github.com/fivetran/dbt_microsoft_ads/pull/22)).
 
 ## Contributors:
 - @clay-walker - Thank you for opening and providing information on issues [#63](https://github.com/fivetran/dbt_ad_reporting/issues/63) and [#64](https://github.com/fivetran/dbt_ad_reporting/issues/64)! 🎉 

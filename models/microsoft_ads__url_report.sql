@@ -96,10 +96,7 @@ filtered as (
     select * 
     from joined
 
-    {% if (var('allow_microsoft_ads_null_urls', False)) or
-        (var('allow_ad_reporting_null_urls', False))  %}
-        -- In this case, skip where clause to include all rows whether or not the url field is populated.
-    {% else %}
+    {% if var('ad_reporting__url_report__using_null_filter', True) %}
         where base_url is not null
     {% endif %}
 )
