@@ -95,7 +95,10 @@ filtered as (
 
     select * 
     from joined
-    where base_url IS NOT NULL
+
+    {% if var('ad_reporting__url_report__using_null_filter', True) %}
+        where base_url is not null
+    {% endif %}
 )
 
 select *

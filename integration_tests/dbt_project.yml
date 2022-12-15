@@ -4,7 +4,7 @@ profile: 'integration_tests'
 config-version: 2
 
 vars: 
-  microsoft_ads_schema: microsoft_ads_integration_tests
+  microsoft_ads_schema: microsoft_ads_integration_tests_3
   microsoft_ads_account_history_identifier: "microsoft_ads_account_history_data"
   microsoft_ads_account_daily_report_identifier: "microsoft_ads_account_performance_daily_report_data"
   microsoft_ads_ad_group_history_identifier: "microsoft_ads_ad_group_history_data"
