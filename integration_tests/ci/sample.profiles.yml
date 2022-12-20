@@ -24,9 +24,6 @@ integration_tests:
       project: 'dbt-package-testing'
       schema: microsoft_ads_integration_tests_3
       threads: 8
-      keyfile_json: "{{ env_var('GCLOUD_SERVICE_KEY') | as_native }}"
-    snowflake:
-      type: snowflake
       account: "{{ env_var('CI_SNOWFLAKE_DBT_ACCOUNT') }}"
       user: "{{ env_var('CI_SNOWFLAKE_DBT_USER') }}"
       password: "{{ env_var('CI_SNOWFLAKE_DBT_PASS') }}"
@@ -50,5 +47,3 @@ integration_tests:
       http_path: "{{ env_var('CI_DATABRICKS_DBT_HTTP_PATH') }}"
       schema: microsoft_ads_integration_tests_3
       threads: 2
-      token: "{{ env_var('CI_DATABRICKS_DBT_TOKEN') }}"
-      type: databricks
