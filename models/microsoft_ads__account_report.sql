@@ -1,5 +1,3 @@
-ADD source_relation WHERE NEEDED + CHECK JOINS AND WINDOW FUNCTIONS! (Delete this line when done.)
-
 {{ config(enabled=var('ad_reporting__microsoft_ads_enabled', True)) }}
 
 with report as (
@@ -19,8 +17,8 @@ accounts as (
 , joined as (
 
     select
-        .source_relation,
-        date_day,
+        report.source_relation,
+        report.date_day,
         accounts.account_name,
         report.account_id,
         accounts.time_zone as account_timezone,
@@ -28,9 +26,9 @@ accounts as (
         report.device_type,
         report.network,
         report.currency_code,
-        sum(clicks) as clicks,
-        sum(impressions) as impressions,
-        sum(spend) as spend
+        sum(report.clicks) as clicks,
+        sum(report.impressions) as impressions,
+        sum(report.spend) as spend
 
         {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='microsoft_ads__account_passthrough_metrics', transform = 'sum') }}
     from report
