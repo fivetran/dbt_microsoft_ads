@@ -12,6 +12,7 @@
 [PR #25](https://github.com/fivetran/dbt_microsoft_ads/pull/25) includes the following updates:
 - Incorporated the new `fivetran_utils.drop_schemas_automation` macro into the end of each Buildkite integration test job.
 - Updated the pull request [templates](/.github).
+
 # dbt_microsoft_ads v0.6.0
 
 ## 🚨 Breaking Changes 🚨:
