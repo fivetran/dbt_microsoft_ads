@@ -1,5 +1,20 @@
 # dbt_microsoft_ads v0.7.0
 [PR #28](https://github.com/fivetran/dbt_microsoft_ads/pull/28) includes the following updates:
+
+## Breaking changes
+- Updated the following identifiers for consistency with the source name and compatibility with the union schema feature:
+
+| current  | previous |
+|----------|----------|
+|microsoft_ads_account_performance_daily_report_identifier | microsoft_ads_account_daily_report_identifier |
+|microsoft_ads_ad_group_performance_daily_report_identifier | microsoft_ads_ad_group_daily_report_identifier|
+|microsoft_ads_ad_performance_daily_report_identifier | microsoft_ads_ad_daily_report_identifier|
+|microsoft_ads_campaign_performance_daily_report_identifier | microsoft_ads_campaign_daily_report_identifier|
+|microsoft_ads_keyword_performance_daily_report_identifier | microsoft_ads_keyword_daily_report_identifier|
+|microsoft_ads_search_query_performance_daily_report_identifier | microsoft_ads_search_query_daily_report_identifier|
+
+- If you are using the previous identifier, be sure to update to the current version!
+
 ## Feature update 🎉
 - Unioning capability! This adds the ability to union source data from multiple microsoft_ads connectors. Refer to the [Union Multiple Connectors README section](https://github.com/fivetran/dbt_microsoft_ads/blob/main/README.md#union-multiple-connectors) for more details.
 
