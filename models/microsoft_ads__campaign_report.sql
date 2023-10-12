@@ -24,7 +24,8 @@ accounts as (
 joined as (
 
     select
-        date_day,
+        report.source_relation,
+        report.date_day,
         accounts.account_name,
         report.account_id,
         campaigns.campaign_name,
@@ -36,17 +37,19 @@ joined as (
         report.device_type,
         report.network,
         report.currency_code,
-        sum(clicks) as clicks,
-        sum(impressions) as impressions,
-        sum(spend) as spend
+        sum(report.clicks) as clicks,
+        sum(report.impressions) as impressions,
+        sum(report.spend) as spend
 
         {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='microsoft_ads__campaign_passthrough_metrics', transform = 'sum') }}
     from report
     left join accounts
         on report.account_id = accounts.account_id
+        and report.source_relation = accounts.source_relation
     left join campaigns
         on report.campaign_id = campaigns.campaign_id
-    {{ dbt_utils.group_by(12)}}
+        and report.source_relation = campaigns.source_relation
+    {{ dbt_utils.group_by(13) }}
 )
 
 select *

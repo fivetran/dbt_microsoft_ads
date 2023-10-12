@@ -49,6 +49,7 @@ accounts as (
 joined as (
 
     select
+        report.source_relation,
         report.date_day,
         accounts.account_name,
         report.account_id,
@@ -73,15 +74,20 @@ joined as (
     from report
     left join ads
         on report.ad_id = ads.ad_id
+        and report.source_relation = ads.source_relation
     left join ad_groups
         on report.ad_group_id = ad_groups.ad_group_id
+        and report.source_relation = ad_groups.source_relation
     left join campaigns
         on report.campaign_id = campaigns.campaign_id
+        and report.source_relation = campaigns.source_relation
     left join accounts
         on report.account_id = accounts.account_id
+        and report.source_relation = accounts.source_relation
     left join keywords
         on report.keyword_id = keywords.keyword_id
-    {{ dbt_utils.group_by(16) }}
+        and report.source_relation = keywords.source_relation
+    {{ dbt_utils.group_by(17) }}
 )
 
 select *
