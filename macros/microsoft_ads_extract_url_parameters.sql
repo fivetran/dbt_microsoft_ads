@@ -1,6 +1,6 @@
 {% macro microsoft_ads_extract_url_parameter(field, url_parameter) -%}
 
-{{ adapter.dispatch('microsoft_ads_extract_url_parameter', 'microsoft_ads') (field, url_parameter) }}
+{{ return(adapter.dispatch('microsoft_ads_extract_url_parameter', 'microsoft_ads') (field, url_parameter)) }}
 
 {% endmacro %}
 
