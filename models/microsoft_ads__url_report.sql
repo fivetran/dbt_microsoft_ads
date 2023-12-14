@@ -62,19 +62,19 @@ joined as (
 
         {% if var('microsoft_ads_auto_tagging_enabled', false) %}
 
-        coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_source') }} , 'Bing') as utm_source,
-        coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_medium') }}, 'cpc') as utm_medium,
-        coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_campaign') }}, campaigns.campaign_name) as utm_campaign,
-        coalesce( {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_content') }}, ad_groups.ad_group_name) as utm_content,
+        coalesce( {{ microsoft_ads.microsoft_ads_extract_url_parameter('ads.final_url', 'utm_source') }} , 'Bing') as utm_source,
+        coalesce( {{ microsoft_ads.microsoft_ads_extract_url_parameter('ads.final_url', 'utm_medium') }}, 'cpc') as utm_medium,
+        coalesce( {{ microsoft_ads.microsoft_ads_extract_url_parameter('ads.final_url', 'utm_campaign') }}, campaigns.campaign_name) as utm_campaign,
+        coalesce( {{ microsoft_ads.microsoft_ads_extract_url_parameter('ads.final_url', 'utm_content') }}, ad_groups.ad_group_name) as utm_content,
         {% else %}
 
-        {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_source') }} as utm_source,
-        {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_medium') }} as utm_medium,
-        {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_campaign') }} as utm_campaign,
-        {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_content') }} as utm_content,
+        {{ microsoft_ads.microsoft_ads_extract_url_parameter('ads.final_url', 'utm_source') }} as utm_source,
+        {{ microsoft_ads.microsoft_ads_extract_url_parameter('ads.final_url', 'utm_medium') }} as utm_medium,
+        {{ microsoft_ads.microsoft_ads_extract_url_parameter('ads.final_url', 'utm_campaign') }} as utm_campaign,
+        {{ microsoft_ads.microsoft_ads_extract_url_parameter('ads.final_url', 'utm_content') }} as utm_content,
         {% endif %}
 
-        {{ dbt_utils.get_url_parameter('ads.final_url', 'utm_term') }} as utm_term,
+        {{ microsoft_ads.microsoft_ads_extract_url_parameter('ads.final_url', 'utm_term') }} as utm_term,
         sum(report.clicks) as clicks,
         sum(report.impressions) as impressions,
         sum(report.spend) as spend
