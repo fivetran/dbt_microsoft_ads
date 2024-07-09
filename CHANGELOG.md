@@ -2,6 +2,8 @@
 
 *See parallel upstream [release](https://github.com/fivetran/dbt_microsoft_ads_source/releases) of source package.*
 
+[PR #32](https://github.com/fivetran/dbt_microsoft_ads/pull/32) includes the following updates:
+
 ## Under the Hood
 - Updated the PR Templates for package maintainers to our most up-to-date standards.
 - Added consistency validation test for the `microsoft_ads__campaign_report` table (to be used only by maintainers).
