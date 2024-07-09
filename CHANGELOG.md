@@ -1,3 +1,9 @@
+# dbt_microsoft_ads v0.8.0
+
+TODO
+- parallel release of source
+- added validation tests 
+
 # dbt_microsoft_ads v0.7.1
 
 [PR #30](https://github.com/fivetran/dbt_microsoft_ads/pull/30) includes the following updates:
