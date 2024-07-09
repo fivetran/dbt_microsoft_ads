@@ -1,8 +1,10 @@
 # dbt_microsoft_ads v0.8.0
 
-TODO
-- parallel release of source
-- added validation tests 
+*See parallel upstream [release](https://github.com/fivetran/dbt_microsoft_ads_source/releases) of source package.*
+
+## Under the Hood
+- Updated the PR Templates for package maintainers to our most up-to-date standards.
+- Added consistency validation test for the `microsoft_ads__campaign_report` table (to be used only by maintainers).
 
 # dbt_microsoft_ads v0.7.1
 
