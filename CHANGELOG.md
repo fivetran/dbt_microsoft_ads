@@ -15,11 +15,6 @@ This includes upstream updates made in dbt_microsoft_ads_source [PR #31](https:/
   - Included in uniqueness tests on `stg_microsoft_ads__campaign_daily_report`, as they affect the grain of the report and may have therefore induced uniqueness test failures.
 - Added proper documentation for the pre-existing `budget_association_status` field (also from `CAMPAIGN_PERFORMANCE_DAILY_REPORT`).
 
-### Under the Hood
-- Included auto-releaser GitHub Actions workflow to automate future releases.
-- Updated the PR Templates for package maintainers to our most up-to-date standards.
-- Upgraded integration test dbt-adapter versions.
-
 # dbt_microsoft_ads v0.7.1
 
 [PR #30](https://github.com/fivetran/dbt_microsoft_ads/pull/30) includes the following updates:
