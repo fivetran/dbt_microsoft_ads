@@ -52,14 +52,15 @@ dispatch:
     search_order: ['spark_utils', 'dbt_utils']
 ```
 
-## Step 2: Install the package
-Include the following microsoft_ads package version in your `packages.yml` file:
+## Step 2: Install the package (skip if using Ad Reporting combo package)
+If you are NOT using the [Ad Reporting combination package](https://github.com/fivetran/dbt_ad_reporting), include the following microsoft_ads package version in your `packages.yml` file:
 > TIP: Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 ```yaml
 packages:
   - package: fivetran/microsoft_ads
-    version: [">=0.7.0", "<0.8.0"]
+    version: [">=0.8.0", "<0.9.0"]
 ```
+
 ## Step 3: Define database and schema variables
 By default, this package runs using your destination and the `microsoft_ads` schema. If this is not where your Microsoft Ads data is (for example, if your Microsoft Ads schema is named `microsoft_ads_fivetran`), add the following configuration to your root `dbt_project.yml` file:
 
@@ -127,7 +128,7 @@ models:
 ```
     
 ### Change the source table references
-If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable:
+If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable. This is not available if you are unioning together multiple connectors.
 
 > IMPORTANT: See this project's [`dbt_project.yml`](https://github.com/fivetran/dbt_microsoft_ads/blob/main/dbt_project.yml) variable declarations to see the expected names.
 
@@ -136,7 +137,7 @@ vars:
     microsoft_ads_<default_source_table_name>_identifier: your_table_name 
 ```
 
-## (Optional) Step 5: Orchestrate your models with Fivetran Transformations for dbt Core™    
+## (Optional) Step 5: Orchestrate your models with Fivetran Transformations for dbt Core™
 <details><summary>Expand for more details</summary>
 
 Fivetran offers the ability for you to orchestrate your dbt project through [Fivetran Transformations for dbt Core™](https://fivetran.com/docs/transformations/dbt). Learn how to set up your project for orchestration through Fivetran in our [Transformations for dbt Core setup guides](https://fivetran.com/docs/transformations/dbt#setupguide).
@@ -150,7 +151,7 @@ This dbt package is dependent on the following dbt packages. Please be aware tha
 ```yml
 packages:
     - package: fivetran/microsoft_ads_source
-      version: [">=0.8.0", "<0.9.0"]
+      version: [">=0.9.0", "<0.10.0"]
 
     - package: fivetran/fivetran_utils
       version: [">=0.4.0", "<0.5.0"]
@@ -176,4 +177,3 @@ We highly encourage and welcome contributions to this package. Check out [this d
 # 🏪 Are there any resources available?
 - If you have questions or want to reach out for help, please refer to the [GitHub Issue](https://github.com/fivetran/dbt_microsoft_ads/issues/new/choose) section to find the right avenue of support for you.
 - If you would like to provide feedback to the dbt package team at Fivetran or would like to request a new dbt package, fill out our [Feedback Form](https://www.surveymonkey.com/r/DQ7K7WW).
-- Have questions or want to be part of the community discourse? Create a post in the [Fivetran community](https://community.fivetran.com/t5/user-group-for-dbt/gh-p/dbt-user-group) and our team along with the community can join in on the discussion!

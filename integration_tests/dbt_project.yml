@@ -1,5 +1,5 @@
 name: 'microsoft_ads_integration_tests'
-version: '0.7.1'
+version: '0.8.0'
 profile: 'integration_tests'
 config-version: 2
 
@@ -16,6 +16,9 @@ vars:
   microsoft_ads_keyword_history_identifier: "microsoft_ads_keyword_history_data"
   microsoft_ads_keyword_performance_daily_report_identifier: "microsoft_ads_keyword_performance_daily_report_data"
   microsoft_ads_search_query_performance_daily_report_identifier: "microsoft_ads_search_performance_daily_report_data"
+
+models:
+  +schema: "microsoft_ads_{{ var('directed_schema','dev') }}"
 
 seeds:
   microsoft_ads_integration_tests:
