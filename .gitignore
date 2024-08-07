@@ -5,5 +5,3 @@ logs/
 package-lock.yml
 dbt_packages/
 .DS_Store
-integration_tests/package-lock.yml
-integration_tests/.DS_Store
