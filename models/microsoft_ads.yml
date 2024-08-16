@@ -430,4 +430,4 @@ models:
       - name: conversions
         description: '{{ doc("conversions") }}'
       - name: conversions_value
-        description: '{{ doc("conversions_value") }}'
+        description: '{{ doc("revenue") }}'
