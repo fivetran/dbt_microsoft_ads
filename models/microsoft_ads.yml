@@ -45,7 +45,7 @@ models:
       - name: conversions
         description: '{{ doc("conversions") }}'
       - name: conversions_value
-        description: '{{ doc("conversions_value") }}'
+        description: '{{ doc("revenue") }}'
       
   - name: microsoft_ads__ad_group_report
     description: >
@@ -99,7 +99,7 @@ models:
       - name: conversions
         description: '{{ doc("conversions") }}'
       - name: conversions_value
-        description: '{{ doc("conversions_value") }}'
+        description: '{{ doc("revenue") }}'
 
   - name: microsoft_ads__ad_report
     description: >
@@ -161,7 +161,7 @@ models:
       - name: conversions
         description: '{{ doc("conversions") }}'
       - name: conversions_value
-        description: '{{ doc("conversions_value") }}'
+        description: '{{ doc("revenue") }}'
 
   - name: microsoft_ads__campaign_report
     description: >
@@ -216,7 +216,7 @@ models:
       - name: conversions
         description: '{{ doc("conversions") }}'
       - name: conversions_value
-        description: '{{ doc("conversions_value") }}'
+        description: '{{ doc("revenue") }}'
 
   - name: microsoft_ads__keyword_report
     description: >
@@ -282,7 +282,7 @@ models:
       - name: conversions
         description: '{{ doc("conversions") }}'
       - name: conversions_value
-        description: '{{ doc("conversions_value") }}'
+        description: '{{ doc("revenue") }}'
 
   - name: microsoft_ads__search_report
     description: >
@@ -349,7 +349,7 @@ models:
       - name: conversions
         description: '{{ doc("conversions") }}'
       - name: conversions_value
-        description: '{{ doc("conversions_value") }}'
+        description: '{{ doc("revenue") }}'
 
   - name: microsoft_ads__url_report
     description: >
