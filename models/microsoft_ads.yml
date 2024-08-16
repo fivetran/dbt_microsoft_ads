@@ -42,6 +42,10 @@ models:
         description: '{{ doc("impressions") }}'
       - name: spend
         description: '{{ doc("spend") }}'
+      - name: conversions
+        description: '{{ doc("conversions") }}'
+      - name: conversions_value
+        description: '{{ doc("conversions_value") }}'
       
   - name: microsoft_ads__ad_group_report
     description: >
@@ -92,6 +96,10 @@ models:
         description: '{{ doc("impressions") }}'
       - name: spend
         description: '{{ doc("spend") }}'
+      - name: conversions
+        description: '{{ doc("conversions") }}'
+      - name: conversions_value
+        description: '{{ doc("conversions_value") }}'
 
   - name: microsoft_ads__ad_report
     description: >
@@ -150,6 +158,10 @@ models:
         description: '{{ doc("impressions") }}'
       - name: spend
         description: '{{ doc("spend") }}'
+      - name: conversions
+        description: '{{ doc("conversions") }}'
+      - name: conversions_value
+        description: '{{ doc("conversions_value") }}'
 
   - name: microsoft_ads__campaign_report
     description: >
@@ -201,7 +213,10 @@ models:
         description: '{{ doc("impressions") }}'
       - name: spend
         description: '{{ doc("spend") }}'
-
+      - name: conversions
+        description: '{{ doc("conversions") }}'
+      - name: conversions_value
+        description: '{{ doc("conversions_value") }}'
 
   - name: microsoft_ads__keyword_report
     description: >
@@ -264,6 +279,10 @@ models:
         description: '{{ doc("impressions") }}'
       - name: spend
         description: '{{ doc("spend") }}'
+      - name: conversions
+        description: '{{ doc("conversions") }}'
+      - name: conversions_value
+        description: '{{ doc("conversions_value") }}'
 
   - name: microsoft_ads__search_report
     description: >
@@ -327,6 +346,10 @@ models:
         description: '{{ doc("impressions") }}'
       - name: spend
         description: '{{ doc("spend") }}'
+      - name: conversions
+        description: '{{ doc("conversions") }}'
+      - name: conversions_value
+        description: '{{ doc("conversions_value") }}'
 
   - name: microsoft_ads__url_report
     description: >
@@ -404,3 +427,7 @@ models:
         description: '{{ doc("impressions") }}'
       - name: spend
         description: '{{ doc("spend") }}'
+      - name: conversions
+        description: '{{ doc("conversions") }}'
+      - name: conversions_value
+        description: '{{ doc("conversions_value") }}'

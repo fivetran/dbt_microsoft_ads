@@ -1,3 +1,20 @@
+# dbt_microsoft_ads v0.9.0
+[PR #34](https://github.com/fivetran/dbt_microsoft_ads/pull/34) includes the following updates:
+
+## Feature Updates: Conversion Support!
+- We have added the following source fields to each `microsoft_ads` end model:
+  - `conversions`: Number of conversions, measured by completion of an action by a customer after viewing your ad.
+  - `conversions_value`: The revenue reported by the advertiser as a result of the `conversions` figure.
+- In the event that you were already passing the above fields in via our [passthrough columns](https://github.com/fivetran/dbt_microsoft_ads?tab=readme-ov-file#passing-through-additional-metrics), the package will dynamically avoid "duplicate column" errors.
+> The above new field additions are **breaking changes** for users who were not already bringing in conversion fields via passthrough columns.
+
+## Under the Hood
+- Created `microsoft_ads_persist_pass_through_columns` macro to ensure that the new conversion fields are backwards compatible with users who have already included them via passthrough fields.
+- Added integrity and consistency validation tests within `integration_tests` folder for the transformation models (to be used by maintainers only).
+
+## Contributors
+- [Seer Interactive](https://www.seerinteractive.com/?utm_campaign=Fivetran%20%7C%20Models&utm_source=Fivetran&utm_medium=Fivetran%20Documentation)
+
 # dbt_microsoft_ads v0.8.0
 
 [PR #32](https://github.com/fivetran/dbt_microsoft_ads/pull/32) includes the following updates:
