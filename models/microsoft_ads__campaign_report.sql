@@ -43,7 +43,7 @@ joined as (
         sum(report.conversions) as conversions,
         sum(report.conversions_value) as conversions_value
 
-        {{ microsoft_ads_persist_pass_through_columns(pass_through_variable='microsoft_ads__campaign_passthrough_metrics', transform='sum', coalesce_with=0, exclude_fields=['conversions_qualified', 'conversions', 'revenue', 'all_conversions_qualified', 'all_conversions', 'all_revenue']) }} 
+        {{ microsoft_ads_persist_pass_through_columns(pass_through_variable='microsoft_ads__campaign_passthrough_metrics', transform='sum', coalesce_with=0, exclude_fields=['conversions_qualified', 'conversions', 'revenue']) }} 
 
     from report
     left join accounts
