@@ -34,7 +34,7 @@ final as (
         dev.spend as dev_spend
     from prod
     full outer join dev 
-        on dev.search_query = prod.search_query
+        on dev.base_url = prod.base_url
 )
 
 select *

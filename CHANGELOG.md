@@ -11,6 +11,10 @@
 ## Under the Hood
 - Created `microsoft_ads_persist_pass_through_columns` macro to ensure that the new conversion fields are backwards compatible with users who have already included them via passthrough fields.
 - Added integrity and consistency validation tests within `integration_tests` folder for the transformation models (to be used by maintainers only).
+- Updated seed files with new fields to test and validate on local data, provided specific casting to numeric (for currency) and integers. 
+
+## Documentation Update
+- Updated `microsoft_ads.yml` with new fields mentioned above. 
 
 ## Contributors
 - [Seer Interactive](https://www.seerinteractive.com/?utm_campaign=Fivetran%20%7C%20Models&utm_source=Fivetran&utm_medium=Fivetran%20Documentation)

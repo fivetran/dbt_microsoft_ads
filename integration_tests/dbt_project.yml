@@ -17,6 +17,9 @@ vars:
   microsoft_ads_keyword_performance_daily_report_identifier: "microsoft_ads_keyword_performance_daily_report_data"
   microsoft_ads_search_query_performance_daily_report_identifier: "microsoft_ads_search_performance_daily_report_data"
 
+  # microsoft_ads_database: digital-arbor-400
+  # microsoft_ads_schema: bingads
+
 models:
   +schema: "microsoft_ads_{{ var('directed_schema','dev') }}"
 
@@ -31,8 +34,16 @@ seeds:
       keyword_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
       last_modified_time: "timestamp"
       modified_time: "timestamp"
-      spend: "float"
-
+      spend: "numeric"
+      impressions: "integer"
+      clicks: "integer"
+      conversions_qualified: "integer"
+      conversions: "integer"
+      revenue: "numeric"
+      all_conversions_qualified: "integer"
+      all_conversions: "integer"
+      all_revenue: "numeric"
+      
 dispatch:
   - macro_namespace: dbt_utils
     search_order: ['spark_utils', 'dbt_utils']
