@@ -1,10 +1,10 @@
 name: 'microsoft_ads_integration_tests'
-version: '0.8.0'
+version: '0.9.0'
 profile: 'integration_tests'
 config-version: 2
 
 vars: 
-  microsoft_ads_schema: microsoft_ads_integration_tests_5
+  microsoft_ads_schema: microsoft_ads_integration_tests_6
   microsoft_ads_account_history_identifier: "microsoft_ads_account_history_data"
   microsoft_ads_account_performance_daily_report_identifier: "microsoft_ads_account_performance_daily_report_data"
   microsoft_ads_ad_group_history_identifier: "microsoft_ads_ad_group_history_data"
@@ -31,7 +31,15 @@ seeds:
       keyword_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
       last_modified_time: "timestamp"
       modified_time: "timestamp"
-      spend: "float"
+      spend: "numeric"
+      impressions: "integer"
+      clicks: "integer"
+      conversions_qualified: "integer"
+      conversions: "integer"
+      revenue: "numeric"
+      all_conversions_qualified: "integer"
+      all_conversions: "integer"
+      all_revenue: "numeric"
 
 dispatch:
   - macro_namespace: dbt_utils
