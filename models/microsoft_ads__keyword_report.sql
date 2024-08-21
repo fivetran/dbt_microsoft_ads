@@ -70,9 +70,11 @@ joined as (
         sum(report.impressions) as impressions,
         sum(report.spend) as spend,
         sum(report.conversions) as conversions,
-        sum(report.conversions_value) as conversions_value
+        sum(report.conversions_value) as conversions_value,
+        sum(report.all_conversions) as all_conversions,
+        sum(report.all_conversions_value) as all_conversions_value
 
-        {{ microsoft_ads_persist_pass_through_columns(pass_through_variable='microsoft_ads__keyword_passthrough_metrics', transform='sum', coalesce_with=0, exclude_fields=['conversions_qualified', 'conversions', 'revenue']) }}
+        {{ microsoft_ads_persist_pass_through_columns(pass_through_variable='microsoft_ads__keyword_passthrough_metrics', transform='sum', coalesce_with=0, exclude_fields=['conversions_qualified', 'conversions', 'revenue', 'all_conversions_qualified', 'all_conversions', 'all_revenue']) }}
 
     from report
     left join ads

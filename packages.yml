@@ -1,4 +1,4 @@
 packages:
   - git: https://github.com/fivetran/dbt_microsoft_ads_source.git
     revision: feature/add-conversions
-    warn-unpinned: false 
+    warn-unpinned: false

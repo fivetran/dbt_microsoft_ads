@@ -5,6 +5,8 @@
 - We have added the following source fields to each `microsoft_ads` end model:
   - `conversions`: Number of conversions, measured by completion of an action by a customer after viewing your ad.
   - `conversions_value`: The revenue reported by the advertiser as a result of the `conversions` figure.
+  - `all_conversions`: Number of all conversions, measured by completion of an action by a customer after viewing your ad.  
+  - `all_conversions_value` (except `microsoft_ads__account_report`): The revenue reported by the advertiser as a result of the `all_conversions` figure.
 - In the event that you were already passing the above fields in via our [passthrough columns](https://github.com/fivetran/dbt_microsoft_ads?tab=readme-ov-file#passing-through-additional-metrics), the package will dynamically avoid "duplicate column" errors.
 > The above new field additions are **breaking changes** for users who were not already bringing in conversion fields via passthrough columns.
 
