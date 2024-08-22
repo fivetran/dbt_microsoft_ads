@@ -1,3 +1,20 @@
+# dbt_microsoft_ads v0.8.0
+
+[PR #32](https://github.com/fivetran/dbt_microsoft_ads/pull/32) includes the following updates:
+
+## Under the Hood
+- Updated the PR Templates for package maintainers to our most up-to-date standards.
+- Added consistency validation test for the `microsoft_ads__campaign_report` table (to be used only by maintainers).
+
+## Parallel Upstream Source Package [Release](https://github.com/fivetran/dbt_microsoft_ads_source/releases/tag/v0.9.0)
+This includes upstream updates made in dbt_microsoft_ads_source [PR #31](https://github.com/fivetran/dbt_microsoft_ads_source/pull/31):
+
+### Bug Fixes
+- Accommodates when the `budget_name` and `budget_status` fields are populated within the `CAMPAIGN_PERFORMANCE_DAILY_REPORT` source table. These fields are now:
+  - Included and documented in the `stg_microsoft_ads__campaign_daily_report` model.
+  - Included in uniqueness tests on `stg_microsoft_ads__campaign_daily_report`, as they affect the grain of the report and may have therefore induced uniqueness test failures.
+- Added proper documentation for the pre-existing `budget_association_status` field (also from `CAMPAIGN_PERFORMANCE_DAILY_REPORT`).
+
 # dbt_microsoft_ads v0.7.1
 
 [PR #30](https://github.com/fivetran/dbt_microsoft_ads/pull/30) includes the following updates:
