@@ -1,4 +1,11 @@
-{{ config(enabled=var('ad_reporting__microsoft_ads_enabled', True)) }}
+{{ config(enabled=var('ad_reporting__microsoft_ads_enabled', True),
+    unique_key = ['source_relation','date_day','account_id','campaign_id','ad_group_id','ad_id','keyword_id','search_query','device_os','device_type','network','match_type'],
+    partition_by={
+      "field": "date_day",
+      "data_type": "date",
+      "granularity": "day"
+    }
+    ) }}
 
 with report as (
 
