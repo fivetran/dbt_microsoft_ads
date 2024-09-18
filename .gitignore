@@ -4,3 +4,7 @@ dbt_modules/
 logs/
 package-lock.yml
 dbt_packages/
+.DS_store
+integration_tests/.DS_store
+.buildkite/.DS_store
+.github/.DS_store
