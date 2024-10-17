@@ -52,7 +52,7 @@ dispatch:
     search_order: ['spark_utils', 'dbt_utils']
 ```
 
-### Step 2: Install the package (skip if using Ad Reporting combo package)
+### Step 2: Install the package (skip if using `ad_reporting` combo package)
 If you are NOT using the [Ad Reporting combination package](https://github.com/fivetran/dbt_ad_reporting), include the following microsoft_ads package version in your `packages.yml` file:
 > TIP: Check [dbt Hub](https://hub.getdbt.com/) for the latest installation instructions or [read the dbt docs](https://docs.getdbt.com/docs/package-management) for more information on installing packages.
 ```yaml
@@ -60,6 +60,8 @@ packages:
   - package: fivetran/microsoft_ads
     version: [">=0.9.0", "<0.10.0"]
 ```
+
+Do NOT include the `microsoft_ads_source` package in this file. The transformation package itself has a dependency on it and will install the source package as well.
 
 ### Step 3: Define database and schema variables
 By default, this package runs using your destination and the `microsoft_ads` schema. If this is not where your Microsoft Ads data is (for example, if your Microsoft Ads schema is named `microsoft_ads_fivetran`), add the following configuration to your root `dbt_project.yml` file:
