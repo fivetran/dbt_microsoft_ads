@@ -85,7 +85,7 @@ vars:
 
 To connect your multiple schema/database sources to the package models, follow the steps outlined in the [Union Data Defined Sources Configuration](https://github.com/fivetran/dbt_fivetran_utils/tree/releases/v0.4.latest#union_data-source) section of the Fivetran Utils documentation for the union_data macro. This will ensure a proper configuration and correct visualization of connections in the DAG.
 
-### Adding passthrough metrics
+#### Adding passthrough metrics
 By default, this package will select `clicks`, `impressions`, `spend`, `conversions` (coalesces source `conversions` and `conversions_qualified` fields), `conversions_value` (aliased source `revenue` field), `all_conversions` (coalesces source `all_conversions` and `all_conversions_qualified` fields) and `all_conversions_value` (aliased source `all_revenue` field) from the source reporting tables to store into the staging models. If you would like to pass through additional metrics to the staging models, add the below configurations to your `dbt_project.yml` file. These variables allow for the pass-through fields to be aliased (`alias`) if desired, but not required. Use the below format for declaring the respective pass-through variables:
 
 > IMPORTANT: Make sure to exercise due diligence when adding metrics to these models. The metrics added by default have been vetted by the Fivetran team maintaining this package for accuracy. There are metrics included within the source reports, for example metric averages, which may be inaccurately represented at the grain for reports created in this package. You will want to ensure whichever metrics you pass through are indeed appropriate to aggregate at the respective reporting levels provided in this package.
@@ -111,7 +111,7 @@ vars:
         alias: "field_id"
 ```
 
-### Enable UTM Auto Tagging
+#### Enable UTM Auto Tagging
 This package assumes you are manually adding UTM tags to your ads. If you are leveraging the auto-tag feature within Microsoft Ads then you will want to enable the `microsoft_ads_auto_tagging_enabled` variable to correctly populate the UTM fields within the `microsoft_ads__utm_report` model.
 
 ```yml
