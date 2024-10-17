@@ -2,3 +2,5 @@ packages:
   - git: https://github.com/fivetran/dbt_microsoft_ads_source.git
     revision: feature/add-conversions
     warn-unpinned: false
+  # - package: fivetran/microsoft_ads_source
+  #   version: [">=0.10.0", "<0.11.0"]

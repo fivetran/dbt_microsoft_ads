@@ -71,6 +71,8 @@ vars:
 ```
 
 ### (Optional) Step 4: Additional configurations
+<details open><summary>Expand/Collapse details</summary>
+
 #### Union multiple connectors
 If you have multiple microsoft_ads connectors in Fivetran and would like to use this package on all of them simultaneously, we have provided functionality to do so. The package will union all of the data together and pass the unioned table into the transformations. You will be able to see which source it came from in the `source_relation` column of each model. To use this functionality, you will need to set either the `microsoft_ads_union_schemas` OR `microsoft_ads_union_databases` variables (cannot do both) in your root `dbt_project.yml` file:
 
@@ -86,7 +88,7 @@ To connect your multiple schema/database sources to the package models, follow t
 ### Adding passthrough metrics
 By default, this package will select `clicks`, `impressions`, `spend`, `conversions` (coalesces source `conversions` and `conversions_qualified` fields), `conversions_value` (aliased source `revenue` field), `all_conversions` (coalesces source `all_conversions` and `all_conversions_qualified` fields) and `all_conversions_value` (aliased source `all_revenue` field) from the source reporting tables to store into the staging models. If you would like to pass through additional metrics to the staging models, add the below configurations to your `dbt_project.yml` file. These variables allow for the pass-through fields to be aliased (`alias`) if desired, but not required. Use the below format for declaring the respective pass-through variables:
 
->**Note** Please ensure you exercised due diligence when adding metrics to these models. The metrics added by default (clicks, impressions, and spend) have been vetted by the Fivetran team maintaining this package for accuracy. There are metrics included within the source reports, for example metric averages, which may be inaccurately represented at the grain for reports created in this package. You will want to ensure whichever metrics you pass through are indeed appropriate to aggregate at the respective reporting levels provided in this package.
+> IMPORTANT: Make sure to exercise due diligence when adding metrics to these models. The metrics added by default have been vetted by the Fivetran team maintaining this package for accuracy. There are metrics included within the source reports, for example metric averages, which may be inaccurately represented at the grain for reports created in this package. You will want to ensure whichever metrics you pass through are indeed appropriate to aggregate at the respective reporting levels provided in this package.
 
 ```yml
 vars:
@@ -118,7 +120,7 @@ vars:
 ```
 
 #### Change the build schema
-By default, this package builds the Microsoft Ads staging models within a schema titled (`<target_schema>` + `_microsoft_ads_source`) and your Microsoft Ads modeling models within a schema titled (`<target_schema>` + `_microsoft_ads`) in your destination. If this is not where you would like your Microsoft Ads data to be written to, add the following configuration to your root `dbt_project.yml` file:
+By default, this package builds the Microsoft Ads staging models (11 views, 11 tables) within a schema titled (`<target_schema>` + `_microsoft_ads_source`) and your Microsoft Ads modeling models (7 tables) within a schema titled (`<target_schema>` + `_microsoft_ads`) in your destination. If this is not where you would like your Microsoft Ads data to be written to, add the following configuration to your root `dbt_project.yml` file:
 
 ```yml
 models:
@@ -137,6 +139,8 @@ If an individual source table has a different name than the package expects, add
 vars:
     microsoft_ads_<default_source_table_name>_identifier: your_table_name 
 ```
+
+</details>
 
 ### (Optional) Step 5: Orchestrate your models with Fivetran Transformations for dbt Core™
 <details><summary>Expand for more details</summary>
@@ -174,6 +178,11 @@ In creating this package, which is meant for a wide range of use cases, we had t
 A small team of analytics engineers at Fivetran develops these dbt packages. However, the packages are made better by community contributions.
 
 We highly encourage and welcome contributions to this package. Check out [this dbt Discourse article](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657) on the best workflow for contributing to a package.
+
+#### Contributors
+We thank [everyone](https://github.com/fivetran/dbt_microsoft_ads/graphs/contributors) who has taken the time to contribute. Each PR, bug report, and feature request has made this package better and is truly appreciated.
+
+A special thank you to [Seer Interactive](https://www.seerinteractive.com/?utm_campaign=Fivetran%20%7C%20Models&utm_source=Fivetran&utm_medium=Fivetran%20Documentation), who we closely collaborated with to introduce native conversion support to our Ad packages.
 
 ## Are there any resources available?
 - If you have questions or want to reach out for help, see the [GitHub Issue](https://github.com/fivetran/dbt_microsoft_ads/issues/new/choose) section to find the right avenue of support for you.
