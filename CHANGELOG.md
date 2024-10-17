@@ -1,7 +1,7 @@
 # dbt_microsoft_ads v0.9.0
 [PR #34](https://github.com/fivetran/dbt_microsoft_ads/pull/34) includes the following updates:
 
-## Feature Updates: Conversion Support!
+## Feature Updates: Conversion Metrics
 - We have added the following source fields to each `microsoft_ads` end model:
   - `conversions`: Number of conversions, measured by completion of an action by a customer after viewing your ad.
   - `conversions_value`: The revenue reported by the advertiser as a result of the `conversions` figure.
