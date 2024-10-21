@@ -45,9 +45,13 @@ joined as (
         report.currency_code,
         sum(report.clicks) as clicks,
         sum(report.impressions) as impressions,
-        sum(report.spend) as spend
+        sum(report.spend) as spend,
+        sum(report.conversions) as conversions,
+        sum(report.conversions_value) as conversions_value, 
+        sum(report.all_conversions) as all_conversions,
+        sum(report.all_conversions_value) as all_conversions_value
 
-        {{ fivetran_utils.persist_pass_through_columns(pass_through_variable='microsoft_ads__ad_group_passthrough_metrics', transform = 'sum') }}
+        {{ microsoft_ads_persist_pass_through_columns(pass_through_variable='microsoft_ads__ad_group_passthrough_metrics', transform='sum', coalesce_with=0, exclude_fields=['conversions', 'conversions_value', 'all_conversions', 'all_conversions_value']) }}    
     from report
     left join accounts
         on report.account_id = accounts.account_id

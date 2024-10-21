@@ -1,3 +1,25 @@
+# dbt_microsoft_ads v0.9.0
+[PR #34](https://github.com/fivetran/dbt_microsoft_ads/pull/34) includes the following updates:
+
+## Feature Updates: Conversion Metrics
+- We have added the following source fields to each `microsoft_ads` end model:
+  - `conversions`: Number of conversions, measured by completion of an action by a customer after viewing your ad.
+  - `conversions_value`: The revenue reported by the advertiser as a result of the `conversions` figure.
+  - `all_conversions`: Number of *[all](https://learn.microsoft.com/en-us/advertising/reporting-service/conversionperformancereportcolumn?view=bingads-13#allconversions)* conversions, measured by completion of an action by a customer after viewing your ad. This field differs from `conversions` in that it includes conversions associated with a conversion goal in which the [ExcludeFromBidding](https://learn.microsoft.com/en-us/advertising/campaign-management-service/conversiongoal?view=bingads-13#excludefrombidding) Microsoft Ads property is set to `true`.
+  - `all_conversions_value` (except `microsoft_ads__account_report`): The revenue reported by the advertiser as a result of the `all_conversions` figure. This field differs from the default `conversions_value` field in that it includes revenue associated with a conversion goal in which the [ExcludeFromBidding](https://learn.microsoft.com/en-us/advertising/campaign-management-service/conversiongoal?view=bingads-13#excludefrombidding) Microsoft Ads property is set to `true`.
+> The above new field additions are **breaking changes**.
+
+## Under the Hood
+- Created `microsoft_ads_persist_pass_through_columns` macro to ensure that the new conversion fields are backwards compatible for users who have already included them via passthrough fields.
+- Added integrity and consistency validation tests within `integration_tests` folder for the transformation models (to be used by maintainers only).
+- Updated seed files with new fields to test and validate on local data, provided specific casting to numeric (for currency) and integers.
+
+## Documentation Update
+- Updated `microsoft_ads.yml` with new fields mentioned above. 
+
+## Contributors
+- [Seer Interactive](https://www.seerinteractive.com/?utm_campaign=Fivetran%20%7C%20Models&utm_source=Fivetran&utm_medium=Fivetran%20Documentation)
+
 # dbt_microsoft_ads v0.8.0
 
 [PR #32](https://github.com/fivetran/dbt_microsoft_ads/pull/32) includes the following updates:

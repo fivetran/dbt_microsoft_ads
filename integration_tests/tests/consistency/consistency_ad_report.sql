@@ -5,33 +5,33 @@
 
 with prod as (
     select
-        campaign_id,
+        ad_id,
         sum(clicks) as clicks, 
         sum(impressions) as impressions,
         sum(spend) as spend
         {# sum(conversions) as conversions,
         sum(conversions_value) as conversions_value,
         sum(all_conversions) as all_conversions #}
-    from {{ target.schema }}_microsoft_ads_prod.microsoft_ads__campaign_report
+    from {{ target.schema }}_microsoft_ads_prod.microsoft_ads__ad_report
     group by 1
 ),
 
 dev as (
     select
-        campaign_id,
+        ad_id,
         sum(clicks) as clicks, 
         sum(impressions) as impressions,
         sum(spend) as spend
         {# sum(conversions) as conversions,
         sum(conversions_value) as conversions_value,
         sum(all_conversions) as all_conversions #}
-    from {{ target.schema }}_microsoft_ads_dev.microsoft_ads__campaign_report
+    from {{ target.schema }}_microsoft_ads_dev.microsoft_ads__ad_report
     group by 1
 ),
 
 final as (
     select 
-        prod.campaign_id,
+        prod.ad_id,
         prod.clicks as prod_clicks,
         dev.clicks as dev_clicks,
         prod.impressions as prod_impressions,
@@ -46,7 +46,7 @@ final as (
         dev.all_conversions as dev_all_conversions #}
     from prod
     full outer join dev 
-        on dev.campaign_id = prod.campaign_id
+        on dev.ad_id = prod.ad_id
 )
 
 select *
