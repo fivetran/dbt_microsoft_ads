@@ -145,6 +145,15 @@ vars:
     microsoft_ads_<default_source_table_name>_identifier: your_table_name 
 ```
 
+#### Change how ad name is determined
+
+In the `stg_microsoft_ads__ad_history` model we have made `ad_name` configurable. While `ad_name` by default uses the `title_part_1` field, users may wish to use a different field or a combination of fields to generate the `ad_name`. You may do so by configuring the `microsoft_ads__ad_name_selector` variable as follows:
+
+```yml
+vars:
+    microsoft_ads__ad_name_selector: coalesce(title_part_2, title_part_1) # using `title_part_2`, with `title_part_1` as a fallback if the former is `null`.
+```
+
 </details>
 
 ### (Optional) Step 5: Orchestrate your models with Fivetran Transformations for dbt Core™
