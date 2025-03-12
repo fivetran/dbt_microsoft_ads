@@ -12,6 +12,7 @@ vars:
 ## Documentation
 - Added Quickstart model counts to README. ([#39](https://github.com/fivetran/dbt_microsoft_ads/pull/39))
 - Corrected references to connectors and connections in the README. ([#39](https://github.com/fivetran/dbt_microsoft_ads/pull/39))
+- Updated License
 
 # dbt_microsoft_ads v0.9.0
 [PR #34](https://github.com/fivetran/dbt_microsoft_ads/pull/34) includes the following updates:
