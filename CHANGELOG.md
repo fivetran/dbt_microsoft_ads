@@ -1,8 +1,9 @@
-# dbt_microsoft_ads v0.9.1
+# dbt_microsoft_ads v0.10.0
+[PR #40](https://github.com/fivetran/dbt_microsoft_ads/pull/40) includes the following changes:
 
 ## Feature Update
-
-- Made `ad_name` in `stg_microsoft_ads__ad_history` customizable via a new variable `microsoft_ads__ad_name_selector`. By default this is determined using `title_part_1`, but you override this by including the configuration shown below in your `dbt_project.yml` file. For more information, refer to the [README](https://github.com/fivetran/dbt_microsoft_ads_source/blob/main/README.md#change-how-ad-name-is-determined).
+- Made `ad_name` in `stg_microsoft_ads__ad_history` customizable via a new variable `microsoft_ads__ad_name_selector`. ([PR #39](https://github.com/fivetran/dbt_microsoft_ads_source/pull/39)).
+- By default this is determined using `title_part_1`, but you override this by including the configuration shown below in your `dbt_project.yml` file. For more information, refer to the [README](https://github.com/fivetran/dbt_microsoft_ads_source/blob/main/README.md#change-how-ad-name-is-determined).
 
 ```yml
 vars:
@@ -12,7 +13,7 @@ vars:
 ## Documentation
 - Added Quickstart model counts to README. ([#39](https://github.com/fivetran/dbt_microsoft_ads/pull/39))
 - Corrected references to connectors and connections in the README. ([#39](https://github.com/fivetran/dbt_microsoft_ads/pull/39))
-- Updated License
+- Updated License.
 
 # dbt_microsoft_ads v0.9.0
 [PR #34](https://github.com/fivetran/dbt_microsoft_ads/pull/34) includes the following updates:
