@@ -17,8 +17,8 @@ vars:
   microsoft_ads_keyword_performance_daily_report_identifier: "microsoft_ads_keyword_performance_daily_report_data"
   microsoft_ads_search_query_performance_daily_report_identifier: "microsoft_ads_search_performance_daily_report_data"
 
-# models:
-#   +schema: "microsoft_ads_{{ var('directed_schema','dev') }}"
+models:
+  +schema: "microsoft_ads_{{ var('directed_schema','dev') }}"
 
 seeds:
   microsoft_ads_integration_tests:

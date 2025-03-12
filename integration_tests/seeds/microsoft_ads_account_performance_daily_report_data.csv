@@ -8,4 +8,4 @@ date,account_id,device_os,device_type,network,currency_code,ad_distribution,bid_
 2018-12-06,150175881,Unknown,Computer,AOL search,USD,Search,Phrase,Phrase,AOL search - Top,0,0,0.0,0,0,0.0,0
 2019-04-15,150175881,Windows,Computer,AOL search,USD,Search,Broad,Broad,AOL search - Top,0,0,0.0,0,0,0.0,0
 2019-04-16,150175881,Unknown,Computer,AOL search,USD,Search,Broad,Broad,AOL search - Top,0,0,0.0,0,0,0.0,0
-2018-12-26,150175881,Windows,Computer,AOL search,USD,Search,Broad,Phrase,AOL search - Top,4,5,0.0,1,2,0.1,3
+2018-12-26,150175881,Windows,Computer,AOL search,USD,Search,Broad,Phrase,AOL search - Top,4,5,0.0,1,2,0.01,3
