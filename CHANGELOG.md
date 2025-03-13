@@ -3,7 +3,7 @@
 
 ## Feature Update
 - Made `ad_name` in `stg_microsoft_ads__ad_history` customizable via a new variable `microsoft_ads__ad_name_selector`. ([PR #39](https://github.com/fivetran/dbt_microsoft_ads_source/pull/39)).
-- By default this is determined using `title_part_1`, but you override this by including the configuration shown below in your `dbt_project.yml` file. For more information, refer to the [README](https://github.com/fivetran/dbt_microsoft_ads_source/blob/main/README.md#change-how-ad-name-is-determined).
+- By default this is determined using `title_part_1`, but you override this by including the configuration shown below in your `dbt_project.yml` file. For more information, refer to the [README](https://github.com/fivetran/dbt_microsoft_ads/blob/main/README.md#change-how-ad-name-is-determined).
 
 ```yml
 vars:
