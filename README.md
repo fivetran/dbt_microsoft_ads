@@ -126,7 +126,7 @@ vars:
 
 #### Change how ad name is determined
 
-In the `stg_microsoft_ads__ad_history` model we have made `ad_name` configurable. While `ad_name` by default uses the `title_part_1` field, users may wish to use a different field or a combination of fields to generate the `ad_name`. You may do so by configuring the `microsoft_ads__ad_name_selector` variable as follows:
+The default value of `ad_name` in the Microsoft Ads end models is the `title_part_1` field. However, users may wish to use a different field or a combination of fields to generate the `ad_name`. You may do so by configuring the `microsoft_ads__ad_name_selector` variable as follows:
 
 ```yml
 vars:
