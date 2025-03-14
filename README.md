@@ -61,7 +61,7 @@ If you are NOT using the [Ad Reporting combination package](https://github.com/f
 ```yaml
 packages:
   - package: fivetran/microsoft_ads
-    version: [">=0.9.0", "<0.10.0"]
+    version: [">=0.10.0", "<0.11.0"]
 ```
 
 Do NOT include the `microsoft_ads_source` package in this file. The transformation package itself has a dependency on it and will install the source package as well.
@@ -124,6 +124,15 @@ vars:
     microsoft_ads_auto_tagging_enabled: true # False by default
 ```
 
+#### Change how ad name is determined
+
+The default value of `ad_name` in the Microsoft Ads end models is the `title_part_1` field. However, users may wish to use a different field or a combination of fields to generate the `ad_name`. You may do so by configuring the `microsoft_ads__ad_name_selector` variable as follows:
+
+```yml
+vars:
+    microsoft_ads__ad_name_selector: coalesce(title_part_2, title_part_1) # using `title_part_2`, with `title_part_1` as a fallback if the former is `null`.
+```
+
 #### Change the build schema
 By default, this package builds the Microsoft Ads staging models (11 views, 11 tables) within a schema titled (`<target_schema>` + `_microsoft_ads_source`) and your Microsoft Ads modeling models (7 tables) within a schema titled (`<target_schema>` + `_microsoft_ads`) in your destination. If this is not where you would like your Microsoft Ads data to be written to, add the following configuration to your root `dbt_project.yml` file:
 
@@ -161,7 +170,7 @@ This dbt package is dependent on the following dbt packages. These dependencies 
 ```yml
 packages:
     - package: fivetran/microsoft_ads_source
-      version: [">=0.10.0", "<0.11.0"]
+      version: [">=0.11.0", "<0.12.0"]
 
     - package: fivetran/fivetran_utils
       version: [">=0.4.0", "<0.5.0"]
