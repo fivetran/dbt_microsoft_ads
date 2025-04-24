@@ -40,6 +40,10 @@ joined as (
         report.device_type,
         report.network,
         report.currency_code,
+        campaigns.budget,
+        campaigns.budget_id,
+        campaigns.budget_type,
+        campaigns.language,
         sum(report.clicks) as clicks,
         sum(report.impressions) as impressions,
         sum(report.spend) as spend,
@@ -57,7 +61,7 @@ joined as (
     left join campaigns
         on report.campaign_id = campaigns.campaign_id
         and report.source_relation = campaigns.source_relation
-    {{ dbt_utils.group_by(14) }}
+    {{ dbt_utils.group_by(18) }}
 )
 
 select *

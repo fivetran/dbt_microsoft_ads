@@ -485,6 +485,8 @@ models:
         description: '{{ doc("account_name") }}'
       - name: account_id
         description: '{{ doc("account_id") }}'
+        tests: 
+          - not_null
       - name: campaign_name
         description: '{{ doc("campaign_name") }}'
       - name: campaign_id
@@ -505,6 +507,14 @@ models:
         description: '{{ doc("network") }}'
       - name: currency_code
         description: '{{ doc("currency_code") }}'
+      - name: budget
+        description: '{{ doc("budget") }}'
+      - name: budget_id
+        description: '{{ doc("budget_id") }}'
+      - name: budget_type
+        description: '{{ doc("budget_type") }}'
+      - name: language
+        description: '{{ doc("language") }}'
       - name: clicks
         description: '{{ doc("clicks") }}'
       - name: impressions
@@ -547,6 +557,8 @@ models:
         description: '{{ doc("account_name") }}'
       - name: account_id
         description: '{{ doc("account_id") }}'
+        tests: 
+          - not_null
       - name: campaign_name
         description: '{{ doc("campaign_name") }}'
       - name: campaign_id
@@ -567,6 +579,14 @@ models:
         description: '{{ doc("network") }}'
       - name: currency_code
         description: '{{ doc("currency_code") }}'
+      - name: budget
+        description: '{{ doc("budget") }}'
+      - name: budget_id
+        description: '{{ doc("budget_id") }}'
+      - name: budget_type
+        description: '{{ doc("budget_type") }}'
+      - name: language
+        description: '{{ doc("language") }}'
       - name: clicks
         description: '{{ doc("clicks") }}'
       - name: impressions

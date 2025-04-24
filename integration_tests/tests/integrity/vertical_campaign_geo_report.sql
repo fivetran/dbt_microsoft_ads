@@ -5,9 +5,9 @@
 ) }}
 
 with staging_aggregated as (
+
     select 
         campaign_id,
-        count(*) as count_campaign,
         count(distinct date_day) as count_unique_days,
         sum(impressions) as total_impressions,
         sum(clicks) as total_clicks,
@@ -21,9 +21,9 @@ with staging_aggregated as (
 ),
 
 country_report_aggregated as (
+
     select 
         campaign_id,
-        count(*) as count_campaign,
         count(distinct date_day) as count_unique_days,
         sum(impressions) as total_impressions,
         sum(clicks) as total_clicks,
@@ -37,9 +37,9 @@ country_report_aggregated as (
 ),
 
 region_report_aggregated as (
+
     select 
-        campaign_id,
-        count(*) as count_campaign,
+        campaign_id, 
         count(distinct date_day) as count_unique_days,
         sum(impressions) as total_impressions,
         sum(clicks) as total_clicks,
@@ -58,8 +58,6 @@ country_comparison as (
     select 
         'country' as report_type,
         coalesce(country_report_aggregated.campaign_id, staging_aggregated.campaign_id) as campaign_id,
-        country_report_aggregated.count_campaign as end_count_campaign,
-        staging_aggregated.count_campaign as staging_count_campaign,
         country_report_aggregated.count_unique_days as end_count_unique_days,
         staging_aggregated.count_unique_days as staging_count_unique_days,
         country_report_aggregated.total_impressions as end_total_impressions,
@@ -87,8 +85,6 @@ region_comparison as (
     select 
         'region' as report_type,
         coalesce(region_report_aggregated.campaign_id, staging_aggregated.campaign_id) as campaign_id,
-        region_report_aggregated.count_campaign as end_count_campaign,
-        staging_aggregated.count_campaign as staging_count_campaign,
         region_report_aggregated.count_unique_days as end_count_unique_days,
         staging_aggregated.count_unique_days as staging_count_unique_days,
         region_report_aggregated.total_impressions as end_total_impressions,
@@ -121,8 +117,7 @@ combined_report_comparisons as (
 -- Return only mismatched records
 select *
 from combined_report_comparisons
-where end_count_campaign != staging_count_campaign
-    or end_count_unique_days != staging_count_unique_days
+where end_count_unique_days != staging_count_unique_days
     or end_total_impressions != staging_total_impressions
     or end_total_clicks != staging_total_clicks
     or end_total_conversions != staging_total_conversions
