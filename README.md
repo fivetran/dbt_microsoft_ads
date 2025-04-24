@@ -29,14 +29,17 @@ The following table provides a detailed list of all tables materialized within t
 | **Table**                | **Description**                                                                                                                                |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | [microsoft_ads__account_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__account_report)             | Each record in this table represents the daily performance at the account level. |
-| [microsoft_ads__campaign_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__campaign_report)            | Each record in this table represents the daily performance of a campaign at the campaign/advertising_channel/advertising_channel_subtype level. |
-| [microsoft_ads__ad_group_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__ad_group_report)            | Each record in this table represents the daily performance at the ad group level. |
 | [microsoft_ads__ad_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__ad_report)            | Each record in this table represents the daily performance at the ad level. |
+| [microsoft_ads__ad_group_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__ad_group_report)            | Each record in this table represents the daily performance at the ad group level. |
+| [microsoft_ads__campaign_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__campaign_report)            | Each record in this table represents the daily performance of a campaign at the campaign/advertising_channel/advertising_channel_subtype level. |
+| [microsoft_ads__campaign_country_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__campaign_country_report])            | Each record in this table represents the daily performance at the campaign level by country. |
+| [microsoft_ads__campaign_region_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__campaign_region_report)            | Each record in this table represents the daily performance at the campaign level by region. |
 | [microsoft_ads__keyword_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__keyword_report)            | Each record in this table represents the daily performance at the ad group level for keywords. |
 | [microsoft_ads__search_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__search_report)            | Each record in this table represents the daily performance at the search level. |
 | [microsoft_ads__url_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__url_report)            | Each record in this table represents the daily performance of URLs at the ad level. |
+
 ### Materialized Models
-Each Quickstart transformation job run materializes 29 models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.
+Each Quickstart transformation job run materializes 33 models if all components of this data model are enabled. This count includes all staging, intermediate, and final models materialized as `view`, `table`, or `incremental`.
 <!--section-end-->
 
 ## How do I use the dbt package?
@@ -90,6 +93,13 @@ vars:
 
 To connect your multiple schema/database sources to the package models, follow the steps outlined in the [Union Data Defined Sources Configuration](https://github.com/fivetran/dbt_fivetran_utils/tree/releases/v0.4.latest#union_data-source) section of the Fivetran Utils documentation for the union_data macro. This will ensure a proper configuration and correct visualization of connections in the DAG.
 
+#### Enable Country Reports
+This package leverages the `geographic_performance_daily_report` table to help report on ad and campaign performance by country. However, if you are not actively syncing this report from your Microsoft Ads connection, you may disable the transformations for the `geographic_performance_daily_report` by adding the following variable configuration to your root `dbt_project.yml` file:
+```yml
+vars:
+    microsoft_ads__using_geographic_daily_report: True # False by default
+```
+
 #### Adding passthrough metrics
 By default, this package will select `clicks`, `impressions`, `spend`, `conversions` (coalesces source `conversions` and `conversions_qualified` fields), `conversions_value` (aliased source `revenue` field), `all_conversions` (coalesces source `all_conversions` and `all_conversions_qualified` fields) and `all_conversions_value` (aliased source `all_revenue` field) from the source reporting tables to store into the staging models. If you would like to pass through additional metrics to the staging models, add the below configurations to your `dbt_project.yml` file. These variables allow for the pass-through fields to be aliased (`alias`) if desired, but not required. Use the below format for declaring the respective pass-through variables:
 
@@ -114,6 +124,9 @@ vars:
     microsoft_ads__search_passthrough_metrics:
       - name: "unique_string_field"
         alias: "field_id"
+    microsoft_ads__geographic_passthrough_metrics:
+      - name: "unique_string_field"
+        alias: "custom_field_name"
 ```
 
 #### Enable UTM Auto Tagging
@@ -170,7 +183,7 @@ This dbt package is dependent on the following dbt packages. These dependencies 
 ```yml
 packages:
     - package: fivetran/microsoft_ads_source
-      version: [">=0.11.0", "<0.12.0"]
+      version: [">=0.12.0", "<0.13.0"]
 
     - package: fivetran/fivetran_utils
       version: [">=0.4.0", "<0.5.0"]

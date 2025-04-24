@@ -1,3 +1,21 @@
+# dbt_microsoft_ads v0.11.0
+
+## Schema Changes
+**5 total changes • 0 possible breaking changes
+| Table/Column                                      | Change Type | Old Name | New Name                                  | Notes                                                             |
+|---------------------------------------------------|-------------|----------|-------------------------------------------|-------------------------------------------------------------------|
+| microsoft_ads__campaign_country_report       | New Model   |          |  | New table that represents the daily performance of a campaign at the country/geographic region level.               |
+| microsoft_ads__campaign_region_report       | New Model   |          |  | New table that represents the daily performance of a campaign at the geographic region level.               |
+| stg_microsoft_ads__geographic_daily_report_tmp       | New Model   |          |  | Temp model added for `geographic_performance_daily_report`.               |
+| stg_microsoft_ads__geographic_daily_report          | New Model   |          |    | Staging model added for `geographic_performance_daily_report`.         |
+| budget, budget_id, budget_type, language           | New Columns   |          |    | New columns added to the stg_microsoft_ads__campaign_history model.         |
+
+## Feature Updates
+- Added the `microsoft_ads__campaign_country_report` and `microsoft_ads__campaign_region_report` end models and upstream staging models. See above for schema change details and new models added.
+  - For dbt Core users: If you do not sync this table or would like disable these new models you can disable the models by setting the  `microsoft_ads__using_geographic_daily_report` variable to `false` in your `dbt_project.yml` file (`true` by default).
+- Included the `microsoft_ads__geographic_passthrough_metrics` passthrough variable in the above mentioned new staging models. Refer to the [README](https://github.com/fivetran/dbt_microsoft_ads?tab=readme-ov-file#adding-passthrough-metrics) for more details.
+- Introduced the above mentioned new columns to the `stg_microsoft_ads__campaign_history` model.
+
 # dbt_microsoft_ads v0.10.0
 [PR #40](https://github.com/fivetran/dbt_microsoft_ads/pull/40) includes the following changes:
 
