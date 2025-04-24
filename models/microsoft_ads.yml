@@ -507,13 +507,13 @@ models:
         description: '{{ doc("network") }}'
       - name: currency_code
         description: '{{ doc("currency_code") }}'
-      - name: budget
+      - name: campaign_budget
         description: '{{ doc("budget") }}'
-      - name: budget_id
+      - name: campaign_budget_id
         description: '{{ doc("budget_id") }}'
-      - name: budget_type
+      - name: campaign_budget_type
         description: '{{ doc("budget_type") }}'
-      - name: language
+      - name: campaign_language
         description: '{{ doc("language") }}'
       - name: clicks
         description: '{{ doc("clicks") }}'
@@ -579,13 +579,13 @@ models:
         description: '{{ doc("network") }}'
       - name: currency_code
         description: '{{ doc("currency_code") }}'
-      - name: budget
+      - name: campaign_budget
         description: '{{ doc("budget") }}'
-      - name: budget_id
+      - name: campaign_budget_id
         description: '{{ doc("budget_id") }}'
-      - name: budget_type
+      - name: campaign_budget_type
         description: '{{ doc("budget_type") }}'
-      - name: language
+      - name: campaign_language
         description: '{{ doc("language") }}'
       - name: clicks
         description: '{{ doc("clicks") }}'
