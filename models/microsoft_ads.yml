@@ -474,6 +474,8 @@ models:
             - device_type
             - network
             - currency_code
+            - goal
+            - location_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -507,6 +509,10 @@ models:
         description: '{{ doc("network") }}'
       - name: currency_code
         description: '{{ doc("currency_code") }}'
+      - name: location_id
+        description: '{{ doc("location_id") }}'
+      - name: goal
+        description: '{{ doc("goal") }}'
       - name: campaign_budget
         description: '{{ doc("budget") }}'
       - name: campaign_budget_id
@@ -546,6 +552,8 @@ models:
             - device_type
             - network
             - currency_code
+            - goal
+            - location_id
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -579,6 +587,10 @@ models:
         description: '{{ doc("network") }}'
       - name: currency_code
         description: '{{ doc("currency_code") }}'
+      - name: location_id
+        description: '{{ doc("location_id") }}'
+      - name: goal
+        description: '{{ doc("goal") }}'
       - name: campaign_budget
         description: '{{ doc("budget") }}'
       - name: campaign_budget_id
