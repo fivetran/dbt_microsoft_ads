@@ -1,4 +1,5 @@
 # dbt_microsoft_ads v0.11.0
+[PR #41](https://github.com/fivetran/dbt_microsoft_ads/pull/41) includes the following changes:
 
 ## Schema Updates
 
