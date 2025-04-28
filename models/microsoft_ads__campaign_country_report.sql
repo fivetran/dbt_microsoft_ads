@@ -42,6 +42,7 @@ joined as (
         report.currency_code,
         report.location_id,
         report.goal,
+        report.language as geo_language,
         campaigns.budget as campaign_budget,
         campaigns.budget_id as campaign_budget_id,
         campaigns.budget_type as campaign_budget_type,
@@ -63,7 +64,7 @@ joined as (
     left join campaigns
         on report.campaign_id = campaigns.campaign_id
         and report.source_relation = campaigns.source_relation
-    {{ dbt_utils.group_by(20) }}
+    {{ dbt_utils.group_by(21) }}
 )
 
 select *

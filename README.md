@@ -64,7 +64,7 @@ If you are NOT using the [Ad Reporting combination package](https://github.com/f
 ```yaml
 packages:
   - package: fivetran/microsoft_ads
-    version: [">=0.10.0", "<0.11.0"]
+    version: [">=0.11.0", "<0.12.0"]
 ```
 
 Do NOT include the `microsoft_ads_source` package in this file. The transformation package itself has a dependency on it and will install the source package as well.
@@ -93,8 +93,8 @@ vars:
 
 To connect your multiple schema/database sources to the package models, follow the steps outlined in the [Union Data Defined Sources Configuration](https://github.com/fivetran/dbt_fivetran_utils/tree/releases/v0.4.latest#union_data-source) section of the Fivetran Utils documentation for the union_data macro. This will ensure a proper configuration and correct visualization of connections in the DAG.
 
-#### Enable Country Reports
-This package leverages the `geographic_performance_daily_report` table to help report on ad and campaign performance by country. However, if you are not actively syncing this report from your Microsoft Ads connection, you may disable the transformations for the `geographic_performance_daily_report` by adding the following variable configuration to your root `dbt_project.yml` file:
+#### Enable Geographic Reports
+This package leverages the `geographic_performance_daily_report` table to help report on ad and campaign performance by country and region, but this table is disabled by default for dbt Core users. If you are actively syncing this report from your Microsoft Ads connection, you may enable the transformations for the `geographic_performance_daily_report` by adding the following variable configuration to your root `dbt_project.yml` file:
 ```yml
 vars:
     microsoft_ads__using_geographic_daily_report: True # False by default

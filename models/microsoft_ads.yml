@@ -476,6 +476,7 @@ models:
             - currency_code
             - goal
             - location_id
+            - geo_language
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -513,6 +514,8 @@ models:
         description: '{{ doc("location_id") }}'
       - name: goal
         description: '{{ doc("goal") }}'
+      - name: geo_language
+        description: The language of the publisher where the ad was shown.
       - name: campaign_budget
         description: '{{ doc("budget") }}'
       - name: campaign_budget_id
@@ -545,7 +548,8 @@ models:
           combination_of_columns:
             - source_relation
             - date_day
-            - state
+            - region
+            - country
             - account_id
             - campaign_id
             - device_os
@@ -554,13 +558,16 @@ models:
             - currency_code
             - goal
             - location_id
+            - geo_language
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
       - name: date_day
         description: '{{ doc("date_day") }}'
-      - name: state
+      - name: region
         description: '{{ doc("state") }}'
+      - name: country
+        description: '{{ doc("country") }}'
       - name: account_name
         description: '{{ doc("account_name") }}'
       - name: account_id
@@ -591,6 +598,8 @@ models:
         description: '{{ doc("location_id") }}'
       - name: goal
         description: '{{ doc("goal") }}'
+      - name: geo_language
+        description: The language of the publisher where the ad was shown.
       - name: campaign_budget
         description: '{{ doc("budget") }}'
       - name: campaign_budget_id
