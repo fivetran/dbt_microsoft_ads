@@ -1,7 +1,8 @@
 # dbt_microsoft_ads v0.11.0
 
-## Schema Changes
-**5 total changes • 0 possible breaking changes
+## Schema Updates
+
+**5 total changes • 0 possible breaking changes**
 | Table/Column                                      | Change Type | Old Name | New Name                                  | Notes                                                             |
 |---------------------------------------------------|-------------|----------|-------------------------------------------|-------------------------------------------------------------------|
 | [microsoft_ads__campaign_country_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__campaign_country_report)       | New Transform Model   |          |  | New table that represents the daily performance of a campaign at the country/geographic region level.               |
