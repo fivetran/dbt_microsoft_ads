@@ -9,7 +9,7 @@
 | [microsoft_ads__campaign_region_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__campaign_region_report)       | New Transform Model   |          |  | New table that represents the daily performance of a campaign at the geographic region level.               |
 | [stg_microsoft_ads__geographic_daily_report_tmp](https://fivetran.github.io/dbt_microsoft_ads_source/#!/model/model.microsoft_ads_source.stg_microsoft_ads__geographic_daily_report_tmp)      | New Staging Model   |          |  | Temp model added for `geographic_performance_daily_report`.               |
 | [stg_microsoft_ads__geographic_daily_report](https://fivetran.github.io/dbt_microsoft_ads_source/#!/model/model.microsoft_ads_source.stg_microsoft_ads__geographic_daily_report)          | New Staging Model   |          |    | Staging model added for `geographic_performance_daily_report`.         |
-| budget, budget_id, budget_type, language           | New Columns   |          |    | New columns added to the stg_microsoft_ads__campaign_history model.         |
+| budget, budget_id, budget_type, language           | New Columns   |          |    | New columns added to the `stg_microsoft_ads__campaign_history model`.         |
 
 ## Feature Updates
 - Added the `microsoft_ads__campaign_country_report` and `microsoft_ads__campaign_region_report` end models and upstream staging models. See above for schema change details and new models added.
