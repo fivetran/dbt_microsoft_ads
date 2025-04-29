@@ -1,3 +1,22 @@
+# dbt_microsoft_ads v0.11.0
+[PR #41](https://github.com/fivetran/dbt_microsoft_ads/pull/41) includes the following changes:
+
+## Schema Updates
+
+**5 total changes • 0 possible breaking changes**
+| Data Model                                     | Change Type | Old Name | New Name                                  | Notes                                                             |
+|---------------------------------------------------|-------------|----------|-------------------------------------------|-------------------------------------------------------------------|
+| [microsoft_ads__campaign_country_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__campaign_country_report)       | New Transform Model   |          |  | New table that represents the daily performance of a campaign at the country/geographic region level.               |
+| [microsoft_ads__campaign_region_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__campaign_region_report)       | New Transform Model   |          |  | New table that represents the daily performance of a campaign at the geographic region level.               |
+| [stg_microsoft_ads__geographic_daily_report_tmp](https://fivetran.github.io/dbt_microsoft_ads_source/#!/model/model.microsoft_ads_source.stg_microsoft_ads__geographic_daily_report_tmp)      | New Staging Model   |          |  | Temp model added for `geographic_performance_daily_report`.               |
+| [stg_microsoft_ads__geographic_daily_report](https://fivetran.github.io/dbt_microsoft_ads_source/#!/model/model.microsoft_ads_source.stg_microsoft_ads__geographic_daily_report)          | New Staging Model   |          |    | Staging model added for `geographic_performance_daily_report`.         |
+| [stg_microsoft_ads__campaign_history](https://fivetran.github.io/dbt_microsoft_ads_source/#!/model/model.microsoft_ads_source.stg_microsoft_ads__campaign_history)           | New Columns   |          | `budget`, `budget_id`, `budget_type`, `language`     |        |
+
+## Feature Updates
+- Added the `microsoft_ads__campaign_country_report` and `microsoft_ads__campaign_region_report` end models and upstream staging models. See above for schema change details and new models added.
+  - For dbt Core users: If you would like to enable these new models you can do so by setting the  `microsoft_ads__using_geographic_daily_report` variable to `true` in your `dbt_project.yml` file (`false` by default). Refer to the [README](https://github.com/fivetran/dbt_microsoft_ads?tab=readme-ov-file#enable-geographic-reports) for more details. 
+- Included the `microsoft_ads__geographic_passthrough_metrics` passthrough variable in the above mentioned new staging models. Refer to the [README](https://github.com/fivetran/dbt_microsoft_ads?tab=readme-ov-file#adding-passthrough-metrics) for more details.
+
 # dbt_microsoft_ads v0.10.0
 [PR #40](https://github.com/fivetran/dbt_microsoft_ads/pull/40) includes the following changes:
 

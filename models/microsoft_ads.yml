@@ -457,3 +457,168 @@ models:
         description: '{{ doc("all_conversions") }}'
       - name: all_conversions_value
         description: '{{ doc("all_revenue") }}'
+
+  - name: microsoft_ads__campaign_country_report
+    description: >
+      Each record in this table represents the daily performance of ads by country, account, campaign, campaign type, 
+      campaign timezone, campaign status, device os, device type, network, and currency code.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - source_relation
+            - date_day
+            - country
+            - account_id
+            - campaign_id
+            - device_os
+            - device_type
+            - network
+            - currency_code
+            - goal
+            - location_id
+            - geo_language
+    columns:
+      - name: source_relation
+        description: "{{ doc('source_relation') }}"
+      - name: date_day
+        description: '{{ doc("date_day") }}'
+      - name: country
+        description: '{{ doc("country") }}'
+      - name: account_name
+        description: '{{ doc("account_name") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+        tests: 
+          - not_null
+      - name: campaign_name
+        description: '{{ doc("campaign_name") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+        tests:
+          - not_null
+      - name: campaign_type
+        description: '{{ doc("campaign_type") }}'
+      - name: campaign_timezone
+        description: '{{ doc("campaign_timezone") }}'
+      - name: campaign_status
+        description: '{{ doc("campaign_status") }}'
+      - name: device_os
+        description: '{{ doc("device_os") }}'
+      - name: device_type
+        description: '{{ doc("device_type") }}'
+      - name: network
+        description: '{{ doc("network") }}'
+      - name: currency_code
+        description: '{{ doc("currency_code") }}'
+      - name: location_id
+        description: '{{ doc("location_id") }}'
+      - name: goal
+        description: '{{ doc("goal") }}'
+      - name: geo_language
+        description: The language of the publisher where the ad was shown.
+      - name: campaign_budget
+        description: '{{ doc("budget") }}'
+      - name: campaign_budget_id
+        description: '{{ doc("budget_id") }}'
+      - name: campaign_budget_type
+        description: '{{ doc("budget_type") }}'
+      - name: campaign_language
+        description: '{{ doc("language") }}'
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend
+        description: '{{ doc("spend") }}'
+      - name: conversions
+        description: '{{ doc("conversions") }}'
+      - name: conversions_value
+        description: '{{ doc("revenue") }}'
+      - name: all_conversions
+        description: '{{ doc("all_conversions") }}'
+      - name: all_conversions_value
+        description: '{{ doc("all_revenue") }}'
+
+  - name: microsoft_ads__campaign_region_report
+    description: >
+      Each record in this table represents the daily performance of ads by state or region, account, campaign, 
+      campaign type, campaign timezone, campaign status, device os, device type, network, and currency code.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - source_relation
+            - date_day
+            - region
+            - country
+            - account_id
+            - campaign_id
+            - device_os
+            - device_type
+            - network
+            - currency_code
+            - goal
+            - location_id
+            - geo_language
+    columns:
+      - name: source_relation
+        description: "{{ doc('source_relation') }}"
+      - name: date_day
+        description: '{{ doc("date_day") }}'
+      - name: region
+        description: '{{ doc("state") }}'
+      - name: country
+        description: '{{ doc("country") }}'
+      - name: account_name
+        description: '{{ doc("account_name") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+        tests: 
+          - not_null
+      - name: campaign_name
+        description: '{{ doc("campaign_name") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+        tests:
+          - not_null
+      - name: campaign_type
+        description: '{{ doc("campaign_type") }}'
+      - name: campaign_timezone
+        description: '{{ doc("campaign_timezone") }}'
+      - name: campaign_status
+        description: '{{ doc("campaign_status") }}'
+      - name: device_os
+        description: '{{ doc("device_os") }}'
+      - name: device_type
+        description: '{{ doc("device_type") }}'
+      - name: network
+        description: '{{ doc("network") }}'
+      - name: currency_code
+        description: '{{ doc("currency_code") }}'
+      - name: location_id
+        description: '{{ doc("location_id") }}'
+      - name: goal
+        description: '{{ doc("goal") }}'
+      - name: geo_language
+        description: The language of the publisher where the ad was shown.
+      - name: campaign_budget
+        description: '{{ doc("budget") }}'
+      - name: campaign_budget_id
+        description: '{{ doc("budget_id") }}'
+      - name: campaign_budget_type
+        description: '{{ doc("budget_type") }}'
+      - name: campaign_language
+        description: '{{ doc("language") }}'
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend
+        description: '{{ doc("spend") }}'
+      - name: conversions
+        description: '{{ doc("conversions") }}'
+      - name: conversions_value
+        description: '{{ doc("revenue") }}'
+      - name: all_conversions
+        description: '{{ doc("all_conversions") }}'
+      - name: all_conversions_value
+        description: '{{ doc("all_revenue") }}'
