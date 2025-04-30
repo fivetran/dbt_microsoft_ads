@@ -1,3 +1,9 @@
+# dbt_microsoft_ads v0.11.1
+[PR #43](https://github.com/fivetran/dbt_microsoft_ads/pull/43) includes the following changes:
+
+## Quickstart Fix
+- Regenerated docs to ensure manifest picks up new models created in the [v0.11.0 release](https://github.com/fivetran/dbt_microsoft_ads/releases/tag/v0.11.0) to ensure the Quickstart update is properly picked up.
+
 # dbt_microsoft_ads v0.11.0
 [PR #41](https://github.com/fivetran/dbt_microsoft_ads/pull/41) includes the following changes:
 
