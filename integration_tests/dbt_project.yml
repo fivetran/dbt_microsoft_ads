@@ -1,5 +1,5 @@
 name: 'microsoft_ads_integration_tests'
-version: '0.11.0'
+version: '0.11.1'
 profile: 'integration_tests'
 config-version: 2
 
@@ -19,7 +19,7 @@ vars:
   microsoft_ads_geographic_performance_daily_report_identifier: "microsoft_ads_geographic_performance_daily_report_data"
 
   ## Use when generating docs and validation tests
-  # microsoft_ads__using_geographic_daily_report: true 
+  microsoft_ads__using_geographic_daily_report: true 
 
 models:
   +schema: "microsoft_ads_{{ var('directed_schema','dev') }}"
