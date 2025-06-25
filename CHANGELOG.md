@@ -18,7 +18,7 @@ into the `config` of `microsoft_ads`.
 
 If you are using dbt Core < 1.9.6 and want to continue running Microsoft Ads freshness tests, please elect **one** of the following options:
   1. (Recommended) Upgrade to dbt Core >= 1.9.6
-  2. Do not upgrade your installed version of the `microsoft_ads_source` package. Pin your dependency on v0.12.0 in your `packages.yml` file.
+  2. Do not upgrade your installed version of the `microsoft_ads` package. Pin your dependency on v0.11.1 in your `packages.yml` file.
   3. Utilize a dbt [override](https://docs.getdbt.com/reference/resource-properties/overrides) to overwrite the package's `microsoft_ads` source and apply freshness via the [old](https://github.com/fivetran/dbt_microsoft_ads_source/blob/main/models/src_microsoft_ads.yml#L11-L13) top-level property route. This will require you to copy and paste the entirety of the `src_microsoft_ads.yml` [file](https://github.com/fivetran/dbt_microsoft_ads_source/blob/main/models/src_microsoft_ads.yml#L4-L494) and add an `overrides: microsoft_ads_source` property.
 
 ## Under the Hood
