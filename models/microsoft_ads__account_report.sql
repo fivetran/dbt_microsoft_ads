@@ -3,14 +3,14 @@
 with report as (
 
     select *
-    from {{ var('account_performance_daily_report') }}
+    from {{ ref('stg_microsoft_ads__account_daily_report') }}
 
 ), 
 
 accounts as (
 
     select *
-    from {{ var('account_history') }}
+    from {{ ref('stg_microsoft_ads__account_history') }}
     where is_most_recent_record = True
 )
 

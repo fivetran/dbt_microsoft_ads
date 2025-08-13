@@ -1,21 +1,21 @@
 name: 'microsoft_ads'
-version: '0.12.0'
+version: '1.0.0'
 config-version: 2
 require-dbt-version: [">=1.3.0", "<2.0.0"]
 vars:
   microsoft_ads:
-    account_history: "{{ ref('stg_microsoft_ads__account_history') }}"
-    account_performance_daily_report: "{{ ref('stg_microsoft_ads__account_daily_report') }}"
-    campaign_history: "{{ ref('stg_microsoft_ads__campaign_history') }}"
-    campaign_performance_daily_report: "{{ ref('stg_microsoft_ads__campaign_daily_report') }}"
-    ad_group_history: "{{ ref('stg_microsoft_ads__ad_group_history') }}"
-    ad_group_performance_daily_report: "{{ ref('stg_microsoft_ads__ad_group_daily_report') }}"
-    ad_history: "{{ ref('stg_microsoft_ads__ad_history') }}"
-    ad_performance_daily_report: "{{ ref('stg_microsoft_ads__ad_daily_report') }}"
-    geographic_performance_daily_report: "{{ ref('stg_microsoft_ads__geographic_daily_report') }}"
-    keyword_history: "{{ ref('stg_microsoft_ads__keyword_history') }}"
-    keyword_performance_daily_report: "{{ ref('stg_microsoft_ads__keyword_daily_report') }}"
-    search_performance_daily_report: "{{ ref('stg_microsoft_ads__search_daily_report') }}"
+    account_history: "{{ source('microsoft_ads', 'account_history') }}"
+    account_performance_daily_report: "{{ source('microsoft_ads', 'account_daily_report') }}"
+    campaign_history: "{{ source('microsoft_ads', 'campaign_history') }}"
+    campaign_performance_daily_report: "{{ source('microsoft_ads', 'campaign_daily_report') }}"
+    ad_group_history: "{{ source('microsoft_ads', 'ad_group_history') }}"
+    ad_group_performance_daily_report: "{{ source('microsoft_ads', 'ad_group_daily_report') }}"
+    ad_history: "{{ source('microsoft_ads', 'ad_history') }}"
+    ad_performance_daily_report: "{{ source('microsoft_ads', 'ad_daily_report') }}"
+    geographic_performance_daily_report: "{{ source('microsoft_ads', 'geographic_daily_report') }}"
+    keyword_history: "{{ source('microsoft_ads', 'keyword_history') }}"
+    keyword_performance_daily_report: "{{ source('microsoft_ads', 'keyword_daily_report') }}"
+    search_performance_daily_report: "{{ source('microsoft_ads', 'search_daily_report') }}"
   microsoft_ads_auto_tagging_enabled: false
   microsoft_ads__account_report_passthrough_metrics: []
   microsoft_ads__campaign_report_passthrough_metrics: []
@@ -29,3 +29,6 @@ models:
   microsoft_ads:
     +schema: microsoft_ads
     +materialized: table
+    staging:
+      +schema: microsoft_ads_source
+      +materialized: view
