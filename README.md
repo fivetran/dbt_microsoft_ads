@@ -1,4 +1,4 @@
-# Microsoft Ads Transformation dbt Package ([Docs](https://fivetran.github.io/dbt_microsoft_ads/))
+# Microsoft Ads dbt Package ([Docs](https://fivetran.github.io/dbt_microsoft_ads/))
 
 <p align="left">
     <a alt="License"
@@ -16,7 +16,7 @@
 </p>
 
 ## What does this dbt package do?
-- Produces modeled tables that leverage Microsoft Ads data from [Fivetran's connector](https://fivetran.com/docs/applications/microsoft-advertising) in the format described by [this ERD](https://fivetran.com/docs/applications/microsoft-advertising#schemainformation) and builds off the output of our [Microsoft Ads source package](https://github.com/fivetran/dbt_microsoft_ads_source).
+- Produces modeled tables that leverage Microsoft Ads data from [Fivetran's connector](https://fivetran.com/docs/applications/microsoft-advertising) in the format described by [this ERD](https://fivetran.com/docs/applications/microsoft-advertising#schemainformation).
 - Enables you to better understand the performance of your ads across varying grains:
   - Providing an account, campaign, ad group, keyword, ad, utm and search level reports.
 - Materializes output models designed to work simultaneously with our [multi-platform Ad Reporting package](https://github.com/fivetran/dbt_ad_reporting).
@@ -64,10 +64,10 @@ If you are NOT using the [Ad Reporting combination package](https://github.com/f
 ```yaml
 packages:
   - package: fivetran/microsoft_ads
-    version: [">=0.12.0", "<0.13.0"]
+    version: [">=1.0.0", "<1.1.0"]
 ```
 
-Do NOT include the `microsoft_ads_source` package in this file. The transformation package itself has a dependency on it and will install the source package as well.
+> All required sources and staging models are now bundled into this transformation package. Do not include `fivetran/microsoft_ads_source` in your `packages.yml` since this package has been deprecated.
 
 ### Step 3: Define database and schema variables
 By default, this package runs using your destination and the `microsoft_ads` schema. If this is not where your Microsoft Ads data is (for example, if your Microsoft Ads schema is named `microsoft_ads_fivetran`), add the following configuration to your root `dbt_project.yml` file:
@@ -89,7 +89,7 @@ vars:
     microsoft_ads_union_schemas: ['microsoft_ads_usa','microsoft_ads_canada'] # use this if the data is in different schemas/datasets of the same database/project
     microsoft_ads_union_databases: ['microsoft_ads_usa','microsoft_ads_canada'] # use this if the data is in different databases/projects but uses the same schema name
 ```
-> NOTE: The native `source.yml` connection set up in the package will not function when the union schema/database feature is utilized. Although the data will be correctly combined, you will not observe the sources linked to the package models in the Directed Acyclic Graph (DAG). This happens because the package includes only one defined `source.yml`.
+> NOTE: The native `src_microsoft_ads.yml` connection set up in the package will not function when the union schema/database feature is utilized. Although the data will be correctly combined, you will not observe the sources linked to the package models in the Directed Acyclic Graph (DAG). This happens because the package includes only one defined `src_microsoft_ads.yml`.
 
 To connect your multiple schema/database sources to the package models, follow the steps outlined in the [Union Data Defined Sources Configuration](https://github.com/fivetran/dbt_fivetran_utils/tree/releases/v0.4.latest#union_data-source) section of the Fivetran Utils documentation for the union_data macro. This will ensure a proper configuration and correct visualization of connections in the DAG.
 
@@ -151,12 +151,12 @@ By default, this package builds the Microsoft Ads staging models (11 views, 11 t
 
 ```yml
 models:
-    microsoft_ads_source:
-      +schema: my_new_schema_name # leave blank for just the target_schema
     microsoft_ads:
-      +schema: my_new_schema_name # leave blank for just the target_schema
+      +schema: my_new_schema_name # Leave +schema: blank to use the default target_schema.
+      staging:
+        +schema: my_new_schema_name # Leave +schema: blank to use the default target_schema.
 ```
-    
+
 #### Change the source table references
 If an individual source table has a different name than the package expects, add the table name as it appears in your destination to the respective variable. This is not available if you are unioning together multiple connections.
 
@@ -179,12 +179,9 @@ Fivetran offers the ability for you to orchestrate your dbt project through [Fiv
 ## Does this package have dependencies?
 This dbt package is dependent on the following dbt packages. These dependencies are installed by default within this package. For more information on the following packages, refer to the [dbt hub](https://hub.getdbt.com/) site.
 > IMPORTANT: If you have any of these dependent packages in your own `packages.yml` file, we highly recommend that you remove them from your root `packages.yml` to avoid package version conflicts.
-    
+
 ```yml
 packages:
-    - package: fivetran/microsoft_ads_source
-      version: [">=0.13.0", "<0.14.0"]
-
     - package: fivetran/fivetran_utils
       version: [">=0.4.0", "<0.5.0"]
 

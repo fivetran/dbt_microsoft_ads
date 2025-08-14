@@ -3,21 +3,21 @@
 with report as (
 
     select *
-    from {{ var('campaign_performance_daily_report') }}
+    from {{ ref('stg_microsoft_ads__campaign_daily_report') }}
 
 ), 
 
 campaigns as (
 
     select *
-    from {{ var('campaign_history') }}
+    from {{ ref('stg_microsoft_ads__campaign_history') }}
     where is_most_recent_record = True
 ),
 
 accounts as (
 
     select *
-    from {{ var('account_history') }}
+    from {{ ref('stg_microsoft_ads__account_history') }}
     where is_most_recent_record = True
 ),
 
