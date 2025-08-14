@@ -23,7 +23,7 @@ The status of this ad group; see the following [documentation](https://help.ads.
 {% enddocs %}
 
 {% docs ad_name %}
-The name of the corresponding ad; `title_part_1` is used as the default ad name but you may customize this by using the `microsoft_ads__ad_name_selector` variable. For more information, refer to the [README](https://github.com/fivetran/dbt_microsoft_ads_source/blob/main/README.md#change-how-ad-name-is-determined).
+The name of the corresponding ad; `title_part_1` is used as the default ad name but you may customize this by using the `microsoft_ads__ad_name_selector` variable. For more information, refer to the [README](https://github.com/fivetran/dbt_microsoft_ads/blob/main/README.md#change-how-ad-name-is-determined).
 {% enddocs %}
 
 {% docs ad_group_id %}
