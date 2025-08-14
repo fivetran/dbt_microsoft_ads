@@ -16,7 +16,7 @@
 </p>
 
 ## What does this dbt package do?
-- Produces modeled tables that leverage Microsoft Ads data from [Fivetran's connector](https://fivetran.com/docs/applications/microsoft-advertising) in the format described by [this ERD](https://fivetran.com/docs/applications/microsoft-advertising#schemainformation) and builds off the output of our [Microsoft Ads source package](https://github.com/fivetran/dbt_microsoft_ads_source).
+- Produces modeled tables that leverage Microsoft Ads data from [Fivetran's connector](https://fivetran.com/docs/applications/microsoft-advertising) in the format described by [this ERD](https://fivetran.com/docs/applications/microsoft-advertising#schemainformation).
 - Enables you to better understand the performance of your ads across varying grains:
   - Providing an account, campaign, ad group, keyword, ad, utm and search level reports.
 - Materializes output models designed to work simultaneously with our [multi-platform Ad Reporting package](https://github.com/fivetran/dbt_ad_reporting).
@@ -64,10 +64,10 @@ If you are NOT using the [Ad Reporting combination package](https://github.com/f
 ```yaml
 packages:
   - package: fivetran/microsoft_ads
-    version: [">=0.12.0", "<0.13.0"]
+    version: [">=1.0.0", "<1.1.0"]
 ```
 
-Do NOT include the `microsoft_ads_source` package in this file. The transformation package itself has a dependency on it and will install the source package as well.
+> All required sources and staging models are now bundled into this transformation package. Do not include `fivetran/microsoft_ads_source` in your `packages.yml` since this package has been deprecated.
 
 ### Step 3: Define database and schema variables
 By default, this package runs using your destination and the `microsoft_ads` schema. If this is not where your Microsoft Ads data is (for example, if your Microsoft Ads schema is named `microsoft_ads_fivetran`), add the following configuration to your root `dbt_project.yml` file:
@@ -151,10 +151,10 @@ By default, this package builds the Microsoft Ads staging models (11 views, 11 t
 
 ```yml
 models:
-    microsoft_ads_source:
-      +schema: my_new_schema_name # leave blank for just the target_schema
     microsoft_ads:
-      +schema: my_new_schema_name # leave blank for just the target_schema
+      +schema: my_new_schema_name # Leave +schema: blank to use the default target_schema.
+      staging:
+        +schema: my_new_schema_name # Leave +schema: blank to use the default target_schema.
 ```
 
 #### Change the source table references
@@ -182,9 +182,6 @@ This dbt package is dependent on the following dbt packages. These dependencies 
 
 ```yml
 packages:
-    - package: fivetran/microsoft_ads_source
-      version: [">=0.13.0", "<0.14.0"]
-
     - package: fivetran/fivetran_utils
       version: [">=0.4.0", "<0.5.0"]
 
