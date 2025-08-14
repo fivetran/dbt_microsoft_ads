@@ -17,14 +17,13 @@ vars:
     keyword_history: "{{ source('microsoft_ads','keyword_history') }}"
     keyword_performance_daily_report: "{{ source('microsoft_ads', 'keyword_performance_daily_report') }}"
     search_performance_daily_report: "{{ source('microsoft_ads', 'search_query_performance_daily_report') }}"
-    microsoft_ads_auto_tagging_enabled: false
     microsoft_ads__account_passthrough_metrics: []
     microsoft_ads__ad_group_passthrough_metrics: []
     microsoft_ads__ad_passthrough_metrics: []
     microsoft_ads__campaign_passthrough_metrics: []
+    microsoft_ads__geographic_passthrough_metrics: []
     microsoft_ads__keyword_passthrough_metrics: []
     microsoft_ads__search_passthrough_metrics: []
-    microsoft_ads__geographic_passthrough_metrics: []
 
 models:
   microsoft_ads:

@@ -19,6 +19,6 @@ dbt deps
 dbt seed --target "$db" --full-refresh
 dbt run --target "$db" --full-refresh
 dbt test --target "$db"
-dbt run --vars '{ad_reporting__url_report__using_null_filter: false, microsoft_ads__using_geographic_daily_report: true}' --target "$db" --full-refresh
-dbt test --vars '{ad_reporting__url_report__using_null_filter: false, microsoft_ads__using_geographic_daily_report: true}' --target "$db"
+dbt run --vars '{microsoft_ads_auto_tagging_enabled: true, ad_reporting__url_report__using_null_filter: false, microsoft_ads__using_geographic_daily_report: true}' --target "$db" --full-refresh
+dbt test --vars '{microsoft_ads_auto_tagging_enabled: true, ad_reporting__url_report__using_null_filter: false, microsoft_ads__using_geographic_daily_report: true}' --target "$db"
 dbt run-operation fivetran_utils.drop_schemas_automation --target "$db"

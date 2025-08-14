@@ -21,6 +21,7 @@ vars:
 
     ## Use when generating docs and validation tests
     # microsoft_ads__using_geographic_daily_report: true # @docs-include
+    # microsoft_ads_auto_tagging_enabled: true # @docs-include
 
 models:
   +schema: "microsoft_ads_{{ var('directed_schema','dev') }}"
