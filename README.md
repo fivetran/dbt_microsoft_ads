@@ -89,7 +89,7 @@ vars:
     microsoft_ads_union_schemas: ['microsoft_ads_usa','microsoft_ads_canada'] # use this if the data is in different schemas/datasets of the same database/project
     microsoft_ads_union_databases: ['microsoft_ads_usa','microsoft_ads_canada'] # use this if the data is in different databases/projects but uses the same schema name
 ```
-> NOTE: The native `source.yml` connection set up in the package will not function when the union schema/database feature is utilized. Although the data will be correctly combined, you will not observe the sources linked to the package models in the Directed Acyclic Graph (DAG). This happens because the package includes only one defined `source.yml`.
+> NOTE: The native `src_microsoft_ads.yml` connection set up in the package will not function when the union schema/database feature is utilized. Although the data will be correctly combined, you will not observe the sources linked to the package models in the Directed Acyclic Graph (DAG). This happens because the package includes only one defined `src_microsoft_ads.yml`.
 
 To connect your multiple schema/database sources to the package models, follow the steps outlined in the [Union Data Defined Sources Configuration](https://github.com/fivetran/dbt_fivetran_utils/tree/releases/v0.4.latest#union_data-source) section of the Fivetran Utils documentation for the union_data macro. This will ensure a proper configuration and correct visualization of connections in the DAG.
 
