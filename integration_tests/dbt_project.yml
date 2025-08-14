@@ -3,23 +3,24 @@ version: '1.0.0'
 profile: 'integration_tests'
 config-version: 2
 
-vars: 
-  microsoft_ads_schema: microsoft_ads_integration_tests_7
-  microsoft_ads_account_history_identifier: "microsoft_ads_account_history_data"
-  microsoft_ads_account_performance_daily_report_identifier: "microsoft_ads_account_performance_daily_report_data"
-  microsoft_ads_ad_group_history_identifier: "microsoft_ads_ad_group_history_data"
-  microsoft_ads_ad_group_performance_daily_report_identifier: "microsoft_ads_ad_group_performance_daily_report_data"
-  microsoft_ads_ad_history_identifier: "microsoft_ads_ad_history_data"
-  microsoft_ads_ad_performance_daily_report_identifier: "microsoft_ads_ad_performance_daily_report_data"
-  microsoft_ads_campaign_history_identifier: "microsoft_ads_campaign_history_data"
-  microsoft_ads_campaign_performance_daily_report_identifier: "microsoft_ads_campaign_performance_daily_report_data"
-  microsoft_ads_keyword_history_identifier: "microsoft_ads_keyword_history_data"
-  microsoft_ads_keyword_performance_daily_report_identifier: "microsoft_ads_keyword_performance_daily_report_data"
-  microsoft_ads_search_query_performance_daily_report_identifier: "microsoft_ads_search_performance_daily_report_data"
-  microsoft_ads_geographic_performance_daily_report_identifier: "microsoft_ads_geographic_performance_daily_report_data"
+vars:
+  microsoft_ads:
+    microsoft_ads_schema: microsoft_ads_integration_tests_7
+    microsoft_ads_account_history_identifier: "microsoft_ads_account_history_data"
+    microsoft_ads_account_performance_daily_report_identifier: "microsoft_ads_account_performance_daily_report_data"
+    microsoft_ads_ad_group_history_identifier: "microsoft_ads_ad_group_history_data"
+    microsoft_ads_ad_group_performance_daily_report_identifier: "microsoft_ads_ad_group_performance_daily_report_data"
+    microsoft_ads_ad_history_identifier: "microsoft_ads_ad_history_data"
+    microsoft_ads_ad_performance_daily_report_identifier: "microsoft_ads_ad_performance_daily_report_data"
+    microsoft_ads_campaign_history_identifier: "microsoft_ads_campaign_history_data"
+    microsoft_ads_campaign_performance_daily_report_identifier: "microsoft_ads_campaign_performance_daily_report_data"
+    microsoft_ads_keyword_history_identifier: "microsoft_ads_keyword_history_data"
+    microsoft_ads_keyword_performance_daily_report_identifier: "microsoft_ads_keyword_performance_daily_report_data"
+    microsoft_ads_search_query_performance_daily_report_identifier: "microsoft_ads_search_performance_daily_report_data"
+    microsoft_ads_geographic_performance_daily_report_identifier: "microsoft_ads_geographic_performance_daily_report_data"
 
-  ## Use when generating docs and validation tests
-  # microsoft_ads__using_geographic_daily_report: true 
+    ## Use when generating docs and validation tests
+    # microsoft_ads__using_geographic_daily_report: true # @docs-include
 
 models:
   +schema: "microsoft_ads_{{ var('directed_schema','dev') }}"

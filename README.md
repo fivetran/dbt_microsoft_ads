@@ -1,4 +1,4 @@
-# Microsoft Ads Transformation dbt Package ([Docs](https://fivetran.github.io/dbt_microsoft_ads/))
+# Microsoft Ads dbt Package ([Docs](https://fivetran.github.io/dbt_microsoft_ads/))
 
 <p align="left">
     <a alt="License"
