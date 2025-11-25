@@ -1,3 +1,10 @@
+# dbt_microsoft_ads v1.1.0
+
+[PR #50](https://github.com/fivetran/dbt_microsoft_ads/pull/50) includes the following updates:
+
+## Features
+  - Increases the required dbt version upper limit to v3.0.0
+
 # dbt_microsoft_ads v1.0.0
 
 [PR #48](https://github.com/fivetran/dbt_microsoft_ads/pull/48) includes the following updates:
