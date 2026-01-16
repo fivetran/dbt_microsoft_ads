@@ -167,8 +167,6 @@ models:
         description: '{{ doc("title_part_2") }}'
       - name: title_part_3
         description: '{{ doc("title_part_3") }}'
-      - name: final_url
-        description: '{{ doc("final_url") }}'
       - name: domain
         description: '{{ doc("domain") }}'
       - name: is_most_recent_record
