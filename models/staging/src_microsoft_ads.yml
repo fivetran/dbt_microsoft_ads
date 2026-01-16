@@ -143,10 +143,6 @@ sources:
         columns:
           - name: id
             description: '{{ doc("ad_id") }}'
-          - name: title_part_1
-            description: '{{ doc("ad_name") }}'
-          - name: final_url 
-            description: '{{ doc("final_url") }}'
           - name: ad_group_id
             description: '{{ doc("ad_group_id") }}'
           - name: modified_time 
