@@ -22,8 +22,8 @@ This dbt package transforms data from Fivetran's Microsoft Ads connector into an
 
 - Number of materialized models¹: 33
 - Connector documentation
-  - [Microsoft Ads connector documentation](https://fivetran.com/docs/connectors/applications/microsoft-ads)
-  - [Microsoft Ads ERD](https://fivetran.com/docs/connectors/applications/microsoft-ads#schemainformation)
+  - [Microsoft Ads connector documentation](https://fivetran.com/docs/connectors/applications/microsoft-advertising#microsoftadvertising)
+  - [Microsoft Ads ERD](https://fivetran.com/docs/connectors/applications/microsoft-advertising#microsoftadvertisingschema)
 - dbt package documentation
   - [GitHub repository](https://github.com/fivetran/dbt_microsoft_ads)
   - [dbt Docs](https://fivetran.github.io/dbt_microsoft_ads/#!/overview)
@@ -61,7 +61,7 @@ By default, this package materializes the following final tables:
 ---
 
 ## Visualizations
-Many of the above reports are now configurable for [visualization via Streamlit](https://github.com/fivetran/streamlit_microsoft-ads). Check out some [sample reports here](https://fivetran-microsoft-ads.streamlit.app/).
+Many of the above reports are now configurable for [visualization via Streamlit](https://github.com/fivetran/streamlit_ad_reporting). Check out some [sample reports here](https://fivetran-ad-reporting.streamlit.app/ad_performance).
 
 <p align="center">
   <a href="https://fivetran-ad-reporting.streamlit.app/ad_performance">
