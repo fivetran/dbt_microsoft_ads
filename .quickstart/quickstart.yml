@@ -24,3 +24,11 @@ public_models: [
   "microsoft_ads__campaign_country_report",
   "microsoft_ads__campaign_region_report"
 ]
+
+supported_vars:
+  microsoft_ads_auto_tagging_enabled:
+    type: boolean
+    value: false
+    description: "Are you leveraging the auto-tag feature within Microsoft Ads instead of manually adding UTMs to ads?"
+    display_name: "Auto-Tagging Enabled"
+
