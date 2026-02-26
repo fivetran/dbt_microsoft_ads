@@ -26,7 +26,7 @@ vars:
 models:
   +persist_docs:
     relation: true
-    columns: true
+    columns: "{{ false if target.type in ('databricks') else true }}"
   +schema: "microsoft_ads_{{ var('directed_schema','dev') }}"
 
 seeds:
