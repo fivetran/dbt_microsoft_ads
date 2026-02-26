@@ -24,6 +24,9 @@ vars:
     # microsoft_ads_auto_tagging_enabled: true # @docs-include
 
 models:
+  +persist_docs:
+    relation: true
+    columns: true
   +schema: "microsoft_ads_{{ var('directed_schema','dev') }}"
 
 seeds:
