@@ -166,6 +166,14 @@ vars:
     microsoft_ads__ad_name_selector: coalesce(title_part_2, title_part_1) # using `title_part_2`, with `title_part_1` as a fallback if the former is `null`.
 ```
 
+#### Disable the URL null filter
+By default, the `microsoft_ads__url_report` model will filter out records where the `base_url` is null. If you would like to include these records in your URL report, you may disable this filter by setting the following variable in your root `dbt_project.yml` file:
+
+```yml
+vars:
+    ad_reporting__url_report__using_null_filter: false # True by default
+```
+
 #### Change the build schema
 By default, this package builds the Microsoft Ads staging models (11 views, 11 tables) within a schema titled (`<target_schema>` + `_microsoft_ads_source`) and your Microsoft Ads modeling models (7 tables) within a schema titled (`<target_schema>` + `_microsoft_ads`) in your destination. If this is not where you would like your Microsoft Ads data to be written to, add the following configuration to your root `dbt_project.yml` file:
 
