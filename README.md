@@ -1,6 +1,7 @@
 <!--section="microsoft-ads_transformation_model"-->
 # Microsoft Ads dbt Package
 
+
 This dbt package transforms data from Fivetran's Microsoft Ads connector into analytics-ready tables.
 
 ## Resources
