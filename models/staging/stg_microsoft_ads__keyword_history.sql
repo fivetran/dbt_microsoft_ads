@@ -17,10 +17,7 @@ fields as (
         }}
         
     
-        {{ fivetran_utils.source_relation(
-            union_schema_variable='microsoft_ads_union_schemas', 
-            union_database_variable='microsoft_ads_union_databases') 
-        }}
+        {{ fivetran_utils.apply_source_relation(package_name='microsoft_ads') }}
 
     from base
 ),
@@ -35,7 +32,7 @@ final as (
         ad_group_id,
         match_type,
         status,
-        row_number() over (partition by source_relation, id order by modified_time desc) = 1 as is_most_recent_record
+        row_number() over (partition by id {{ fivetran_utils.partition_by_source_relation(package_name='microsoft_ads') }} order by modified_time desc) = 1 as is_most_recent_record
     from fields
 )
 
