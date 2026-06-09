@@ -17,7 +17,7 @@ vars:
     microsoft_ads_keyword_history_identifier: "microsoft_ads_keyword_history_data"
     microsoft_ads_keyword_performance_daily_report_identifier: "microsoft_ads_keyword_performance_daily_report_data"
     microsoft_ads_search_query_performance_daily_report_identifier: "microsoft_ads_search_performance_daily_report_data"
-    microsoft_ads_geographic_performance_daily_report_identifier: "microsoft_ads_geographic_performance_daily_report_data"
+    microsoft_ads_geographic_history_identifier: "microsoft_ads_geographic_performance_daily_report_data"
 
     ## Use when generating docs and validation tests
     # microsoft_ads__using_geographic_daily_report: true # @docs-include
