@@ -12,6 +12,11 @@
 ## Feature Updates
 - Introduces the new (recommended) `microsoft_ads_sources` variable for more robust union data configuration. The old `microsoft_ads_union_schemas` and `microsoft_ads_union_databases` variables will still be supported. See the [README](https://github.com/fivetran/dbt_microsoft_ads/tree/main#define-database-and-schema-variables) for specific details.
 
+## Bug Fixes
+- Renamed the source identifier variable for `geographic_performance_daily_report`.
+  - new: `microsoft_ads_geographic_performance_daily_report_identifier`
+  - previous: `microsoft_ads_geographic_history_identifier`
+
 ## Under the Hood
 - Adds the `fivetran_using_source_casing` variable for case-sensitive destination support. When enabled, downstream transformations respect source casing to ensure consistent results. See the [Additional Configurations](https://github.com/fivetran/dbt_microsoft_ads/#source-casing-for-case-sensitive-destinations) section of the README for details.
 - Introduces `fivetran_utils.partition_by_source_relation` to conditionally include `source_relation` in partition clauses only when multiple sources are configured.
