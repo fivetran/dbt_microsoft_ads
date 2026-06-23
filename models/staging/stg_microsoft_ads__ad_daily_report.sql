@@ -17,10 +17,7 @@ fields as (
         }}
 
     
-        {{ fivetran_utils.source_relation(
-            union_schema_variable='microsoft_ads_union_schemas', 
-            union_database_variable='microsoft_ads_union_databases') 
-        }}
+        {{ fivetran_utils.apply_source_relation(package_name='microsoft_ads') }}
 
     from base
 ),

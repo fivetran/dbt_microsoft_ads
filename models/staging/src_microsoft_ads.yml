@@ -9,7 +9,7 @@ sources:
 
     config:
       loaded_at_field: _fivetran_synced
-      enabled: "{{ var('ad_reporting__microsoft_ads_enabled', true) }}"
+      enabled: "{{ var('ad_reporting__microsoft_ads_enabled', true) and var('microsoft_ads_sources', []) == [] }}"
       freshness: 
         warn_after: {count: 48, period: hour}
         error_after: {count: 168, period: hour}
@@ -420,10 +420,10 @@ sources:
             description: '{{ doc("all_revenue") }}'
 
       - name: geographic_performance_daily_report
-        identifier: "{{ var('microsoft_ads_geographic_history_identifier', 'geographic_performance_daily_report') }}"
+        identifier: "{{ var('microsoft_ads_geographic_performance_daily_report_identifier', 'geographic_performance_daily_report') }}"
         description: Each record in this table represents the daily performance by geographic metrics.
         config:
-          enabled: "{{ var('ad_reporting__microsoft_ads_enabled', true) and var('microsoft_ads__using_geographic_daily_report', false) }}"
+          enabled: "{{ var('ad_reporting__microsoft_ads_enabled', true) and var('microsoft_ads__using_geographic_daily_report', false) and var('microsoft_ads_sources', []) == [] }}"
         columns:
           - name: account_id
             description: '{{ doc("account_id") }}'

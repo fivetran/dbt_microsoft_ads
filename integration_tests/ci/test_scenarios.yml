@@ -23,3 +23,9 @@ test_scenarios:
       ad_reporting__url_report__using_null_filter: false
       microsoft_ads__using_geographic_daily_report: true
     include_incremental: false
+
+  - name: "MDLS"
+    vars:
+      fivetran_using_source_casing: true
+    include_incremental: false
+    include_dbt_seed: true
