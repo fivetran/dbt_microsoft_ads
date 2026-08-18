@@ -1,3 +1,11 @@
+# dbt_microsoft_ads v1.3.1
+
+[PR #60](https://github.com/fivetran/dbt_microsoft_ads/pull/60) includes the following updates:
+
+## Feature Updates
+- Adds DuckDB as a supported destination.
+
+
 # dbt_microsoft_ads v1.3.0
 
 [PR #58](https://github.com/fivetran/dbt_microsoft_ads/pull/58) includes the following updates:
