@@ -5,6 +5,17 @@ models:
     description: >
       Each record in this table represents the daily clicks, impressions, spend (and if applicable other passthrough metrics) of ads 
       by account, account timezone, device os, device type, network and currency code.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - account_id
+              - device_os
+              - device_type
+              - network
+              - currency_code
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -43,6 +54,19 @@ models:
     description: >
       Each record in this table represents the daily clicks, impressions, spend (and if applicable other passthrough metrics) of ads 
       by ad group, campaign, account, device os, device type, network and currency code.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - account_id
+              - campaign_id
+              - ad_group_id
+              - device_os
+              - device_type
+              - network
+              - currency_code
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -89,6 +113,20 @@ models:
     description: >
       Each record in this table represents the daily clicks, impressions, spend (and if applicable other passthrough metrics) of ads 
       by ad, ad group, campaign, account, ad type, device os, device type, network and currency code.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - account_id
+              - campaign_id
+              - ad_group_id
+              - ad_id
+              - device_os
+              - device_type
+              - network
+              - currency_code
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -141,6 +179,18 @@ models:
     description: >
       Each record in this table represents the daily clicks, impressions, spend (and if applicable other passthrough metrics) of ads 
       by campaign, account, campaign type, campaign timezone, campaign status, device os, device type, network and currency code.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - account_id
+              - campaign_id
+              - device_os
+              - device_type
+              - network
+              - currency_code
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -189,6 +239,21 @@ models:
     description: >
       Each record in this table represents the daily clicks, impressions, spend (and if applicable other passthrough metrics) of ads 
       by keyword, ad, ad group, campaign, account, device os, device type, network and currency code.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - account_id
+              - campaign_id
+              - ad_group_id
+              - ad_id
+              - keyword_id
+              - device_os
+              - device_type
+              - network
+              - currency_code
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -245,6 +310,22 @@ models:
     description: >
       Each record in this table represents the daily clicks, impressions, spend (and if applicable other passthrough metrics) of ads 
       by search query, keyword, ad, ad group, campaign, account, device os, device type and network.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - account_id
+              - campaign_id
+              - ad_group_id
+              - ad_id
+              - keyword_id
+              - search_query
+              - device_os
+              - device_type
+              - network
+              - match_type
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -301,6 +382,23 @@ models:
     description: >
       Each record in this table represents the daily clicks, impressions, spend (and if applicable other passthrough metrics) of ads 
       by ad, ad group, campaign, account, ad type, device os, device type, network, currency code, url and utm parameters.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - account_id
+              - campaign_id
+              - ad_group_id
+              - ad_id
+              - device_os
+              - device_type
+              - network
+              - currency_code
+          config:
+            # Don't run this test if you allow URLs to have null entries
+            enabled: "{{ var('ad_reporting__url_report__using_null_filter', true) }}"
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -370,6 +468,22 @@ models:
     description: >
       Each record in this table represents the daily performance of ads by country, account, campaign, campaign type, 
       campaign timezone, campaign status, device os, device type, network, and currency code.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - account_id
+              - campaign_id
+              - country
+              - location_id
+              - goal
+              - geo_language
+              - device_os
+              - device_type
+              - network
+              - currency_code
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
@@ -436,6 +550,23 @@ models:
     description: >
       Each record in this table represents the daily performance of ads by state or region, account, campaign, 
       campaign type, campaign timezone, campaign status, device os, device type, network, and currency code.
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - source_relation
+              - date_day
+              - account_id
+              - campaign_id
+              - country
+              - region
+              - location_id
+              - goal
+              - geo_language
+              - device_os
+              - device_type
+              - network
+              - currency_code
     columns:
       - name: source_relation
         description: "{{ doc('source_relation') }}"
