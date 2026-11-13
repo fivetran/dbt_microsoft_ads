@@ -414,8 +414,6 @@ models:
         description: '{{ doc("network") }}'
       - name: language
         description: '{{ doc("language") }}'
-      - name: ad_distribution
-        description: '{{ doc("ad_distribution") }}'
       - name: bid_match_type
         description: '{{ doc("bid_match_type") }}'
       - name: delivered_match_type
