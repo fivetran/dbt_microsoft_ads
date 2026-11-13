@@ -15,7 +15,7 @@ This dbt package transforms data from Fivetran's Microsoft Ads connector into an
   - [DAG](https://fivetran.github.io/dbt_microsoft_ads/#!/overview?g_v=1)
   - [Changelog](https://github.com/fivetran/dbt_microsoft_ads/blob/main/CHANGELOG.md)
 - dbt Core™ supported versions
-  - `>=1.3.0, <3.0.0`
+  - `>=1.10.0, <3.0.0`
 
 ## What does this dbt package do?
 This package enables you to better understand the performance of your ads across varying grains and materialize output models designed to work simultaneously with our multi-platform Ad Reporting package. It creates enriched models with metrics focused on account, campaign, ad group, keyword, ad, utm and search level reports.
@@ -76,7 +76,7 @@ If you are NOT using the [Ad Reporting combination package](https://github.com/f
 ```yaml
 packages:
   - package: fivetran/microsoft_ads
-    version: [">=1.3.0", "<1.4.0"]
+    version: [">=1.4.0", "<1.5.0"]
 ```
 
 > All required sources and staging models are now bundled into this transformation package. Do not include `fivetran/microsoft_ads_source` in your `packages.yml` since this package has been deprecated.
@@ -252,7 +252,7 @@ The Fivetran team maintaining this package only maintains the [latest version](h
 ### Contributions
 A small team of analytics engineers at Fivetran develops these dbt packages. However, the packages are made better by community contributions.
 
-We highly encourage and welcome contributions to this package. Learn how to contribute to a package in dbt's [Contributing to an external dbt package article](https://discourse.getdbt.com/t/contributing-to-a-dbt-package/657).
+We highly encourage and welcome contributions to this package. Learn how to contribute to a package by reading the guidelines in our [CONTRIBUTING.md](https://github.com/fivetran/dbt_microsoft_ads/blob/main/CONTRIBUTING.md) document.
 
 #### Contributors
 We thank [everyone](https://github.com/fivetran/dbt_microsoft_ads/graphs/contributors) who has taken the time to contribute. Each PR, bug report, and feature request has made this package better and is truly appreciated.
