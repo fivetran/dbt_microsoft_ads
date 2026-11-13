@@ -1,3 +1,10 @@
+# dbt_microsoft_ads v1.3.2
+
+[PR #66](https://github.com/fivetran/dbt_microsoft_ads/pull/66) includes the following updates:
+
+## Under the Hood
+- **Corrected documentation for the search query performance report**: Removes the `ad_distribution` column from the documentation for the [stg_microsoft_ads__search_daily_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.stg_microsoft_ads__search_daily_report) model and the `search_query_performance_daily_report` source. Microsoft Advertising does not return this field in the search query performance report, so the model never produced it. This also removes the related warning from your dbt runs.
+
 # dbt_microsoft_ads v1.3.1
 
 [PR #60](https://github.com/fivetran/dbt_microsoft_ads/pull/60) includes the following updates:
