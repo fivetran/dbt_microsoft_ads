@@ -1,5 +1,5 @@
 name: 'microsoft_ads'
-version: '1.3.1'
+version: '1.4.0'
 config-version: 2
 require-dbt-version: [">=1.3.0", "<3.0.0"]
 
@@ -14,6 +14,7 @@ vars:
     campaign_history: "{{ source('microsoft_ads','campaign_history') }}"
     campaign_performance_daily_report: "{{ source('microsoft_ads', 'campaign_performance_daily_report') }}"
     geographic_performance_daily_report: "{{ source('microsoft_ads', 'geographic_performance_daily_report') }}"
+    age_gender_audience_daily_report: "{{ source('microsoft_ads', 'age_gender_audience_daily_report') }}"
     keyword_history: "{{ source('microsoft_ads','keyword_history') }}"
     keyword_performance_daily_report: "{{ source('microsoft_ads', 'keyword_performance_daily_report') }}"
     search_performance_daily_report: "{{ source('microsoft_ads', 'search_query_performance_daily_report') }}"
@@ -22,6 +23,7 @@ vars:
     microsoft_ads__ad_passthrough_metrics: []
     microsoft_ads__campaign_passthrough_metrics: []
     microsoft_ads__geographic_passthrough_metrics: []
+    microsoft_ads__age_gender_passthrough_metrics: []
     microsoft_ads__keyword_passthrough_metrics: []
     microsoft_ads__search_passthrough_metrics: []
 

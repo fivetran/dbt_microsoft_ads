@@ -1,0 +1,21 @@
+version: 1.4.0
+schema_data_changes:
+  entries:
+  - models:
+    - '[microsoft_ads__campaign_age_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__campaign_age_report)'
+    - '[microsoft_ads__campaign_gender_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__campaign_gender_report)'
+    change_type: New field/model
+    is_breaking: false
+    notes: Daily campaign performance by audience age group and by gender. Built from the `AGE_GENDER_AUDIENCE_DAILY_REPORT`
+      source table. The age report splits each age group into `min_age` and `max_age`. Dynamically enabled in Quickstart; disabled
+      by default otherwise. To enable in self-managed dbt projects, set the `microsoft_ads__using_age_gender_daily_report` variable to `true`.
+  - models:
+    - '[stg_microsoft_ads__age_gender_daily_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.stg_microsoft_ads__age_gender_daily_report)'
+    - '[stg_microsoft_ads__age_gender_daily_report_tmp](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.stg_microsoft_ads__age_gender_daily_report_tmp)'
+    change_type: New field/model
+    is_breaking: false
+    notes: Staging models to support age and gender reporting.
+new_features:
+- title: Age and gender reporting passthrough column variable
+  description: Adds the `microsoft_ads__age_gender_passthrough_metrics` variable to pass additional `AGE_GENDER_AUDIENCE_DAILY_REPORT`
+    metrics through to the `microsoft_ads__campaign_age_report` and `microsoft_ads__campaign_gender_report` models.

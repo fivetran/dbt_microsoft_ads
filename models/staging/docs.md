@@ -276,3 +276,19 @@ The postal code where the user was physically located when they clicked the ad.
 {% docs state %}
 The state or geographic region where the user was physically located when they clicked the ad.
 {% enddocs %}
+
+{% docs age_group %}
+Audience age range, such as `18-24`, `25-34`, `35-49`, `50-64`, `65+`, or `Unknown` when Microsoft Advertising can't determine it.
+{% enddocs %}
+
+{% docs min_age %}
+Lower bound of the audience age range, parsed from `age_group`. For example, `18-24` and `65+` return 18 and 65. Null when the age group is `Unknown`.
+{% enddocs %}
+
+{% docs max_age %}
+Upper bound of the audience age range, parsed from `age_group`. For example, `18-24` returns 24. An open-ended range such as `65+` returns 100. Null when the age group is `Unknown`.
+{% enddocs %}
+
+{% docs gender %}
+Audience gender, such as `Female`, `Male`, or `Unknown` when Microsoft Advertising can't determine it.
+{% enddocs %}

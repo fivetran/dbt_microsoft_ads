@@ -487,3 +487,46 @@ sources:
             description: '{{ doc("top_vs_other") }}'
           - name: revenue
             description: '{{ doc("revenue") }}'
+
+      - name: age_gender_audience_daily_report
+        identifier: "{{ var('microsoft_ads_age_gender_audience_daily_report_identifier', 'age_gender_audience_daily_report') }}"
+        description: Each record in this table represents the daily performance by ad group, audience age group, gender, language, ad distribution, and goal.
+        config:
+          enabled: "{{ var('ad_reporting__microsoft_ads_enabled', true) and var('microsoft_ads__using_age_gender_daily_report', false) and var('microsoft_ads_sources', []) == [] }}"
+        columns:
+          - name: account_id
+            description: '{{ doc("account_id") }}'
+          - name: ad_distribution
+            description: '{{ doc("ad_distribution") }}'
+          - name: ad_group_id
+            description: '{{ doc("ad_group_id") }}'
+          - name: age_group
+            description: '{{ doc("age_group") }}'
+          - name: all_conversions
+            description: '{{ doc("all_conversions") }}'
+          - name: all_conversions_qualified
+            description: '{{ doc("all_conversions_qualified") }}'
+          - name: all_revenue
+            description: '{{ doc("all_revenue") }}'
+          - name: campaign_id
+            description: '{{ doc("campaign_id") }}'
+          - name: clicks
+            description: '{{ doc("clicks") }}'
+          - name: conversions
+            description: '{{ doc("conversions") }}'
+          - name: conversions_qualified
+            description: '{{ doc("conversions_qualified") }}'
+          - name: date
+            description: '{{ doc("date_day") }}'
+          - name: gender
+            description: '{{ doc("gender") }}'
+          - name: goal
+            description: '{{ doc("goal") }}'
+          - name: impressions
+            description: '{{ doc("impressions") }}'
+          - name: language
+            description: The language of the publisher where the ad was shown.
+          - name: spend
+            description: '{{ doc("spend") }}'
+          - name: revenue
+            description: '{{ doc("revenue") }}'

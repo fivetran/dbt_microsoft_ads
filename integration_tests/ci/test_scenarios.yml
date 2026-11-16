@@ -26,6 +26,7 @@ test_scenarios:
       microsoft_ads_auto_tagging_enabled: true
       ad_reporting__url_report__using_null_filter: false
       microsoft_ads__using_geographic_daily_report: true
+      microsoft_ads__using_age_gender_daily_report: true
     include_incremental: false
 
   - name: "MDLS"

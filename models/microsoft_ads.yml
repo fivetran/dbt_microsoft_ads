@@ -499,3 +499,113 @@ models:
         description: '{{ doc("all_conversions") }}'
       - name: all_conversions_value
         description: '{{ doc("all_revenue") }}'
+
+  - name: microsoft_ads__campaign_age_report
+    description: >
+      Each record in this table represents the daily performance of a campaign for one audience age group. Metrics are summed across ad groups, languages, ad distributions, and goals.
+    columns:
+      - name: source_relation
+        description: "{{ doc('source_relation') }}"
+      - name: date_day
+        description: '{{ doc("date_day") }}'
+        tests:
+          - not_null
+      - name: age_group
+        description: '{{ doc("age_group") }}'
+      - name: min_age
+        description: '{{ doc("min_age") }}'
+      - name: max_age
+        description: '{{ doc("max_age") }}'
+      - name: account_name
+        description: '{{ doc("account_name") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+        tests:
+          - not_null
+      - name: campaign_name
+        description: '{{ doc("campaign_name") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+        tests:
+          - not_null
+      - name: campaign_type
+        description: '{{ doc("campaign_type") }}'
+      - name: campaign_timezone
+        description: '{{ doc("campaign_timezone") }}'
+      - name: campaign_status
+        description: '{{ doc("campaign_status") }}'
+      - name: campaign_budget
+        description: '{{ doc("budget") }}'
+      - name: campaign_budget_id
+        description: '{{ doc("budget_id") }}'
+      - name: campaign_budget_type
+        description: '{{ doc("budget_type") }}'
+      - name: campaign_language
+        description: '{{ doc("language") }}'
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend
+        description: '{{ doc("spend") }}'
+      - name: conversions
+        description: '{{ doc("conversions") }}'
+      - name: conversions_value
+        description: '{{ doc("revenue") }}'
+      - name: all_conversions
+        description: '{{ doc("all_conversions") }}'
+      - name: all_conversions_value
+        description: '{{ doc("all_revenue") }}'
+
+  - name: microsoft_ads__campaign_gender_report
+    description: >
+      Each record in this table represents the daily performance of a campaign for one audience gender. Metrics are summed across ad groups, languages, ad distributions, and goals.
+    columns:
+      - name: source_relation
+        description: "{{ doc('source_relation') }}"
+      - name: date_day
+        description: '{{ doc("date_day") }}'
+        tests:
+          - not_null
+      - name: gender
+        description: '{{ doc("gender") }}'
+      - name: account_name
+        description: '{{ doc("account_name") }}'
+      - name: account_id
+        description: '{{ doc("account_id") }}'
+        tests:
+          - not_null
+      - name: campaign_name
+        description: '{{ doc("campaign_name") }}'
+      - name: campaign_id
+        description: '{{ doc("campaign_id") }}'
+        tests:
+          - not_null
+      - name: campaign_type
+        description: '{{ doc("campaign_type") }}'
+      - name: campaign_timezone
+        description: '{{ doc("campaign_timezone") }}'
+      - name: campaign_status
+        description: '{{ doc("campaign_status") }}'
+      - name: campaign_budget
+        description: '{{ doc("budget") }}'
+      - name: campaign_budget_id
+        description: '{{ doc("budget_id") }}'
+      - name: campaign_budget_type
+        description: '{{ doc("budget_type") }}'
+      - name: campaign_language
+        description: '{{ doc("language") }}'
+      - name: clicks
+        description: '{{ doc("clicks") }}'
+      - name: impressions
+        description: '{{ doc("impressions") }}'
+      - name: spend
+        description: '{{ doc("spend") }}'
+      - name: conversions
+        description: '{{ doc("conversions") }}'
+      - name: conversions_value
+        description: '{{ doc("revenue") }}'
+      - name: all_conversions
+        description: '{{ doc("all_conversions") }}'
+      - name: all_conversions_value
+        description: '{{ doc("all_revenue") }}'

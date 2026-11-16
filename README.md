@@ -5,7 +5,7 @@ This dbt package transforms data from Fivetran's Microsoft Ads connector into an
 
 ## Resources
 
-- Number of materialized models¹: 33
+- Number of materialized models¹: 37
 - Connector documentation
   - [Microsoft Ads connector documentation](https://fivetran.com/docs/connectors/applications/microsoft-advertising#microsoftadvertising)
   - [Microsoft Ads ERD](https://fivetran.com/docs/connectors/applications/microsoft-advertising#microsoftadvertisingschema)
@@ -39,6 +39,8 @@ By default, this package materializes the following final tables:
 | [microsoft_ads__campaign_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__campaign_report) | Represents daily performance aggregated at the campaign level, including `spend`, `clicks`, `impressions`, and `conversions`.<br><br>**Example Analytics Questions:**<ul><li>Which campaigns are most efficient in terms of cost per conversion?</li><li>Are paused or limited-status campaigns still accruing impressions?</li><li>Which campaigns contribute most to overall spend or conversions?</li></ul> |
 | [microsoft_ads__campaign_country_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__campaign_country_report) | Represents daily performance aggregated at the campaign level by country, including `spend`, `clicks`, `impressions`, and `conversions`, enriched with geographic context.<br><br>**Example Analytics Questions:**<ul><li>Which countries are delivering the highest return on ad spend for each campaign?</li><li>Are there seasonal performance variations by geographic region?</li></ul> |
 | [microsoft_ads__campaign_region_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__campaign_region_report) | Represents daily performance aggregated at the campaign level by region, including `spend`, `clicks`, `impressions`, and `conversions`, enriched with geographic context.<br><br>**Example Analytics Questions:**<ul><li>Which regions are driving the most efficient campaign performance?</li><li>How do regional performance trends correlate with local market conditions?</li></ul> |
+| [microsoft_ads__campaign_age_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__campaign_age_report) | Represents daily performance aggregated at the campaign level by audience age group, including `spend`, `clicks`, `impressions`, and `conversions`. The model splits each age group into `min_age` and `max_age`.<br><br>**Example Analytics Questions:**<ul><li>Which age groups convert at the lowest cost for each campaign?</li><li>Is spend shifting toward younger or older audiences over time?</li></ul> |
+| [microsoft_ads__campaign_gender_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__campaign_gender_report) | Represents daily performance aggregated at the campaign level by audience gender, including `spend`, `clicks`, `impressions`, and `conversions`.<br><br>**Example Analytics Questions:**<ul><li>Which campaigns perform best with each gender?</li><li>How does cost per conversion differ by gender over time?</li></ul> |
 | [microsoft_ads__keyword_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__keyword_report) | Represents daily performance at the individual keyword level, including `spend`, `clicks`, `impressions`, and `conversions`.<br><br>**Example Analytics Questions:**<ul><li>Which keywords are driving the highest quality traffic at the lowest cost?</li><li>Are branded vs. non-branded keywords performing differently?</li><li>Should underperforming keywords be reallocated to different match types?</li></ul> |
 | [microsoft_ads__search_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__search_report) | Represents daily performance at the individual search term level, including `spend`, `clicks`, `impressions`, and `conversions`.<br><br>**Example Analytics Questions:**<ul><li>What new search terms are emerging that I should add as keywords?</li><li>Which irrelevant search terms should be added as negatives to reduce wasted spend?</li><li>Are there seasonal shifts in search terms driving conversions?</li></ul> |
 | [microsoft_ads__url_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__url_report) | Represents daily performance at the individual URL level, including `spend`, `clicks`, `impressions`, and `conversions`, enriched with ad context.<br><br>**Example Analytics Questions:**<ul><li>Which landing pages are driving the highest conversion rates?</li><li>Are certain URLs performing better with specific ad creative combinations?</li></ul> |
@@ -76,7 +78,7 @@ If you are NOT using the [Ad Reporting combination package](https://github.com/f
 ```yaml
 packages:
   - package: fivetran/microsoft_ads
-    version: [">=1.3.0", "<1.4.0"]
+    version: [">=1.4.0", "<1.5.0"]
 ```
 
 > All required sources and staging models are now bundled into this transformation package. Do not include `fivetran/microsoft_ads_source` in your `packages.yml` since this package has been deprecated.
@@ -135,6 +137,13 @@ vars:
     microsoft_ads__using_geographic_daily_report: True # False by default
 ```
 
+#### Enable Age and Gender Reports
+This package uses the `age_gender_audience_daily_report` table to report on campaign performance by audience age group and gender. This table is disabled by default for dbt Core users. If you sync this report from your Microsoft Ads connection, enable the `microsoft_ads__campaign_age_report` and `microsoft_ads__campaign_gender_report` models by adding the following variable configuration to your root `dbt_project.yml` file:
+```yml
+vars:
+    microsoft_ads__using_age_gender_daily_report: True # False by default
+```
+
 #### Adding passthrough metrics
 By default, this package will select `clicks`, `impressions`, `spend`, `conversions` (coalesces source `conversions` and `conversions_qualified` fields), `conversions_value` (aliased source `revenue` field), `all_conversions` (coalesces source `all_conversions` and `all_conversions_qualified` fields) and `all_conversions_value` (aliased source `all_revenue` field) from the source reporting tables to store into the staging models. If you would like to pass through additional metrics to the staging models, add the below configurations to your `dbt_project.yml` file. These variables allow for the pass-through fields to be aliased (`alias`) if desired, but not required. Use the below format for declaring the respective pass-through variables:
 
@@ -162,7 +171,11 @@ vars:
     microsoft_ads__geographic_passthrough_metrics:
       - name: "unique_string_field"
         alias: "custom_field_name"
+    microsoft_ads__age_gender_passthrough_metrics: # these metrics are included in both microsoft_ads__campaign_age_report and microsoft_ads__campaign_gender_report
+      - name: "view_through_conversions"
 ```
+
+> The age and gender reports sum passthrough metrics across ad groups, languages, ad distributions, and goals. Don't pass through rates or averages from `age_gender_audience_daily_report`, such as `top_impression_rate_percent` or `absolute_top_impression_rate_percent`. Summed rates aren't meaningful.
 
 #### Enable UTM Auto Tagging
 This package assumes you are manually adding UTM tags to your ads. If you are leveraging the auto-tag feature within Microsoft Ads then you will want to enable the `microsoft_ads_auto_tagging_enabled` variable to correctly populate the UTM fields within the `microsoft_ads__utm_report` model.

@@ -6,6 +6,8 @@ dbt_versions: ">=1.3.0 <3.0.0"
 table_variables:
   microsoft_ads__using_geographic_daily_report:
     - geographic_performance_daily_report
+  microsoft_ads__using_age_gender_daily_report:
+    - age_gender_audience_daily_report
 
 destination_configurations:
   databricks:
@@ -22,7 +24,9 @@ public_models: [
   "microsoft_ads__search_report",
   "microsoft_ads__campaign_report",
   "microsoft_ads__campaign_country_report",
-  "microsoft_ads__campaign_region_report"
+  "microsoft_ads__campaign_region_report",
+  "microsoft_ads__campaign_age_report",
+  "microsoft_ads__campaign_gender_report"
 ]
 
 supported_vars:
