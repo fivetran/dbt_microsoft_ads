@@ -1,5 +1,5 @@
 name: 'microsoft_ads_integration_tests'
-version: '1.3.1'
+version: '1.4.0'
 profile: 'integration_tests'
 config-version: 2
 
@@ -18,9 +18,11 @@ vars:
     microsoft_ads_keyword_performance_daily_report_identifier: "microsoft_ads_keyword_performance_daily_report_data"
     microsoft_ads_search_query_performance_daily_report_identifier: "microsoft_ads_search_performance_daily_report_data"
     microsoft_ads_geographic_performance_daily_report_identifier: "microsoft_ads_geographic_performance_daily_report_data"
+    microsoft_ads_age_gender_audience_daily_report_identifier: "microsoft_ads_age_gender_audience_daily_report_data"
 
     ## Use when generating docs and validation tests
     # microsoft_ads__using_geographic_daily_report: true # @docs-include
+    # microsoft_ads__using_age_gender_daily_report: true # @docs-include
     # microsoft_ads_auto_tagging_enabled: true # @docs-include
 
 models:
@@ -110,6 +112,20 @@ seeds:
         campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         location_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        clicks: "integer"
+        impressions: "integer"
+        spend: "numeric"
+        conversions_qualified: "integer"
+        conversions: "integer"
+        revenue: "numeric"
+        all_conversions_qualified: "integer"
+        all_conversions: "integer"
+        all_revenue: "numeric"
+    microsoft_ads_age_gender_audience_daily_report_data:
+      +column_types:
+        account_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        campaign_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
+        ad_group_id: "{{ 'INT64' if target.type == 'bigquery' else 'bigint' }}"
         clicks: "integer"
         impressions: "integer"
         spend: "numeric"
