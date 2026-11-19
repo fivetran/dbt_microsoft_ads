@@ -7,7 +7,7 @@
 - Adds `dbt_utils.unique_combination_of_columns` tests to staging and end models. If a test fails, please [open an issue](https://github.com/fivetran/dbt_microsoft_ads/issues/new/choose).
 
 ## Under the Hood
-- **Corrected documentation for the search query performance report**: Removes the `ad_distribution` column from the documentation for the [stg_microsoft_ads__search_daily_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.stg_microsoft_ads__search_daily_report) model and the `search_query_performance_daily_report` source. Microsoft Advertising does not return this field in the search query performance report, so the model never produced it. This also removes the related warning from your dbt runs.
+- description
 
 # dbt_microsoft_ads v1.3.1
 
