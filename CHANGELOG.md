@@ -7,7 +7,7 @@
 - Adds `dbt_utils.unique_combination_of_columns` tests to staging and end models. If a test fails, please [open an issue](https://github.com/fivetran/dbt_microsoft_ads/issues/new/choose).
 
 ## Under the Hood
-- description
+- Updates yml column documentation to match model output.
 
 # dbt_microsoft_ads v1.3.1
 
