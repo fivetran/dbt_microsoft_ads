@@ -16,7 +16,7 @@ models:
         description: "{{ doc('source_relation') }}"
       - name: account_id
         description: '{{ doc("account_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: account_name
         description: '{{ doc("account_name") }}'
@@ -54,7 +54,7 @@ models:
         description: '{{ doc("date_day") }}' 
       - name: account_id
         description: '{{ doc("account_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: device_os
         description: '{{ doc("device_os") }}'
@@ -100,7 +100,7 @@ models:
         description: "{{ doc('source_relation') }}"
       - name: ad_group_id
         description: '{{ doc("ad_group_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: ad_group_name
         description: '{{ doc("ad_group_name") }}'
@@ -149,7 +149,7 @@ models:
         description: '{{ doc("campaign_id") }}'
       - name: ad_group_id
         description: '{{ doc("ad_group_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: currency_code
         description: '{{ doc("currency_code") }}'
@@ -199,7 +199,7 @@ models:
         description: "{{ doc('source_relation') }}"
       - name: ad_id
         description: '{{ doc("ad_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: ad_name
         description: '{{ doc("ad_name") }}'
@@ -261,7 +261,7 @@ models:
         description: '{{ doc("ad_group_id") }}'
       - name: ad_id
         description: '{{ doc("ad_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: currency_code
         description: '{{ doc("currency_code") }}'
@@ -311,7 +311,7 @@ models:
         description: "{{ doc('source_relation') }}"
       - name: campaign_id
         description: '{{ doc("campaign_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: campaign_name
         description: '{{ doc("campaign_name") }}'
@@ -368,7 +368,7 @@ models:
         description: '{{ doc("account_id") }}'
       - name: campaign_id
         description: '{{ doc("campaign_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: currency_code
         description: '{{ doc("currency_code") }}'
@@ -422,7 +422,7 @@ models:
         description: "{{ doc('source_relation') }}"
       - name: keyword_id
         description: '{{ doc("keyword_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: keyword_name
         description: '{{ doc("keyword_name") }}'
@@ -475,7 +475,7 @@ models:
         description: '{{ doc("ad_id") }}'
       - name: keyword_id
         description: '{{ doc("keyword_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: currency_code
         description: '{{ doc("currency_code") }}'
@@ -549,7 +549,7 @@ models:
         description: '{{ doc("keyword_id") }}'
       - name: search_query
         description: '{{ doc("top_vs_other") }}'
-        tests:
+        data_tests:
           - not_null
       - name: device_os
         description: '{{ doc("device_os") }}'

@@ -25,7 +25,7 @@ models:
         description: '{{ doc("account_name") }}'
       - name: account_id
         description: '{{ doc("account_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: account_timezone
         description: '{{ doc("account_timezone") }}'
@@ -84,7 +84,7 @@ models:
         description: '{{ doc("ad_group_name") }}'
       - name: ad_group_id
         description: '{{ doc("ad_group_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: device_os
         description: '{{ doc("device_os") }}'
@@ -148,7 +148,7 @@ models:
         description: '{{ doc("ad_name") }}'
       - name: ad_id
         description: '{{ doc("ad_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: ad_type
         description: '{{ doc("ad_type") }}'
@@ -204,7 +204,7 @@ models:
         description: '{{ doc("campaign_name") }}'
       - name: campaign_id
         description: '{{ doc("campaign_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: campaign_type
         description: '{{ doc("campaign_type") }}'
@@ -279,7 +279,7 @@ models:
         description: '{{ doc("keyword_name") }}'
       - name: keyword_id
         description: '{{ doc("keyword_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: match_type
         description: '{{ doc("match_type") }}'
@@ -355,7 +355,7 @@ models:
         description: '{{ doc("match_type") }}'
       - name: search_query
         description: '{{ doc("search_query") }}'
-        tests:
+        data_tests:
           - not_null
       - name: device_os
         description: '{{ doc("device_os") }}'
@@ -430,7 +430,7 @@ models:
         description: '{{ doc("currency_code") }}'
       - name: base_url
         description: The base URL of the ad, extracted from the `final_url`.
-        tests:
+        data_tests:
           - not_null:
               config:
                 # Below is so we don't run this test if the user has allowed urls to have null entries
@@ -495,13 +495,13 @@ models:
         description: '{{ doc("account_name") }}'
       - name: account_id
         description: '{{ doc("account_id") }}'
-        tests: 
+        data_tests: 
           - not_null
       - name: campaign_name
         description: '{{ doc("campaign_name") }}'
       - name: campaign_id
         description: '{{ doc("campaign_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: campaign_type
         description: '{{ doc("campaign_type") }}'
@@ -580,13 +580,13 @@ models:
         description: '{{ doc("account_name") }}'
       - name: account_id
         description: '{{ doc("account_id") }}'
-        tests: 
+        data_tests: 
           - not_null
       - name: campaign_name
         description: '{{ doc("campaign_name") }}'
       - name: campaign_id
         description: '{{ doc("campaign_id") }}'
-        tests:
+        data_tests:
           - not_null
       - name: campaign_type
         description: '{{ doc("campaign_type") }}'
