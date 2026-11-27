@@ -52,6 +52,7 @@ joined as (
         report.source_relation,
         report.date_day,
         accounts.account_name,
+        accounts.currency_code,
         report.account_id,
         campaigns.campaign_name,
         report.campaign_id,
@@ -92,7 +93,7 @@ joined as (
     left join keywords
         on report.keyword_id = keywords.keyword_id
         and report.source_relation = keywords.source_relation
-    {{ dbt_utils.group_by(17) }}
+    {{ dbt_utils.group_by(18) }}
 
 )
 

@@ -1,3 +1,17 @@
+# dbt_microsoft_ads v1.5.0
+
+[PR #68](https://github.com/fivetran/dbt_microsoft_ads/pull/68) includes the following updates:
+
+## Schema/Data Change
+**1 total change • 0 possible breaking changes**
+
+| Data Model(s) | Change type | Old | New | Notes |
+| ------------- | ----------- | --- | --- | ----- |
+| [microsoft_ads__search_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__search_report) | New column |  |  | Adds `currency_code`, the account's currency code from `ACCOUNT_HISTORY`. The search query source table has no currency column, so this matches the `currency_code` already in every other Microsoft Ads end model. |
+
+## Under the Hood
+- Removes the `currency_code` entry from the `search_query_performance_daily_report` source documentation. That table does not include a currency column.
+
 # dbt_microsoft_ads v1.4.0
 
 [PR #65](https://github.com/fivetran/dbt_microsoft_ads/pull/65) includes the following updates:
