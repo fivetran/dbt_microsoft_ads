@@ -333,6 +333,8 @@ models:
         description: '{{ doc("date_day") }}'
       - name: account_name
         description: '{{ doc("account_name") }}'
+      - name: currency_code
+        description: '{{ doc("currency_code") }}'
       - name: account_id
         description: '{{ doc("account_id") }}'
       - name: campaign_name

@@ -382,8 +382,6 @@ sources:
             description: '{{ doc("keyword_id") }}'
           - name: search_query
             description: '{{ doc("top_vs_other") }}'
-          - name: currency_code
-            description: '{{ doc("currency_code") }}'
           - name: device_os
             description: '{{ doc("device_os") }}'
           - name: device_type
