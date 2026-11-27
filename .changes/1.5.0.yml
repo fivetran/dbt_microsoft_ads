@@ -6,9 +6,9 @@ schema_data_changes:
     - '[microsoft_ads__search_report](https://fivetran.github.io/dbt_microsoft_ads/#!/model/model.microsoft_ads.microsoft_ads__search_report)'
     change_type: New column
     is_breaking: false
-    notes: Adds `currency_code`, the account's currency code from `ACCOUNT_HISTORY`. The
-      search query source table has no currency column, so this matches the
-      `currency_code` already in every other Microsoft Ads end model.
+    notes: Adds `currency_code`, the account's currency code from `ACCOUNT_HISTORY`.
+      The search query source table has no currency column, so this matches the `currency_code`
+      already in every other Microsoft Ads end model.
 under_the_hood:
 - description: Removes the `currency_code` entry from the `search_query_performance_daily_report`
     source documentation. That table does not include a currency column.
